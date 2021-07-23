@@ -1,0 +1,104 @@
+{% extends "page/base.html" %}
+{% load static %}
+{% block content %}
+
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(../static/page/images/fondoBar.png);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>VARITA</h1>
+							<h2> <a target="_blank">Grafomotricidad</a></h2>
+							<p>
+								<a class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\VMofi.mp4'%}">
+									<i class="icon-play"></i> Ver Video</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="fh5co-explore" class="fh5co-bg-section">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>VARITA</h2>
+					<p>La varita es una herramienta de grafomotricidad con la que el o la terapista buscan que el niño intervenido realice ejercicios de grafomotricidad a nivel de pinza en los 
+					dedos y a nivel de movimiento de la mano en muñeca, todo este sistema embebido y herramienta se conjuga con una aplicación 
+					de tipo software en dónde se encuentran los juegos interactivos o actividades, mismos que buscan de igual manera llamar la 
+					atención del niño o niña. Está varita tiene una forma triangular que permite un mejor agarre y corrección del mismo cuando 
+					no lo esté haciendo de una manera adecuada.</p>
+				</div>
+			</div>
+		</div>		
+		<div class="fh5co-explore fh5co-explore1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-push-5 animate-box">
+						<img class="img-responsive" src="{% static 'page/images/barita1.png'%}" alt="work">
+					</div>
+					<div class="col-md-4 col-md-pull-8 animate-box">
+						<div class="mt">
+							<h3>Varita:</h3>
+							<p>La varita es una herramienta de grafomotricidad que consta de diferentes sensores de posición y depresión mismos que están 
+					comandados por un microcontrolador conectados entre sí mediante un sistema embebido debidamente armado y diseñado. 
+							</p>						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="fh5co-explore">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-pull-1 animate-box">
+						<img class="img-responsive" src="{% static 'page/images/07.png'%}" alt="actividad">
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="mt">
+							<h3>Actividad</h3>
+							<p>La varita funciona como un cursor en pantalla con la cual se debe hacer la actividad de seguir trazos especificos. 
+							En este caso llevar a un animal a su comida.
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-project">
+		<div class="container-fluid proj-bottom">
+
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="features">
+					<div class="col-md-4 animate-box">
+						<h4>Refuersos positivos</h4>
+						<p>Luces y audio.  </p>
+					</div>
+					<div class="col-md-4 animate-box">
+						<h4>Ergonomía adecuada</h4>
+						<p>Adecuado para manos de niños</p>
+					</div>
+					<div class="col-md-4 animate-box">
+						<h4>Llamativo</h4>
+						<p>En forma de varita majica </p>
+					</div>
+				</div>
+				<div class="col-md-12 text-center animate-box">
+					<p><a class="btn btn-primary btn-lg btn-learn" href="{% url 'contactos' %}">Contactanos</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock%}

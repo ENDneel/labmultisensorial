@@ -1,0 +1,152 @@
+{% extends "page/base.html" %}
+{% load static %}
+{% block content %}
+
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(../static/page/images/fondoia0.png);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Sistema Inteligente</h1>
+							<h2> <a target="_blank">Sistema de visualizacion de resultados en tiempo real y Sistema Experto</a></h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="fh5co-explore" class="fh5co-bg-section">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>Sistema Inteligente</h2>
+					<p>El sistema inteligente contempla la integracion de todos los portotipos desarrollados, 
+						la gestion de los estudiantes, docentes y sesiones de terapia realizados almacenando la informacion 
+						relevante adquirida por los prototipos en cada sesion. Ademas integra la generacion
+						de recomendacion de sesiones de terapia personalizadas a cada estudiante registrado mediante 
+						su evaluacion y un sistema experto basado en reglas.</p>
+				</div>
+			</div>
+		</div>		
+		<div class="fh5co-explore fh5co-explore1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-push-5 animate-box">
+						<img class="img-responsive" src="{% static 'page/images/S-Est.png'%}" alt="work">
+					</div>
+					<div class="col-md-4 col-md-pull-8 animate-box">
+						<div class="mt">
+							<h3>Gestion de Estudiantes:</h3>
+							<p>Registra estudiantes y evaluaciones
+							</p>
+
+							<ul class="list-nav">
+								<li><i class="icon-check2"></i>Agregar estudiantes</li>
+								<li><i class="icon-check2"></i>Eliminar estudiante</li>
+								<li><i class="icon-check2"></i>Editar estudiante</li>
+								<li><i class="icon-check2"></i>Agregar evaluacion</li>
+								<li><i class="icon-check2"></i>Modificad evaluacion</li>
+							</ul>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="fh5co-explore">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-pull-1 animate-box">
+						<img class="img-responsive" src="{% static 'page/images/s-Dash.png'%}" alt="work">
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="mt">
+							<h3>Dashboard:</h3>
+							<p>Dashboard interactivo con el que se podra visualizar toda la informacion 
+							del sistema</p>
+							<ul class="list-nav">
+								<li><i class="icon-check2"></i>Graficas resumenes</li>
+								<li><i class="icon-check2"></i>Tablas de estudiantes</li>
+								<li><i class="icon-check2"></i>Tablas de evaluaciones</li>
+								<li><i class="icon-check2"></i>Tablas de sesiones</li>
+								<li><i class="icon-check2"></i>Graficas por estudiantes</li>
+								<li><i class="icon-check2"></i>Graficas por prototipo</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-project">
+		<div class="container-fluid proj-bottom">
+			<div class="row">
+			<div class="container">
+				<div class="row animate-box">
+					<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+						<h2>Informacion de Estudiante en Dashboard</h2>
+						<p>Muetra informacion del estudiante seleccionado</p>
+					</div>
+				</div>
+			</div>	
+				<div class="col-md-4 col-sm-6">
+					<a><img src="{% static 'page/images/S-info1.png'%}" alt="Actividad Broches" class="img-responsive">
+						<span>Datos de estudiante seleccionado</span>						
+					</a>
+				</div>
+				
+				<div class="col-md-4 col-sm-6">
+					<a><img src="{% static 'page/images/S-info2.png'%}" alt="Actividad Broches" class="img-responsive">
+						<span>Sesiones con prototipos realizadas por estudiante</span>						
+					</a>
+				</div>
+				
+				<div class="col-md-4 col-sm-6">
+					<a><img src="{% static 'page/images/S-info3.png'%}" alt="Actividad Broches" class="img-responsive">
+						<span>Recomendacion de actividades segun perfil de estudiante</span>						
+					</a>
+				</div>
+				
+				<div class="col-md-4 col-sm-6">
+					<a><img src="{% static 'page/images/S-info4.png'%}" alt="Actividad Broches" class="img-responsive">
+						<span>Actividades realizadas con prototipo</span>						
+					</a>
+				</div>
+				
+				<div class="col-md-4 col-sm-6">
+					<a><img src="{% static 'page/images/S-info5.png'%}" alt="Actividad Broches" class="img-responsive">
+						<span>Linea de tiempo de logro de actividad realizada</span>						
+					</a>
+				</div>
+
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="features">
+					<div class="col-md-4 animate-box">
+						<h4>Graficas dinamicas</h4>
+						<p>Mejoran el entendimiento de los datos</p>
+					</div>
+					<div class="col-md-4 animate-box">
+						<h4>Informacion relevante</h4>
+						<p>Informacion necesaria para la oportuna toma de deciciones</p>
+					</div>
+					<div class="col-md-4 animate-box">
+						<h4>Seguimiento de estudiante</h4>
+						<p>Con el sistema se podra dar seguimiento a todo el proceso de rehabilitacion del estudiante  </p>
+					</div>
+				</div>
+				<div class="col-md-12 text-center animate-box">
+					<p><a class="btn btn-primary btn-lg btn-learn" href="#">Acceder</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock%}

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Laboratorio Multisensorial</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content=">Laboratorio Multisensorial" />
+	<meta name="keywords" content=">Laboratorio Multisensorial" />
+	<meta name="author" content=">Laboratorio Multisensorial" />
+
+
+    {% load static %}
+
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'page/css/animate.css'%}">
+	<link rel="stylesheet" href="{% static 'page/css/icomoon.css'%}">
+	<link rel="stylesheet" href="{% static 'page/css/bootstrap.css'%}">
+	<link rel="stylesheet" href="{% static 'page/css/magnific-popup.css'%}">
+	<link rel="stylesheet" href="{% static 'page/css/owl.carousel.min.css'%}">
+	<link rel="stylesheet" href="{% static 'page/css/owl.theme.default.min.css'%}">
+	<link rel="stylesheet" href="{% static 'page/css/style.css'%}">
+	<script src="{% static 'page/js/modernizr-2.6.2.min.js'%}"></script>
+
+
+	</head>
+	<body>
+		
+	<div class="fh5co-loader"></div>
+	
+	<div id="page">
+		<nav class="fh5co-nav" role="navigation">
+			<div class="top-menu">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-1">
+							<!-- <div id="fh5co-logo"><a href="{% url 'inicio' %}"><img src="{% static 'page/images/logo1.png'%}" width="300" height="75"></a></div> -->
+						</div>
+						<div class="col-xs-11 text-right menu-1">
+							<ul>
+								<li class="active"><a href="{% url 'inicio' %}">Inicio</a></li>
+								<li><a href="#">Acerca de</a></li>
+								<!-- <li class="has-dropdown">
+									<a>Prototipos</a>
+									<ul class="dropdown">
+										<li><a href="{% url 'sistema' %}">Sistema Inteligente</a></li>
+										<li><a href="{% url 'prototipo1a' %}">Peluche MoFi</a></li>
+										<li><a href="{% url 'prototipo1b' %}">Varita</a></li>
+										<li><a href="{% url 'prototipo2b' %}">Tablero MoFi</a></li>
+										<li><a href="{% url 'prototipo2a' %}">Tablero MoPe</a></li>
+										<li><a href="{% url 'juegos' %}">Juegos Serios</a></li>
+									</ul>
+								</li> -->
+								<!-- <li class="has-dropdown">
+									<a>Publicaciones</a>
+										<ul class="dropdown">
+										
+
+										</ul>
+								
+								</li> -->
+								<li><a href="#">Contactos</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</nav>
+<!-- Dif-->
+        {% block content%}{% endblock %}
+<!-- Term Dif-->
+
+<!--  ----------------- 	-->
+		<div id="fh5co-started" style="background-image:url(../static/page/images/img_bg_2.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<!-- <div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>Proyecto financiado por</h2>
+						<figure>
+							<img src="{% static 'page/images/cedia.png'%}" alt="user" style="width: 500px;">
+						</figure>
+						<p>Gracias a la iniciativa CEPRA</p>
+
+					</div>
+				</div> -->
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<!-- <p><a href="https://www.cedia.edu.ec/es/" class="btn btn-default btn-lg">Pagina web</a></p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer id="fh5co-footer" role="contentinfo">
+			<div class="container">
+
+				<div class="row copyright">
+					<div class="col-md-12 text-center">
+						<p>
+							<!-- <small class="block">&copy; IA - Trastornos Motores 2019.</small>  -->
+						</p>			
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<script src="{% static 'page/js/jquery.min.js'%}"></script>
+	<script src="{% static 'page/js/jquery.easing.1.3.js'%}"></script>
+	<script src="{% static 'page/js/bootstrap.min.js'%}"></script>
+	<script src="{% static 'page/js/jquery.waypoints.min.js'%}"></script>
+	<script src="{% static 'page/js/jquery.stellar.min.js'%}"></script>
+	<script src="{% static 'page/js/owl.carousel.min.js'%}"></script>
+	<script src="{% static 'page/js/jquery.countTo.js'%}"></script>
+	<script src="{% static 'page/js/jquery.magnific-popup.min.js'%}"></script>	
+	<script src="{% static 'page/js/magnific-popup-options.js'%}"></script>
+	<script src="{% static 'page/js/main.js'%}"></script>
+	<script src="{% static 'page/js/pop-up.js'%}"></script>
+
+	</body>
+</html>
+

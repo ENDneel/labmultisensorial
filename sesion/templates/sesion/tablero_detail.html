@@ -1,0 +1,86 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<div id="layoutSidenav_content">
+
+    <main>
+        <div class="container-fluid">
+            <figure class="text-center">
+                <blockquote class="blockquote">
+                    <h2>
+                        <p>Sesiónes en la Motricidad Gruesa</p>
+                    </h2>
+                </blockquote>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{% url 'sesioCreate' pk=object.2%}" class="btn btn-primary me-md-2" >  <i class="fas fa-plus-square"></i>  Nueva Sesión</a>
+                  
+
+                </div>
+            </figure>
+            {% for obj in object.0 %}
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse"
+                                data-target="#collapseOne{{obj.id}}" aria-expanded="true"
+                                aria-controls="collapseOne{{obj.id}}">
+                                Sesión número {{obj.id}}
+                            </button>
+                        </h5>
+                    </div>
+                </div>
+                <div id="collapseOne{{obj.id}}" class="collapse" aria-labelledby="headingOne{{obj.id}}"
+                    data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="table-responsive-sm">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">Actividad</th>
+                                        <th scope="col">Tiempo</th>
+                                        <th scope="col">Errores</th>
+                                        <th scope="col">datos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in object.1 %}
+                                    <tr>
+
+                                        {% if i.Sesion.id == obj.id %}
+                                        <td>{{i.Actividad}}</td>
+                                        <td>{{ i.Tiempo }}</td>
+                                        <td>{{ i.Errores }}</td>
+                                        <td>{{ i.datos }}</td>
+                                        {%endif%}
+
+
+                                    </tr>
+                                    {%endfor%}
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            {% endfor%}
+
+
+
+
+        </div>
+    </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+
+
+
+
+
+</script>
+{% endblock%}

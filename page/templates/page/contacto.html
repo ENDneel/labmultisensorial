@@ -1,0 +1,58 @@
+{% extends "page/base.html" %}
+{% load static %}
+{% block content %}
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(../static/page/images/Blog.png);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>CONTACTOS</h1>
+							<h2>Docentes responsables por universidad</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="fh5co-blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a><img class="img-responsive" src="{% static 'page/images/FLucho.png'%}" alt=""></a>
+						<div class="blog-text">
+							<h3><a href="http://www.ups.edu.ec">Universidad Politécnica Salesiana</a></h3>
+							<h4>Ing. Luis Serpa</h4>
+							<p>Correo: lserpa@ups.edu.ec</p>
+							<p>Telefono: </p>
+						</div> 
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a><img class="img-responsive" src="{% static 'page/images/FAdri.png'%}" alt=""></a>
+						<div class="blog-text">
+							<h3><a href="http://www.uazuay.edu.ec">Universidad del Azuay</a></h3>
+							<h4>Lic. Adriana Leon</h4>
+							<p>Correo: aleon@uazuay.edu.ec</p>
+							<p>Telefono: </p>
+						</div> 
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4">
+					<div class="fh5co-blog animate-box">
+						<a><img class="img-responsive" src="{% static 'page/images/Paul.png'%}" alt=""></a>
+						<div class="blog-text">
+							<h3><a href="https://www.ucacue.edu.ec/">Universidad Catolica de Cuenca</a></h3>
+							<h4>Ing. Jean Paul Mata </h4>
+							<p>Correo: jpmataq@ucacue.edu.ec</p>
+							<p>Telefono: </p></div> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock%}

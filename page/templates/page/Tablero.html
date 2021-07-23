@@ -1,0 +1,151 @@
+{% extends "page/base.html" %}
+{% load static %}
+{% block content %}
+
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(../static/page/images/fondoTab.png);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>TABLERO INTERACTIVO</h1>
+							<h2> <a target="_blank">MoPe</a></h2>
+								<p>
+									<a class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\VTMoPe.mp4'%}">
+										<i class="icon-play"></i> Ver Video</a>
+								</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="fh5co-explore" class="fh5co-bg-section">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>Motricidad Perceptiva</h2>
+					<p>Este dispositivo busca realizar una estrategia
+					metodológica a través del juego y con uso de un tablero interactivo, el cual
+					aparte de ser un terapia innovadora es divertida para el niño; en donde va a poder
+					realizar actividades motrices que fortalecerán su motricidad fina, en especial la pinza
+					digital la cual es una destreza fundamental que debe ser bien desarrollada en el niño/a
+					para que logre tener un correcto agarre del lápiz para así obtener una caligrafía legible.</p>
+				</div>
+			</div>
+		</div>		
+		<div class="fh5co-explore fh5co-explore1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-push-5 animate-box">
+						<img class="img-responsive" src="{% static 'page/images/Tab.png'%}" alt="work">
+					</div>
+					<div class="col-md-4 col-md-pull-8 animate-box">
+						<div class="mt">
+							<h3>Tablero interactivo:</h3>
+							<p>Esta compuesto de.. y se puede hacer las siguientes acividades 
+							</p>
+
+
+
+							<ul class="list-nav">
+								<li><i class="icon-check2"></i>Trazos</li>
+								<li><i class="icon-check2"></i>Pinzas</li>
+								<li><i class="icon-check2"></i>Trazos de precision</li>
+
+							</ul>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="fh5co-explore">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-pull-1 animate-box">
+						<img class="img-responsive" src="{% static 'page/images/Tab1.jpg'%}" alt="work">
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="mt">
+							<h3>Aplicacion Movil:</h3>
+							<p>Aplicacion movil para el uso del tablero interactivo:</p>
+							<ul class="list-nav">
+								<li><i class="icon-check2"></i>Inicio de actividades.</li>
+								<li><i class="icon-check2"></i>Visualizacion de informacion de ususario.</li>
+								<li><i class="icon-check2"></i>Tiempos de actividad.</li>
+								<li><i class="icon-check2"></i>Coneccion con el servidor.</li>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-project">
+		<div class="container-fluid proj-bottom">
+			<div class="row">
+			<div class="container">
+				<div class="row animate-box">
+					<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+						<h2>Actividades de Tablero interactivo</h2>
+						<p>Este dispositivo tiene diferentes ejericicios para mejorar la motricidad perceptiva</p>
+					</div>
+				</div>
+			</div>	
+				<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+					<a><img src="{% static 'page/images/TabAc1.png'%}" alt="Actividad Trazos" class="img-responsive">
+						<h3 class="trigger_popup_fricc">Trazos</h3>
+					<span class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\MoPeCam.mp4'%}" > Video</span> 
+						
+					</a>
+				</div>
+			
+
+				<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+					<a ><img src="{% static 'page/images/TabAc3.png'%}" alt="Pinzas" class="img-responsive">
+						<h3>Pinzas</h3>
+						<span class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\MoPePin.mp4'%}" > Video</span> 
+						
+					</a>
+				</div>
+				
+				<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+					<a ><img src="{% static 'page/images/TabAc2.png'%}" alt="Trazos de precision" class="img-responsive">
+						<h3>Trazos de precision</h3>
+						<span class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\MoPePre.mp4'%}" > Video</span> 
+						
+					</a>
+				</div>
+				
+
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="features">
+					<div class="col-md-4 animate-box">
+						<h4>Refuersos positivos</h4>
+						<p>Luces y audio.  </p>
+					</div>
+					<div class="col-md-4 animate-box">
+						<h4>Almacenamiento de informacion</h4>
+						<p>Registro de datos de sesiones  </p>
+					</div>
+					<div class="col-md-4 animate-box">
+						<h4>Llamativo y de facil uso</h4>
+						<p>Actividades llamativas y faciles de realizar </p>
+					</div>
+				</div>
+				<div class="col-md-12 text-center animate-box">
+					<p><a class="btn btn-primary btn-lg btn-learn" href="{% url 'contactos' %}">Contactanos</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock%}

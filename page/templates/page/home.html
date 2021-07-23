@@ -1,0 +1,323 @@
+{% extends "page/base.html" %}
+{% load static %}
+{% block content %}
+<!-- style="background-image:url(static/page/images/home.jpg);" -->
+		<header id="fh5co-header" class="fh5co-cover" role="banner"  data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center">
+						<div class="display-t">
+							<div class="display-tc animate-box" data-animate-effect="fadeIn">
+								<h2>Laboratiro</h2>
+								<h3>Laboratorio Multisensorial</h3>
+								<p>
+									<a class="btn btn-primary btn-lg btn-learn" href="{% url 'login' %}">DashBoard</a> 
+
+								</p>
+								<!-- <p>
+									<a class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\Proyecto.mp4'%}">
+										<i class="icon-play"></i> Proyecto
+									</a>
+									<a class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\Prototipos.mp4'%}">
+										<i class="icon-play"></i> Prototipos
+									</a>
+									<a class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\Intervencion.mp4'%}">
+										<i class="icon-play"></i> Intervención
+									</a>
+								</p> -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+
+		<div id="fh5co-explore" class="fh5co-bg-section">
+			<!-- <div class="container">
+				<div class="row animate-box">
+					<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+						<h2>IA-Trastornos Motores</h2>
+						<p>Proyecto inteligente interactivo basado en aprendizaje de máquina y 
+						sistemas embebidos para el soporte en los procesos de seguimiento y 
+						aprendizaje de niños con trastornos motores, el mismo abarca varias 
+						áreas de conocimiento: inteligencia artificial, microprocesadores, 
+						programación, electrónica, educación especial, rehabilitación.</p>
+					</div>
+				</div>
+			</div>		 -->
+			<!-- <div class="fh5co-explore fh5co-explore1">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-push-5 animate-box">
+							<img class="img-responsive" src="{% static 'page/images/05.jpg'%}" alt="work">
+						</div>
+						<div class="col-md-4 col-md-pull-8 animate-box">
+							<div class="mt">
+								<h3>MOTRICIDAD FINA</h3>
+								<p>La motricidad fina, definida como la “capacidad de usar la mano y 
+								dedos de manera precisa, de acuerdo con la exigencia de la actividad. 
+								También se refiere a la habilidad para manipular objetos.” La adquisición
+								 adecuada de la motricidad fina es un prerrequisito indispensable para 
+								 el proceso de escritura, por ello es importante identificar tempranamente 
+								 dificultades relacionadas con esta área con el objetivo de estimular 
+								 habilidades manipulativas, precisión, fuerza, coordinación, dependiendo 
+								 de la edad y dificultades concretas de cada niño se podrán seleccionar 
+								 determinadas actividades.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+			<!-- <div class="fh5co-explore">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-pull-1 animate-box">
+							<img class="img-responsive" src="{% static 'page/images/DIS.jpg'%}" alt="work">
+						</div>
+						<div class="col-md-4 animate-box">
+							<div class="mt">
+								<h3>MOTRICIDAD PERCEPTIVA</h3>
+								<p>La motricidad perceptiva permite al niño asociar formas, colores, la posición 
+								en el espacio, direccionalidad, además incluye el uso de la mano y los dedos de 
+								manera precisa y eficaz.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		
+		<div id="fh5co-project">
+			<!-- <div class="container">
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>Prototipos desarrollados </h2>
+						<p>Buscan realizar una estrategia
+						metodológica a través del juego y con uso herramientas tesnologicas, con las cuales
+						aparte de ser un terapia innovadora es divertida para el niño; en donde se realizaran
+						actividades motrices que fortalecen la motricidad fina, en especial la pinza
+						digital la cual es una destreza fundamental que debe ser bien desarrollada en el niño/a
+						para que logre tener un correcto agarre del lápiz para así obtener una caligrafía legible.</p>
+					</div>
+				</div>
+			</div> -->
+		
+			<div class="container-fluid proj-bottom">
+				<!-- <div class="row">
+					<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+						<a href="{% url 'prototipo1a' %}"><img src="{% static 'page/images/03.png'%}" class="img-responsive">
+							<h3>Peluche Robotico</h3>	
+							<h3 class="trigger_popup_fricc">Peluche Robotico</h3>						
+						</a>
+					</div> -->
+					 	
+						<!-- <div class="hover_bkgr_fricc">
+							<span class="helper"></span>
+							<div>
+								<div class="popupCloseButton">&times;</div>
+								<p>Prototipos IA-Trastornos Motores</p>
+							</div>
+						</div> -->
+					<!--  ----------------- 	-->
+				
+					<!-- <div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+						<a href="#"><img src="{% static 'page/images/07.png'%}" class="img-responsive">
+							<h3>Barita</h3>
+						</a>
+					</div>
+
+					<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+						<a href="{% url 'juegos' %}"><img src="{% static 'page/images/09.png'%}" class="img-responsive">
+							<h3>Juego Serio - Letras</h3>
+						</a>
+					</div>
+					
+					<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+						<a href="{% url 'juegos' %}"><img src="{% static 'page/images/10.png'%}" class="img-responsive">
+							<h3>Juego Serio - Laberinto</h3>
+						</a>
+					</div>
+
+					<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+						<a href="{% url 'juegos' %}"><img src="{% static 'page/images/08.png'%}" class="img-responsive">
+							<h3>Juego Serio - Topos</h3>
+						</a>
+					</div>
+
+
+					<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+						<a href="{% url 'juegos' %}"><img src="{% static 'page/images/02.png'%}" class="img-responsive">
+							<h3>Juego Serio - Colorear</h3>
+						</a>
+					</div>
+
+
+
+					<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+						<a href="{% url 'prototipo2a' %}"><img src="{% static 'page/images/Tab0.png'%}" class="img-responsive">
+							<h3>Tablero - MoPe</h3>
+						</a>
+					</div>
+
+
+					<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+						<a href="{% url 'prototipo2b' %}"><img src="{% static 'page/images/PelucheTab1.png'%}" class="img-responsive">
+							<h3>Tablero - MoFi</h3>
+						</a>
+					</div> -->
+									
+
+
+
+				<!-- </div> -->
+			</div>
+
+			<div class="container">
+				<!-- <div class="row">
+					<div class="features">
+						<div class="col-md-4 animate-box">
+							<h4>Dispositivos ludicos llamativos</h4>
+							<p>Los dispositivos fueron diseñados para atraer al niño, centrando su atencion y 
+							para lograr que se involucre mas en la sesion. </p>
+						</div>
+						<div class="col-md-4 animate-box">
+							<h4>Seguimiento de terapia</h4>
+							<p>Las herramientas almacenan informacion generada en las sesiones, 
+							esta informacion puede ser vista a tiempo real en el DashBoard</p>
+						</div>
+						<div class="col-md-4 animate-box">
+							<h4>Sesiones personalizadas</h4>
+							<p>Gracias al sistema experto que recomienda las herramientas a usar y repeticiones
+							se optine una sesion personalizada segun el perfil y habilidades del niño </p>
+						</div>
+					</div>
+					<div class="col-md-12 text-center animate-box">
+						<p><a class="btn btn-primary btn-lg btn-learn" href="{% url 'contactos' %}">Contactanos</a></p>
+					</div>
+				</div> -->
+			</div>
+
+			<div class="container">
+				<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+				<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+				<style>
+				.mySlides {display:none;}
+				</style>
+				<body>
+
+					<h2 class="w3-center">Galeria</h2>
+
+					<div class="w3-content w3-display-container" style="max-width: 720px;">
+					<img class="mySlides" src="{% static 'page/images/G/G (2).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (3).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (4).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (5).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (6).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (7).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (8).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (9).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (10).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (11).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (12).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (13).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (14).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (15).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (16).jpg'%}" style="width:100%">
+					<img class="mySlides" src="{% static 'page/images/G/G (17).jpg'%}" style="width:100%">
+
+					<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+					<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+					</div>
+
+					<script>
+					var slideIndex = 1;
+					showDivs(slideIndex);
+
+					function plusDivs(n) {
+					showDivs(slideIndex += n);
+					}
+
+					function showDivs(n) {
+					var i;
+					var x = document.getElementsByClassName("mySlides");
+					if (n > x.length) {slideIndex = 1}
+					if (n < 1) {slideIndex = x.length}
+					for (i = 0; i < x.length; i++) {
+						x[i].style.display = "none";  
+					}
+					x[slideIndex-1].style.display = "block";  
+					}
+					</script>
+
+				</body> -->
+			</div>
+		</div>
+
+	<div id="fh5co-testimonial" class="fh5co-bg-section">
+		<!-- <div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>Instituciones Miembros del proyecto</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="row animate-box">
+						<div class="owl-carousel owl-carousel-fullwidth">
+							<div class="item">
+								<div class="testimony-slide active text-center">
+									<figure>
+										<img src="{% static 'page/images/ups.png'%}" alt="user">
+									</figure>
+									<span>Universidad Politecnica Salesiana <a href="https://www.ups.edu.ec/" class="twitter">Info</a></span>
+									<blockquote>
+										<p>&ldquo;Universidad Politecnica Saleciana Sede Cuenca.&rdquo;</p>
+									</blockquote>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-slide active text-center">
+									<figure>
+										<img src="{% static 'page/images/uda.png'%}" alt="user">
+									</figure>
+									<span>Universidad del Azuay <a href="https://www.ucuenca.edu.ec/" class="twitter">Info</a></span>
+									<blockquote>
+										<p>Universidad del Azuay</p>
+									</blockquote>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-slide active text-center">
+									<figure>
+										<img src="{% static 'page/images/ucacue.png'%}" alt="user">
+									</figure>
+									<span>Universidad Catolica de Cuenca <a href="https://www.ucacue.edu.ec/" class="twitter">Info</a></span>
+									<blockquote>
+										<p>Universidad Catolica de Cuenca</p>
+									</blockquote>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-slide active text-center">
+									<figure>
+										<img src="{% static 'page/images/ceiap.png'%}" alt="user">
+									</figure>
+									<span>Centro de Estimulación Integral y Apoyo Psicoterapéuticos <a href="https://ceiap.uazuay.edu.ec/" class="twitter">Info</a></span>
+									<blockquote>
+										<p>CEIAP</p>
+									</blockquote>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+{% endblock%}

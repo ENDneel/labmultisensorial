@@ -1,0 +1,177 @@
+{% extends "page/base.html" %}
+{% load static %}
+{% block content %}
+
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(../static/page/images/fondoTabPel.png);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>TABLERO INTERACTIVO</h1>
+							<h2> <a target="_blank">Tablero MoFi</a></h2>
+							<p>
+								<a class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\VTMofi.mp4'%}">
+									<i class="icon-play"></i> Ver Video</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="fh5co-explore" class="fh5co-bg-section">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+					<h2>MoFi</h2>
+					<p>Este dispositivo busca realizar una estrategia
+					metodológica a través del juego y con uso de una caja interactiva, el cual
+					aparte de ser un terapia innovadora es divertida para el niño; las actividades del 
+					tablero interactivo favorecen el uso de la mano y dedos de manera precisa, estimula la 
+					coordinación óculo manual, agarre, disociación de muñeca, ejercicios de fuerza, pinza 
+					digital, el terapeuta controla fácilmente al peluche robot mediante una aplicación móvil 
+					y supervisa la actividad que el usuario ejecuta.</p>
+				</div>
+			</div>
+		</div>		
+		<div class="fh5co-explore fh5co-explore1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-push-5 animate-box">
+						<img class="img-responsive" src="{% static 'page/images/PelucheTab.png'%}" alt="work">
+					</div>
+					<div class="col-md-4 col-md-pull-8 animate-box">
+						<div class="mt">
+							<h3>Tablero Interactivo:</h3>
+							<p>Es un sistema embebido que está conformado por sensores, un microcontrolador (Arduino mini mega pro), 
+							sistema de sonido, luces; todo esto debidamente armado en el interior de un tablero de madera, el cual es 
+							controlado desde un dispositivo móvil que se comunica con el tablero vía bluetooth. 
+							</p>
+
+							<ul class="list-nav">
+								<li><i class="icon-check2"></i>Sombrero de Rosca</li>
+								<li><i class="icon-check2"></i>Broches</li>
+								<li><i class="icon-check2"></i>Cierre</li>
+								<li><i class="icon-check2"></i>Velcro</li>
+								<li><i class="icon-check2"></i>Cordones</li>
+							</ul>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="fh5co-explore">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-pull-1 animate-box">
+						<img class="img-responsive" src="{% static 'page/images/AppTab.png'%}" alt="work">
+					</div>
+					<div class="col-md-4 animate-box">
+						<div class="mt">
+							<h3>Aplicacion Movil:</h3>
+							<p>Aplicacion movil para el uso del tablero Interactivo:</p>
+							<ul class="list-nav">
+								<li><i class="icon-check2"></i>Inicio de actividades</li>
+								<li><i class="icon-check2"></i>Visualizacion de informacion de ususario</li>
+								<li><i class="icon-check2"></i>Tiempos de actividad</li>
+								<li><i class="icon-check2"></i>Conección con el Servidor</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fh5co-project">
+		<div class="container-fluid proj-bottom">
+			<div class="row">
+			<div class="container">
+				<div class="row animate-box">
+					<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
+						<h2>Actividades de Tablero</h2>
+						<p>Este dispositivo tiene diferentes ejericicios para mejorar la motricidad fina</p>
+					</div>
+				</div>
+			</div>	
+				<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+					<a><img src="{% static 'page/images/BrocheTab1.png'%}" alt="Actividad Broches" class="img-responsive">
+						<h3 class="trigger_popup_fricc">Broches</h3>
+						<span class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\Broches.mp4'%}" > Video</span>
+						
+					</a>
+				</div>
+				
+				<!--  ----------------- 	
+					<div class="hover_bkgr_fricc">
+						<span class="helper"></span>
+						<div>
+							<div class="popupCloseButton">&times;</div>
+							<div>
+							<h3>Broches</h3>
+							<p>Ayuda a ... haciendo la accion de ... con los ...</p>
+						</div>
+						</div>
+
+					</div>
+				 ----------------- 	-->
+
+				<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+					<a ><img src="{% static 'page/images/CierreTab1.png'%}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<h3>Cierres</h3>
+						<span class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\Cierre.mp4'%}" > Video</span>
+
+					</a>
+				</div>
+				
+				<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+					<a ><img src="{% static 'page/images/SombreroTab1.png'%}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<h3>Sombero</h3>
+						<span class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\Sombrero.mp4'%}" > Video</span>
+
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+					<a><img src="{% static 'page/images/VelcroTab1.png'%}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<h3>Manos de velcro</h3>
+						<span class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\Velcro.mp4'%}" > Video</span>
+
+					</a>
+				</div>
+				<div class="col-md-4 col-sm-6 fh5co-project animate-box" data-animate-effect="fadeIn">
+					<a ><img src="{% static 'page/images/CordónTab1.png'%}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+						<h3>Cordones</h3>
+						<span class="btn btn-primary btn-lg popup-vimeo btn-video" href="{% static 'page\Video\Cordones.mp4'%}" > Video</span>
+					</a>
+				</div>
+
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="features">
+					<div class="col-md-4 animate-box">
+						<h4>Refuersos positivos</h4>
+						<p>Luces y audio </p>
+					</div>
+					<div class="col-md-4 animate-box">
+						<h4>Almacenamiento de informacion</h4>
+						<p>Registro de datos de sesiones  </p>
+					</div>
+					<div class="col-md-4 animate-box">
+						<h4>Llamativo y amigable</h4>
+						<p>De usos amigable y llamativo</p>
+					</div>
+				</div>
+				<div class="col-md-12 text-center animate-box">
+					<p><a class="btn btn-primary btn-lg btn-learn" href="{% url 'contactos' %}">Contactanos</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock%}

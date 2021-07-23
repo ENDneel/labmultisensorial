@@ -1,0 +1,398 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Datatable {% endblock title %}
+
+<!-- Specific CSS goes HERE  -->
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/assets/style2.css">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row profile">
+
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <center>
+
+                        <img style="max-width:100%;width:auto;height:auto;"
+                            src="https://static.change.org/profile-img/default-user-profile.svg" class="img-responsive"
+                            alt="">
+                    </center>
+
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        {{ est.Estudiante.nombre }} {{ est.Estudiante.apellido }}
+                    </div>
+                    <div class="profile-usertitle-job">
+                    </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <a type="button" class="alert alert-dark btn-lg"
+                        href="{% url 'editar_estudiante' est.Estudiante.id %}">Editar</a>
+                    <div class="dropdown">
+                        <button class="alert alert-dark dropdown-toggle btn-lg" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Diagnostico
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Preescritura</a>
+                            <a class="dropdown-item" href="#">Motricidad Gruesa</a>
+                            <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Escritura</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="alert alert-dark dropdown-toggle btn-lg" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Motricidad
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Preescritura</a>
+                            <a class="dropdown-item" href="#">Motricidad Gruesa</a>
+                            <a class="dropdown-item" href="/escrituraDatos.html">Escritura</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+
+                </div>
+                <!-- END MENU -->
+            </div>
+           
+        </div>
+
+        <div class="col-md-9">
+            <div class="profile-content">
+                <a>
+                    <h3>Discapacidades</h3>
+                </a>
+                <ul class="list-group">
+                    <li class="list-group-item">Discapacidad Intelectual: <b>{{est.disc_intelectual_grado}}</b></li>
+                    <li class="list-group-item">Discapacidad Visual: <b>{{est.disc_visual_grado}}</b></li>
+                    <li class="list-group-item">Discapacidad Motriz: <b>{{est.disc_motriz_grado}}</b></li>
+                    <li class="list-group-item">Discapacidad Auditiva: <b>{{est.disc_auditiva_grado}} </b> &nbsp;&nbsp;
+                        Profundidad: <b>{{est.disc_auditiva_profundidad}}</b></li>
+                    <li class="list-group-item">Discapacidad PCI: <b>{{est.disc_pci_grado}}</b>&nbsp;&nbsp; Profundidad:
+                        <b>{{est.disc_pci_profundidad}}</b>
+                    </li>
+                </ul>
+                <a>
+                    <h3>Síndromes</h3>
+                </a>
+                <ul class="list-group">
+                    {%if est.sindrome_down == 'Si'%}
+                    <li class="list-group-item">Síndrome Down</li>
+                    {% endif%}
+                    {%if est.sindrome_lennon == 'Si'%}
+                    <li class="list-group-item">Síndrome Lennon</li>
+                    {% endif%}
+                    {%if est.sindrome_te == 'Si'%}
+                    <li class="list-group-item">Síndrome TEA </li>
+                    {% endif%}
+                    {%if est.sindorme_tdah == 'Si'%}
+                    <li class="list-group-item">Síndrome TDAH</li>
+                    {% endif%}
+                    {%if est.transtorno_agresivo == 'Si'%}
+                    <li class="list-group-item">Transtorno Agresivo</li>
+                    {% endif%}
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a>
+                <h3 aling='center'>Características Grafomotrices y Lingüística</h3>
+            </a>
+
+        </div>
+        <div class="row profile">
+
+            <div class="col-md-6">
+
+                <div class="profile-sidebar">
+
+                    <ul class="list-group">
+                        {% if est.control_cuerpo == 'A1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/controlaCuerpo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Control de su cuerpo:</h4>
+                            </b> {{indice.0}}</li>
+                        {% elif est.control_cuerpo == 'A2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/controlaCuerpo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Control de su cuerpo:</h4>
+                            </b> {{indice.1}}</li>
+                        {% elif est.control_cuerpo == 'A3'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/controlaCuerpo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Control de su cuerpo:</h4>
+                            </b> {{indice.2}}</li>
+                        {% elif est.control_cuerpo == 'A4'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/controlaCuerpo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Control de su cuerpo:</h4>
+                            </b>{{indice.3}}</li>
+                        {% elif est.control_cuerpo == 'A5'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/controlaCuerpo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Control de su cuerpo:</h4>
+                            </b> {{indice.4}}</li>
+                        {% endif %}
+                        {% if est.cord_oculo_manual == 'B1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/oculoManual.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Coordinación óculo manual:</h4>
+                            </b> {{indice.5}}</li>
+                        {% elif est.cord_oculo_manual == 'B2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/oculoManual.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Coordinación óculo manual:</h4>
+                            </b>{{indice.6}} </li>
+                        {% endif %}
+
+                        {% if est.atencion == 'C1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/atencion.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Atencion:</h4>
+                            </b>{{indice.7}}</li>
+                        {% elif est.atencion == 'C2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/atencion.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Atencion:</h4>
+                            </b>{{indice.8}}</li>
+                        {% elif est.atencion == 'C3'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/atencion.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Atencion:</h4>
+                            </b> {{indice.9}}</li>
+                        {% elif est.atencion == 'C4'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/atencion.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Atencion:</h4>
+                            </b>{{indice.10}}</li>
+                        {% elif est.atencion == 'C5'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/atencion.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Atencion:</h4>
+                            </b> {{indice.11}}</li>
+                        {% elif est.atencion == 'C6'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/atencion.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Atencion:</h4>
+                            </b> {{indice.12}}</li>
+                        {% endif %}
+                        {% if est.lateralidad == 'D1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/lateralidad.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lateralidad:</h4>
+                            </b>{{indice.13}}</li>
+                        {% elif est.lateralidad == 'D2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/lateralidad.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lateralidad:</h4>
+                            </b>{{indice.14}}</li>
+                        {% elif est.lateralidad == 'D3'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/lateralidad.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lateralidad:</h4>
+                            </b>{{indice.15}}</li>
+                        {% endif %}
+                        {% if est.disociacion_manos == 'E1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/disoManos.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Disociación de manos: </h4>
+                            </b>{{indice.16}}</li>
+                        {% elif est.disociacion_manos == 'E2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/disoManos.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Disociación de manos: </h4>
+                            </b>{{indice.17}}</li>
+                        {% elif est.disociacion_manos == 'E3'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/disoManos.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Disociación de manos: </h4>
+                            </b>{{indice.18}}</li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="profile-content">
+
+                    <ul class="list-group">
+
+
+
+                        {% if est.predispo_mesa == 'F1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/tareaMesa.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Predisposición para una tarea en mesa:</h4>
+                            </b>{{indice.19}}</li>
+                        {% elif est.predispo_mesa == 'F2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/tareaMesa.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Predisposición para una tarea en mesa:</h4>
+                            </b>{{indice.20}}</li>
+                        {% elif est.predispo_mesa == 'F3'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/tareaMesa.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Predisposición para una tarea en mesa:</h4>
+                            </b>{{indice.21}}</li>
+                        {% endif %}
+
+                        {% if est.manipulacion_lapiz == 'G1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/manipulaLapiz.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Manipulación de lápices:</h4>
+                            </b>{{indice.22}}</li>
+                        {% elif est.manipulacion_lapiz == 'G2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/manipulaLapiz.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Manipulación de lápices:</h4>
+                            </b>{{indice.23}}</li>
+                        {% elif est.manipulacion_lapiz == 'G3'%}
+                        <li class="list-group-item">}<img src="/static/assets/static/images/manipulaLapiz.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Manipulación de lápices:</h4>
+                            </b>{{indice.24}</li>
+                        {% elif est.manipulacion_lapiz == 'G4'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/manipulaLapiz.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Manipulación de lápices:</h4>
+                            </b>{{indice.25}}</li>
+                        {% endif %}
+
+                        {% if est.sensibilidad_tacto == 'H1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/sensiTacto.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Sensibilidad en el tacto:</h4>
+                            </b>{{indice.26}}</li>
+                        {% elif est.sensibilidad_tacto == 'H2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/sensiTacto.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Sensibilidad en el tacto:</h4>
+                            </b>{{indice.27}}</li>
+                        {% elif est.sensibilidad_tacto == 'H3'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/sensiTacto.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Sensibilidad en el tacto:</h4>
+                            </b>{{indice.28}}</li>
+                        {% endif %}
+                        {% if est.lenguaje_compresivo == 'A1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/comprensivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje comprensivo:</h4>
+                            </b> {{indice.29}}</li>
+                        {% elif est.lenguaje_compresivo == 'A2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/comprensivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje comprensivo:</h4>
+                            </b>{{indice.30}}</li>
+                        {% elif est.lenguaje_compresivo == 'A3'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/comprensivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje comprensivo:</h4>
+                            </b>{{indice.31}}</li>
+                        {% elif est.lenguaje_compresivo == 'A4'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/comprensivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje comprensivo:</h4>
+                            </b>{{indice.32}}</li>
+                        {% elif est.lenguaje_compresivo == 'A5'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/comprensivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje comprensivo:</h4>
+                            </b>{{indice.33}}</li>
+                        {% endif %}
+                        {% if est.lenguaje_expresivo == 'B1'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/expresivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje expresivo: </h4>
+                            </b>{{indice.34}}</li>
+                        {% elif est.lenguaje_expresivo == 'B2'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/expresivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje expresivo: </h4>
+                            </b>{{indice.35}}</li>
+                        {% elif est.lenguaje_expresivo == 'B3'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/expresivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje expresivo: </h4>
+                            </b>{{indice.36}}</li>
+                        {% elif est.lenguaje_expresivo == 'B4'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/expresivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje expresivo: </h4>
+                            </b>{{indice.37}}</li>
+                        {% elif est.lenguaje_expresivo == 'B5'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/expresivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje expresivo: </h4>
+                            </b>{{indice.38}}</li>
+                        {% elif est.lenguaje_expresivo == 'B6'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/expresivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje expresivo: </h4>
+                            </b>{{indice.39}}</li>
+                        {% elif est.lenguaje_expresivo == 'B7'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/expresivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje expresivo: </h4>
+                            </b>{{indice.40}}</li>
+                        {% elif est.lenguaje_expresivo == 'B8'%}
+                        <li class="list-group-item"><img src="/static/assets/static/images/expresivo.jpeg"
+                                class="img-prof" alt="" ALIGN='left'><b>
+                                <h4>Lenguaje expresivo: </h4>
+                            </b>{{indice.41}}</li>
+                        {% endif %}
+                    </ul>
+
+
+                </div>
+               <!-- Button trigger modal -->
+
+  
+               <!--Parte del popup para la parte de Escritura-->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Escritura</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         Para el diagnostico haga uso del respetivo lapiz y aplicacion.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
