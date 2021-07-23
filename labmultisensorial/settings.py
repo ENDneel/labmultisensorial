@@ -25,7 +25,7 @@ SECRET_KEY = 'i_hoe0#x%*e_)8wsi*m)#vkxp0%2u+!zcn&4*r4f=s5l^uxpb%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','labmultisensorial.ups.edu.ec','localhost']
 
 
 # Application definition
@@ -135,7 +135,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'labmultisensorial/static'),
