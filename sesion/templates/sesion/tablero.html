@@ -10,27 +10,38 @@
     <div class="container-fluid">
 
       <script>
-
+         
         $(document).ready(function () {
           //obtenemos el valor de los input
           var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+          var i = 1;
+          
           $('#adicionar').click(function () {
-            var nombre = document.getElementById("nombre").value;
-            var apellido = document.getElementById("apellido").value;
-            var i = 1; //contador para asignar id al boton que borrara la fila
-            var fila = '<tr id="row' + i + '"><td>' + nombre + '</td><td>' + apellido + '</td><td> <a id="' + i + '" name="remove" class="btn btn-danger me-md-2 btn_remove" type="button">  <i class="fas fa-trash-alt"></i>  Quitar</a> '; //esto seria lo que contendria la fila
 
+            // var actividad = document.getElementById("actividad").value;
+            var tiempo = document.getElementById("tiempo").value;
+            var textoEscogido = document.getElementById("miSelect").options[document.getElementById("miSelect").selectedIndex].text 
+            var actividad= textoEscogido
+            if(tiempo.trim()!=""){
+                 //contador para asignar id al boton que borrara la fila
+            var fila = '<tr id="row' + i + '"><td>' + actividad + '</td><td>' + tiempo + '</td><td> <a id="' + i + '" name="remove" class="btn btn-danger me-md-2 btn_remove" type="button">  <i class="fas fa-trash-alt"></i>  Quitar</a> '; //esto seria lo que contendria la fila
             i++;
-
+            console.log(i)
             $('#mytable tr:first').after(fila);
             $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
             var nFilas = $("#mytable tr").length;
+
             $("#adicionados").append(nFilas - 1);
             //le resto 1 para no contar la fila del header
-            document.getElementById("apellido").value = "";
-            document.getElementById("nombre").value = "";
-            document.getElementById("nombre").focus();
+            document.getElementById("tiempo").value = "";
+            // document.getElementById("cedula").value = "";
+            document.getElementById("actividad").value = "";
+            document.getElementById("actividad").focus();
+            }else{
+              alert("El campo tiempo no es valido");
+            }
           });
+          console.log(i)
           $(document).on('click', '.btn_remove', function () {
             var button_id = $(this).attr("id");
             //cuando da click obtenemos el id del boton
@@ -40,12 +51,16 @@
             var nFilas = $("#mytable tr").length;
             $("#adicionados").append(nFilas - 1);
           });
-
           $(document).on('click', '.btn_send', function () {
-            $.ajax({
+            if ($("#mytable tr").length==1) {
+                $('#exampleModal2').modal('show');
+            }else{
+              $.ajax({
               type: "POST",
-              // url: "http://127.0.0.1:8000/Ses/sesion/",
-              url: "http://192.168.60.120:8000/Ses/sesion/",
+              url: "http://127.0.0.1:8000/Ses/sesion/",
+              //url: "http://192.168.60.120:8000/Ses/sesion/",
+              //url: "https://labmultisensorial.ups.edu.ec/Ses/sesion/",
+              
 
               data: JSON.stringify({
                 area: "Motricidad Gruesa",
@@ -70,8 +85,11 @@
             for (var i = tableHeaderRowCount; i < rowCount; i++) {
               table.deleteRow(tableHeaderRowCount);
             }
-           
+
+            }
+            
           });
+
         });
       </script>
 
@@ -79,61 +97,79 @@
         <div class="container">
           <form>
             {% csrf_token %}
+
             <div class="form-group">
-              <h1 class="mt-4">Motricidad Gruesa</h1>
               <p>
-                <label>Actividad: </label> <br>
-                <input id="nombre" class="form-control" type="text"><br>
+                <label>Seleccione la Actividad:</label> <br>
+                <select id="miSelect" name="miSelect" class="form-control" type="text"> 
+                  <option value="0" selected>Sombrero 
+                  <option value="1" >Broche 
+                  <option value="2">Laberinto 
+                  </select>
               </p>
               <p>
-                <label>Tiempo :</label> <br>
-                <input id="apellido" class="form-control" type="text"><br>
+                <label>Ingrese el tiempo:</label> <br>
+                <input id="tiempo" class="form-control" type="text"><br>
               </p>
-              <a id="adicionar" class="btn btn-success me-md-2" type="button"> <i class="fas fa-plus-square"></i>
-                Agregar Actividad</a>
-              <!-- <a id="' + i + '" name="remove" class="btn btn-success me-md-2 btn_remove" type="button">  <i class="fas fa-trash-alt"></i>  Iniciar</a>
-              <button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Iniciar</button> -->
+              <!-- <p>
+                <label>Entre su C&eacute;dula:</label> <br>
+                <input id="cedula" class="form-control" type="text" placeholder="Cedúla"> <br>
+              </p> -->
+              <button id="adicionar" class="btn btn-success" type="button">Agregar Actividad</button>
             </div>
           </form>
 
-          <p>Activades a ralizar:
+          <p>Elementos en la Tabla:
           <div id="adicionados"></div>
           </p>
-          <table id="mytable" class="table table-bordered table-hover "></table>
+          <table id="mytable" class="table table-bordered table-hover ">
             <tr>
               <th>Actividad</th>
               <th>Tiempo</th>
-              <th>Accion </th>
+              <!-- <th>C&eacute;dula</th> -->
+              <th>Eliminar</th>
 
             </tr>
           </table>
-          <a name="remove" class="btn btn-danger me-md-2 btn_send" type="button"> <i class="far fa-check-circle"></i>
+          <a name="send" class="btn btn-danger me-md-2 btn_send" type="button"> <i class="far fa-check-circle"></i>
             Iniciar</a></td>
-          </tr>'
 
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Motricidad Gruesa Gruesa</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Sesion creada Realice las activiades
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Close</button>
-                </div>
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Motricidad Gruesa Gruesa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Sesion creada Realice las activiades
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
             </div>
-        </div>
-    </div>
+          </div>
 
+        </div>
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Motricidad Gruesa Gruesa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+               Por favor Agrege activades 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
   </main>
 </div>
 
