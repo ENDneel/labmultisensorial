@@ -2,42 +2,49 @@
 {% load static %}
 
 {% block content %}
-<div id="layoutSidenav_content">
+<div id="layoutSidenav_content" style="background: url(https://www.humanrightslogo.net/es/system/files/styles/gallery-full/private/unconfirmed_uploads/main-background.jpg?itok=caG4n9AW);
+-webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   height: 100%;
+   width: 100% ;
+   text-align: center">
 
     <main>
         <div class="container-fluid">
-            
+
             <div class="container">
-                
+
                 <h1 class="mt-4 " align="center" ">Laboratorio Multisensorial</h1><br><br><br>
                 
 
-            <div class="row">
+            <div class=" row">
 
-                
-                <div class="col-md-6">
-                    <a href="{% url 'Estudent_List' %}" class="btn btn-default me-md-2" style="width: 100%;">
-                       
-                        <img src="https://st.depositphotos.com/1967477/2738/v/600/depositphotos_27384815-stock-illustration-cute-children-waving-hand.jpg"
-                            width="300" height="300" />
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <a href="{% url 'tableroActividad' %}" class="btn btn-default me-md-2" style="width: 100%;">
-                        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/56071/woman-in-manual-wheelchair-emoji-clipart-md.png"
-                            width="300" height="300" />
-                    </a>
-                </div>
+
+                    <div class="col-md-6">
+                        <a href="{% url 'Estudent_List' %}" class="btn btn-default me-md-2" style="width: 100%;">
+
+                            <img src="https://st.depositphotos.com/1967477/2738/v/600/depositphotos_27384815-stock-illustration-cute-children-waving-hand.jpg"
+                                width="300" height="300" />
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#" class="btn btn-default me-md-2" style="width: 100%;">
+                            <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/56071/woman-in-manual-wheelchair-emoji-clipart-md.png"
+                                width="300" height="300" />
+                        </a>
+                    </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <a href="{% url 'tableroActividad' %}" class="btn btn-default me-md-2" style="width: 100%;">
+                    <a href="#" class="btn btn-default me-md-2" style="width: 100%;">
                         <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/56071/woman-in-manual-wheelchair-emoji-clipart-md.png"
                             width="300" height="300" />
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="{% url 'tableroActividad' %}" class="btn btn-default me-md-2" style="width: 100%;">
+                    <a href="#" class="btn btn-default me-md-2" style="width: 100%;">
                         <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/56071/woman-in-manual-wheelchair-emoji-clipart-md.png"
                             width="300" height="300" />
                     </a>
@@ -46,38 +53,7 @@
             <!-- <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Informacion Obtenida</li>
             </ol> -->
-        </div>
-            <div class="row">
-                <!-- <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Sesiones</div>
-                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
 
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Estudiantes por Institución</div>
-                        <div class="card-body"><canvas id="myPieChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Actividades</div>
-                        <div class="card-body"><canvas id="myRadarChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Estudiantes - Edad cronologica meses</div>
-                        <div class="card-body"><canvas id="BarChartEd" width="100%" height="40"></canvas></div>
-                    </div>
-                </div> -->
-            </div>
-            
-        </div>
     </main>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

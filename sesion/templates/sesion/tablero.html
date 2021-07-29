@@ -10,38 +10,80 @@
     <div class="container-fluid">
 
       <script>
-         
+
         $(document).ready(function () {
           //obtenemos el valor de los input
           var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
           var i = 1;
-          
+
           $('#adicionar').click(function () {
+            let checks = []
+            var tiempos = []
+            var datos = []
+            var cont = 0
+            var bandera = true
 
-            // var actividad = document.getElementById("actividad").value;
-            var tiempo = document.getElementById("tiempo").value;
-            var textoEscogido = document.getElementById("miSelect").options[document.getElementById("miSelect").selectedIndex].text 
-            var actividad= textoEscogido
-            if(tiempo.trim()!=""){
-                 //contador para asignar id al boton que borrara la fila
-            var fila = '<tr id="row' + i + '"><td>' + actividad + '</td><td>' + tiempo + '</td><td> <a id="' + i + '" name="remove" class="btn btn-danger me-md-2 btn_remove" type="button">  <i class="fas fa-trash-alt"></i>  Quitar</a> '; //esto seria lo que contendria la fila
-            i++;
-            console.log(i)
-            $('#mytable tr:first').after(fila);
-            $("#adicionados").text(""); //esta instruccion limpia el div adicioandos para que no se vayan acumulando
-            var nFilas = $("#mytable tr").length;
 
-            $("#adicionados").append(nFilas - 1);
-            //le resto 1 para no contar la fila del header
-            document.getElementById("tiempo").value = "";
-            // document.getElementById("cedula").value = "";
-            document.getElementById("actividad").value = "";
-            document.getElementById("actividad").focus();
-            }else{
-              alert("El campo tiempo no es valido");
+            checks.push(document.getElementById("switch1"));
+            checks.push(document.getElementById("switch2"));
+            checks.push(document.getElementById("switch3"));
+            checks.push(document.getElementById("switch4"));
+            checks.push(document.getElementById("switch5"));
+            tiempos.push(document.getElementById("tiempo1"));
+            tiempos.push(document.getElementById("tiempo2"));
+            tiempos.push(document.getElementById("tiempo3"));
+            tiempos.push(document.getElementById("tiempo4"));
+            tiempos.push(document.getElementById("tiempo5"));
+
+            for (var x = 0; x < checks.length; x++) {
+              if (checks[x].checked) {
+                var tiempo = tiempos[x].value;
+                if (tiempo.trim().length == 0) {
+                  alert("Error")
+                  bandera = false
+                  return
+                } else {
+                  var actividad = checks[x].value;
+                  console.log(checks[x].checked + " --", tiempo, " ", actividad)
+                  console.log("tiempo", x)
+                  datos.push("Se desarollara la activadad: " + actividad + " por el tiempo de: " + tiempo)
+                }
+              }
+
             }
+
+            if (datos.length == 0) {
+              alert("No hay actividades Seleccionadas")
+            } else {
+              var mensaje = ""
+              datos.forEach(element => {
+                mensaje += "<p class=" + "text-justify>" + element + "</p>"
+              });
+              document.getElementById("datos").innerHTML = mensaje
+              $('#exampleModal').modal('show');
+              console.log(datos)
+
+            }
+
+            // checks.forEach(element => {
+
+            //   if (element.checked) {
+            //     var tiempo = tiempos[cont].value;
+            //     console.log(tiempo.length);
+            //     if (tiempo.trim().length == 0) {
+            //       alert("error")
+            //     } else {
+            //       var actividad = element.value;
+            //       console.log(element.checked + " --", tiempo, " ", actividad)
+            //       console.log("tiempo", cont)
+            //       datos.push("Se desarollara la activadad: " + actividad + " por el tiempo de: " + tiempo)
+            //     }
+            //   }
+            //   cont += 1
+            // });
+
           });
-          console.log(i)
+
           $(document).on('click', '.btn_remove', function () {
             var button_id = $(this).attr("id");
             //cuando da click obtenemos el id del boton
@@ -52,16 +94,11 @@
             $("#adicionados").append(nFilas - 1);
           });
           $(document).on('click', '.btn_send', function () {
-            if ($("#mytable tr").length==1) {
-                $('#exampleModal2').modal('show');
-            }else{
-              $.ajax({
+            $.ajax({
               type: "POST",
               url: "http://127.0.0.1:8000/Ses/sesion/",
               //url: "http://192.168.60.120:8000/Ses/sesion/",
               //url: "https://labmultisensorial.ups.edu.ec/Ses/sesion/",
-              
-
               data: JSON.stringify({
                 area: "Motricidad Gruesa",
                 Estudiante: '{{ a }}'
@@ -69,28 +106,118 @@
               contentType: 'application/json; charset=utf-8',
               headers: { "X-CSRFToken": $crf_token },
               success: function (data) {
-                $('#exampleModal').modal('show');
+
               },
               failure: function (data) {
-                alert(data.responseText);
+
               },
               error: function (data) {
-                alert(data.responseText);
+
               }
             });
-            var tableHeaderRowCount = 1;
-            var table = document.getElementById('mytable');
-            console.log(table)
-            var rowCount = table.rows.length;
-            for (var i = tableHeaderRowCount; i < rowCount; i++) {
-              table.deleteRow(tableHeaderRowCount);
-            }
+            window.setTimeout(function () {
+              location.href = location.href = "http://127.0.0.1:8000/Ses/{{ a }}/";
+              //location.href = location.href = "https://labmultisensorial.ups.edu.ec/Ses/{{ a }}/";
+            }, 500);
+            // window.setTimeout(window.location.href = "http://127.0.0.1:8000/Ses/{{ a }}/", 5000)
 
-            }
-            
+
+            // if ($("#mytable tr").length == 1) {
+            //   $('#exampleModal2').modal('show');
+            // } else {
+            //   $.ajax({
+            //     type: "POST",
+            //     url: "http://127.0.0.1:8000/Ses/sesion/",
+            //     //url: "http://192.168.60.120:8000/Ses/sesion/",
+            //     //url: "https://labmultisensorial.ups.edu.ec/Ses/sesion/",
+            //     data: JSON.stringify({
+            //       area: "Motricidad Gruesa",
+            //       Estudiante: '{{ a }}'
+            //     }),
+            //     contentType: 'application/json; charset=utf-8',
+            //     headers: { "X-CSRFToken": $crf_token },
+            //     success: function (data) {
+            //       $('#exampleModal').modal('show');
+            //     },
+            //     failure: function (data) {
+            //       alert(data.responseText);
+            //     },
+            //     error: function (data) {
+            //       alert(data.responseText);
+            //     }
+            //   });
+            //   var tableHeaderRowCount = 1;
+            //   var table = document.getElementById('mytable');
+            //   console.log(table)
+            //   var rowCount = table.rows.length;
+            //   for (var i = tableHeaderRowCount; i < rowCount; i++) {
+            //     table.deleteRow(tableHeaderRowCount);
+            //   }
+
+            // }
           });
+          $(document).ready(function () {
+            $('#switch1').on('change', function () {
+              var time1 = document.getElementById('tiempo1');
+              if (this.checked) {
+                time1.disabled = false;
 
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+          $(document).ready(function () {
+            $('#switch2').on('change', function () {
+              var time1 = document.getElementById('tiempo2');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+          $(document).ready(function () {
+            $('#switch3').on('change', function () {
+              var time1 = document.getElementById('tiempo3');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+          $(document).ready(function () {
+            $('#switch4').on('change', function () {
+              var time1 = document.getElementById('tiempo4');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+          $(document).ready(function () {
+            $('#switch5').on('change', function () {
+              var time1 = document.getElementById('tiempo5');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
         });
+
       </script>
 
       <div class="row">
@@ -98,42 +225,79 @@
           <form>
             {% csrf_token %}
 
-            <div class="form-group">
-              <p>
-                <label>Seleccione la Actividad:</label> <br>
-                <select id="miSelect" name="miSelect" class="form-control" type="text"> 
-                  <option value="0" selected>Sombrero 
-                  <option value="1" >Broche 
-                  <option value="2">Laberinto 
-                  </select>
-              </p>
-              <p>
-                <label>Ingrese el tiempo:</label> <br>
-                <input id="tiempo" class="form-control" type="text"><br>
-              </p>
-              <!-- <p>
-                <label>Entre su C&eacute;dula:</label> <br>
-                <input id="cedula" class="form-control" type="text" placeholder="Cedúla"> <br>
-              </p> -->
-              <button id="adicionar" class="btn btn-success" type="button">Agregar Actividad</button>
+            <div class="form-group row">
+              <div class="custom-control custom-switch">
+                <label>Sombrero</label> <br>
+                <input type="checkbox" class="custom-control-input" id="switch1" value="Sombrero">
+                <img class="img-thumbnail" src="/static/images/sombrero.png" alt="Girl in a jacket" width="270"
+                  height="250">
+
+                <label class="custom-control-label" for="switch1"></label>
+                <div>
+                  <label>Ingrese el tiempo:</label> <br>
+                  <input id="tiempo1" class="form-control" type="text" disabled><br>
+
+                </div>
+              </div>
+
+
+              <div class="custom-control custom-switch">
+                <label>Cierre</label> <br>
+                <input type="checkbox" class="custom-control-input" id="switch2" value="Cierre">
+                <img src="/static/images/cierre.png" alt="Girl in a jacket" width="250" height="250">
+
+                <label class="custom-control-label" for="switch2"></label>
+                <div>
+                  <label>Ingrese el tiempo:</label> <br>
+                  <input id="tiempo2" class="form-control" type="text" disabled><br>
+
+                </div>
+              </div>
+
+
+
+              <div class="custom-control custom-switch">
+                <label>Velcro</label> <br>
+                <input type="checkbox" class="custom-control-input" id="switch3" value="Velcro">
+                <img src="/static/images/velcro.png" alt="Girl in a jacket" width="250" height="250">
+
+                <label class="custom-control-label" for="switch3"></label>
+                <div>
+                  <label>Ingrese el tiempo:</label> <br>
+                  <input id="tiempo3" class="form-control" type="text" disabled><br>
+
+                </div>
+              </div>
+
+              <div class="custom-control custom-switch">
+                <label>Broche</label> <br>
+                <input type="checkbox" class="custom-control-input" id="switch4" value="Broche">
+                <img src="/static/images/broche.png" alt="Girl in a jacket" width="250" height="250">
+
+                <label class="custom-control-label" for="switch4"></label>
+                <div>
+                  <label>Ingrese el tiempo:</label> <br>
+                  <input id="tiempo4" class="form-control" type="text" disabled><br>
+
+                </div>
+              </div>
+
+              <div class="custom-control custom-switch">
+                <label>Cordon</label> <br>
+                <input type="checkbox" class="custom-control-input" id="switch5" value="Cordon">
+                <img src="/static/images/cordon.png" alt="Girl in a jacket" width="250" height="250">
+
+                <label class="custom-control-label" for="switch5"></label>
+                <div>
+                  <label>Ingrese el tiempo:</label> <br>
+                  <input id="tiempo5" class="form-control" type="text" disabled><br>
+
+                </div>
+              </div>
+
             </div>
+            <button id="adicionar" class="btn btn-success" type="button">Iniciar actividades</button>
           </form>
-
-          <p>Elementos en la Tabla:
-          <div id="adicionados"></div>
-          </p>
-          <table id="mytable" class="table table-bordered table-hover ">
-            <tr>
-              <th>Actividad</th>
-              <th>Tiempo</th>
-              <!-- <th>C&eacute;dula</th> -->
-              <th>Eliminar</th>
-
-            </tr>
-          </table>
-          <a name="send" class="btn btn-danger me-md-2 btn_send" type="button"> <i class="far fa-check-circle"></i>
-            Iniciar</a></td>
-
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -142,33 +306,18 @@
                 <h5 class="modal-title" id="exampleModalLabel">Motricidad Gruesa Gruesa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                Sesion creada Realice las activiades
+              <div class="modal-body" id="datos">
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary btn_send" data-bs-dismiss="modal">Aceptar</button>
               </div>
             </div>
           </div>
 
         </div>
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Motricidad Gruesa Gruesa</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-               Por favor Agrege activades 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
 
-        </div>
       </div>
   </main>
 </div>
