@@ -8,11 +8,11 @@
             <figure class="text-center">
                 <blockquote class="blockquote">
                     <h2>
-                        <p>Sesiónes en la Motricidad Gruesa</p>
+                        <p style="color:#fff;">Sesiónes en la Motricidad Gruesa</p>
                     </h2>
                 </blockquote>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="{% url 'sesioCreate' pk=object.2%}" class="btn btn-primary me-md-2" >  <i class="fas fa-plus-square"></i>  Nueva Sesión</a>
+                    <a  class="btn btn-primary me-md-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >  <i class="fas fa-plus-square"></i>  Nueva Sesión</a>
                   
 
                 </div>
@@ -65,8 +65,44 @@
                         </div>
                     </div>
                 </div>
-
-
+                <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">Motricidad Gruesa</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                  <div class="col-sm">
+                                    <div class="col-md-4">
+                                        <a href="#" class="btn btn-default me-md-2" >
+                                            <img src="/static/images/laberinto.png"
+                                                width="250" height="250" />
+                                        </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm">
+                                    <div class="col-md-4">
+                                        <a href="{% url 'sesioCreate' pk=object.2%}" class="btn btn-default me-md-2" >
+                                            <img src="/static/images/cierre2.png"
+                                                width="250" height="250" />
+                                        </a>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                        
+                           
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
             {% endfor%}
 

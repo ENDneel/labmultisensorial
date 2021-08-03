@@ -1,0 +1,412 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div id="layoutSidenav_content">
+
+  <main>
+    <div class="container-fluid">
+
+      <script>
+
+        $(document).ready(function () {
+          //obtenemos el valor de los input
+          var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
+          var i = 1;
+
+          $('#adicionar').click(function () {
+            let checks = []
+            var tiempos = []
+            var datos = []
+            var cont = 0
+            var bandera = true
+
+
+            checks.push(document.getElementById("switch1"));
+            checks.push(document.getElementById("switch2"));
+            checks.push(document.getElementById("switch3"));
+            checks.push(document.getElementById("switch4"));
+            checks.push(document.getElementById("switch5"));
+            tiempos.push(document.getElementById("tiempo1"));
+            tiempos.push(document.getElementById("tiempo2"));
+            tiempos.push(document.getElementById("tiempo3"));
+            tiempos.push(document.getElementById("tiempo4"));
+            tiempos.push(document.getElementById("tiempo5"));
+
+            for (var x = 0; x < checks.length; x++) {
+              if (checks[x].checked) {
+                var tiempo = tiempos[x].value;
+                if (tiempo.trim().length == 0) {
+                  alert("Error")
+                  bandera = false
+                  return
+                } else {
+                  var actividad = checks[x].value;
+                  console.log(checks[x].checked + " --", tiempo, " ", actividad)
+                  console.log("tiempo", x)
+                  datos.push("Se desarollara la activadad: " + actividad + " por el tiempo de: " + tiempo)
+                }
+              }
+
+            }
+
+            if (datos.length == 0) {
+              alert("No hay actividades Seleccionadas")
+            } else {
+              var mensaje = ""
+              datos.forEach(element => {
+                mensaje += "<p class=" + "text-justify>" + element + "</p>"
+              });
+              document.getElementById("datos").innerHTML = mensaje
+              $('#exampleModal').modal('show');
+              console.log(datos)
+
+            }
+
+            // checks.forEach(element => {
+
+            //   if (element.checked) {
+            //     var tiempo = tiempos[cont].value;
+            //     console.log(tiempo.length);
+            //     if (tiempo.trim().length == 0) {
+            //       alert("error")
+            //     } else {
+            //       var actividad = element.value;
+            //       console.log(element.checked + " --", tiempo, " ", actividad)
+            //       console.log("tiempo", cont)
+            //       datos.push("Se desarollara la activadad: " + actividad + " por el tiempo de: " + tiempo)
+            //     }
+            //   }
+            //   cont += 1
+            // });
+
+          });
+
+          $(document).on('click', '.btn_remove', function () {
+            var button_id = $(this).attr("id");
+            //cuando da click obtenemos el id del boton
+            $('#row' + button_id + '').remove(); //borra la fila
+            //limpia el para que vuelva a contar las filas de la tabla
+            $("#adicionados").text("");
+            var nFilas = $("#mytable tr").length;
+            $("#adicionados").append(nFilas - 1);
+          });
+          $(document).on('click', '.btn_send', function () {
+            $.ajax({
+              type: "POST",
+              url: "http://127.0.0.1:8000/Ses/sesion/",
+              //url: "http://192.168.60.120:8000/Ses/sesion/",
+              //url: "https://labmultisensorial.ups.edu.ec/Ses/sesion/",
+              data: JSON.stringify({
+                area: "Motricidad Gruesa",
+                Estudiante: '{{ a }}'
+              }),
+              contentType: 'application/json; charset=utf-8',
+              headers: { "X-CSRFToken": $crf_token },
+              success: function (data) {
+
+              },
+              failure: function (data) {
+
+              },
+              error: function (data) {
+
+              }
+            });
+            window.setTimeout(function () {
+              location.href = location.href = "http://127.0.0.1:8000/Ses/{{ a }}/";
+              //location.href = location.href = "https://labmultisensorial.ups.edu.ec/Ses/{{ a }}/";
+            }, 500);
+            // window.setTimeout(window.location.href = "http://127.0.0.1:8000/Ses/{{ a }}/", 5000)
+
+
+            // if ($("#mytable tr").length == 1) {
+            //   $('#exampleModal2').modal('show');
+            // } else {
+            //   $.ajax({
+            //     type: "POST",
+            //     url: "http://127.0.0.1:8000/Ses/sesion/",
+            //     //url: "http://192.168.60.120:8000/Ses/sesion/",
+            //     //url: "https://labmultisensorial.ups.edu.ec/Ses/sesion/",
+            //     data: JSON.stringify({
+            //       area: "Motricidad Gruesa",
+            //       Estudiante: '{{ a }}'
+            //     }),
+            //     contentType: 'application/json; charset=utf-8',
+            //     headers: { "X-CSRFToken": $crf_token },
+            //     success: function (data) {
+            //       $('#exampleModal').modal('show');
+            //     },
+            //     failure: function (data) {
+            //       alert(data.responseText);
+            //     },
+            //     error: function (data) {
+            //       alert(data.responseText);
+            //     }
+            //   });
+            //   var tableHeaderRowCount = 1;
+            //   var table = document.getElementById('mytable');
+            //   console.log(table)
+            //   var rowCount = table.rows.length;
+            //   for (var i = tableHeaderRowCount; i < rowCount; i++) {
+            //     table.deleteRow(tableHeaderRowCount);
+            //   }
+
+            // }
+          });
+          $(document).ready(function () {
+            $('#switch1').on('change', function () {
+              var time1 = document.getElementById('tiempo1');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+          $(document).ready(function () {
+            $('#switch2').on('change', function () {
+              var time1 = document.getElementById('tiempo2');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+          $(document).ready(function () {
+            $('#switch3').on('change', function () {
+              var time1 = document.getElementById('tiempo3');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+          $(document).ready(function () {
+            $('#switch4').on('change', function () {
+              var time1 = document.getElementById('tiempo4');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+          $(document).ready(function () {
+            $('#switch5').on('change', function () {
+              var time1 = document.getElementById('tiempo5');
+              if (this.checked) {
+                time1.disabled = false;
+
+              }
+              else {
+                time1.disabled = true;
+              }
+            });
+          });
+        });
+
+      </script>
+
+    
+      <div class="row">
+        <div class="container">
+          <section class="mt-5 wow fadeIn">
+
+            <!--Grid row-->
+            <div class="row">
+
+              <!--Grid column-->
+              <div class="col-md-6 mb-4">
+
+                <img src="/static/images/sombrero.png" class="img-fluid z-depth-1-half" alt=""  width="250" height="250">
+
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-6 mb-4">
+
+                <!-- Main heading -->
+                <div class="custom-control custom-switch">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm">
+                        <h3 class="h3 mb-3">Sombrero</h3>
+                      </div>
+                      <div class="col-sm">
+                        <input type="checkbox" class="custom-control-input" id="switch1" value="Sombrero">
+
+                        <label class="custom-control-label" for="switch1"></label>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                  <div>
+                    <label>Ingrese el tiempo:</label> <br>
+                    <input id="tiempo1" class="form-control" type="text" disabled><br>
+
+                  </div>
+                </div>
+                <p>En rosca el sombrero en la direccion correcta</p>
+                <!-- Main heading -->
+                <hr>
+                <!-- CTA -->
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </section>
+          <section class="mt-5 wow fadeIn">
+
+            <!--Grid row-->
+            <div class="row">
+
+              <!--Grid column-->
+              <div class="col-md-6 mb-4">
+
+                <img src="/static/images/cierre.png" alt="Girl in a jacket" width="250" height="250">
+
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-6 mb-4">
+
+                <!-- Main heading -->
+                <div class="custom-control custom-switch">
+                  <label>Cierre</label> <br>
+                  <input type="checkbox" class="custom-control-input" id="switch2" value="Cierre">
+                  
+    
+                  <label class="custom-control-label" for="switch2"></label>
+                  <div>
+                    <label>Ingrese el tiempo:</label> <br>
+                    <input id="tiempo2" class="form-control" type="text" disabled><br>
+    
+                  </div>
+                </div>
+                <p>En rosca el sombrero en la direccion correcta</p>
+                <!-- Main heading -->
+                <hr>
+                <!-- CTA -->
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </section>
+          <form>
+            {% csrf_token %}
+
+            <div class="form-group row">
+              <!-- <div class="custom-control custom-switch">
+                <h3 class="h3 mb-3">Sombrero</h3> <br>
+                <input type="checkbox" class="custom-control-input" id="switch1" value="Sombrero">
+                <img class="img-thumbnail" src="/static/images/sombrero.png" alt="Girl in a jacket" width="270"
+                  height="250">
+
+                <label class="custom-control-label" for="switch1"></label>
+                <div>
+                  <label>Ingrese el tiempo:</label> <br>
+                  <input id="tiempo1" class="form-control" type="text" disabled><br>
+
+                </div> -->
+            </div>
+
+
+            <div class="custom-control custom-switch">
+              <label>Cierre</label> <br>
+              <input type="checkbox" class="custom-control-input" id="switch2" value="Cierre">
+              <img src="/static/images/cierre.png" alt="Girl in a jacket" width="250" height="250">
+
+              <label class="custom-control-label" for="switch2"></label>
+              <div>
+                <label>Ingrese el tiempo:</label> <br>
+                <input id="tiempo2" class="form-control" type="text" disabled><br>
+
+              </div>
+            </div>
+
+
+
+            <div class="custom-control custom-switch">
+              <label>Velcro</label> <br>
+              <input type="checkbox" class="custom-control-input" id="switch3" value="Velcro">
+              <img src="/static/images/velcro.png" alt="Girl in a jacket" width="250" height="250">
+
+              <label class="custom-control-label" for="switch3"></label>
+              <div>
+                <label>Ingrese el tiempo:</label> <br>
+                <input id="tiempo3" class="form-control" type="text" disabled><br>
+
+              </div>
+            </div>
+
+            <div class="custom-control custom-switch">
+              <label>Broche</label> <br>
+              <input type="checkbox" class="custom-control-input" id="switch4" value="Broche">
+              <img src="/static/images/broche.png" alt="Girl in a jacket" width="250" height="250">
+
+              <label class="custom-control-label" for="switch4"></label>
+              <div>
+                <label>Ingrese el tiempo:</label> <br>
+                <input id="tiempo4" class="form-control" type="text" disabled><br>
+
+              </div>
+            </div>
+
+            <div class="custom-control custom-switch">
+              <label>Cordon</label> <br>
+              <input type="checkbox" class="custom-control-input" id="switch5" value="Cordon">
+              <img src="/static/images/cordon.png" alt="Girl in a jacket" width="250" height="250">
+
+              <label class="custom-control-label" for="switch5"></label>
+              <div>
+                <label>Ingrese el tiempo:</label> <br>
+                <input id="tiempo5" class="form-control" type="text" disabled><br>
+
+              </div>
+            </div>
+
+        </div>
+        <button id="adicionar" class="btn btn-success" type="button">Iniciar actividades</button>
+        </form>
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Motricidad Gruesa Gruesa</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="datos">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary btn_send" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+{% endblock%}

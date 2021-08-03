@@ -32,7 +32,7 @@
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
                       width="150">
                     <div class="mt-3">
-                      <h4> {{ est.Estudiante.nombre }} {{ est.Estudiante.apellido }}</h4>
+                      <h4 class="formu"> {{ est.Estudiante.nombre }} {{ est.Estudiante.apellido }}</h4>
                       <p class="text-secondary mb-1">Instituto</p>
                       <p class="text-muted font-size-sm"> {{ est.Estudiante.edad_Cronologica }}</p>
                       <div class="container">
@@ -70,12 +70,6 @@
                           
                         </div>
                       </div>
-
-
-
-                             
-                              
-
                     </div>
                   </div>
                 </div>
@@ -175,7 +169,7 @@
                   <div class="card h-100">
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3"><i
-                          class="material-icons text-info mr-2">Características Grafomotrices-Lingüística</i></h6>
+                          class="text-info">Características Grafomotrices-Lingüística</i></h6>
                       <ul class="list-group">
 
 
@@ -310,7 +304,7 @@
                   <div class="card h-100">
                     <div class="card-body">
                       <h6 class="d-flex align-items-center mb-3"><i
-                          class="material-icons text-info mr-2">Características Grafomotrices-Lingüística</i></h6>
+                          class="text-info mr-2">Características Grafomotrices-Lingüística</i></h6>
                       <ul class="list-group">
                         {% if est.control_cuerpo == 'A1'%}
                         <li class="list-group-item"><img src="/static/images/controlaCuerpo.jpeg" class="img-prof"
