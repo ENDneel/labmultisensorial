@@ -31,7 +31,7 @@
           <label class="custom-control-label" for="switch1"></label>
         </div>
         <div class="slide-title">Ingrese el tiempo:
-          <input id="tiempo1" class="form-control" type="text" disabled><br>
+          <input id="tiempo1" onkeypress="if(isNaN(this.value+String.fromCharCode(event.charCode)))return false;" class="form-control" type="text" disabled><br>
         </div>
         <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in
           vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex.
@@ -52,7 +52,7 @@
           <label class="custom-control-label" for="switch2"></label>
         </div>
         <div class="slide-title">Ingrese el tiempo:
-          <input id="tiempo2" class="form-control" type="text" disabled><br>
+          <input id="tiempo2" onkeypress="if(isNaN(this.value+String.fromCharCode(event.charCode)))return false;" class="form-control" type="text" disabled><br>
         </div>
         <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in
           vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex.
@@ -72,7 +72,7 @@
           <label class="custom-control-label" for="switch3"></label>
         </div>
         <div class="slide-title">Ingrese el tiempo:
-          <input id="tiempo3" class="form-control" type="text" disabled><br>
+          <input id="tiempo3" onkeypress="if(isNaN(this.value+String.fromCharCode(event.charCode)))return false;" class="form-control" type="text" disabled><br>
         </div>
         <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in
           vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex.
@@ -92,7 +92,7 @@
           <label class="custom-control-label" for="switch4"></label>
         </div>
         <div class="slide-title">Ingrese el tiempo:
-          <input id="tiempo4" class="form-control" type="text" disabled><br>
+          <input id="tiempo4" onkeypress="if(isNaN(this.value+String.fromCharCode(event.charCode)))return false;" class="form-control" type="text" disabled><br>
         </div>
         <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in
           vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex.
@@ -112,7 +112,7 @@
           <label class="custom-control-label" for="switch5"></label>
         </div>
         <div class="slide-title">Ingrese el tiempo:
-          <input id="tiempo5" class="form-control" type="text" disabled><br>
+          <input id="tiempo5" onkeypress="if(isNaN(this.value+String.fromCharCode(event.charCode)))return false;" class="form-control" type="text" disabled><br>
         </div>
         <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in
           vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex.
@@ -146,10 +146,12 @@
       
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/TweenMax.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/TweenMax.min.js"></script> -->
+<script src="{% static 'dashboard/js/TweenMax.min.js' %}"></script>
 <script>
   (function ($) {
+    
 
     $(document).ready(function () {
 
@@ -204,7 +206,7 @@
 
   $('.overlay').addClass('overlay-blue');
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36251023-1']);
@@ -213,11 +215,11 @@
 
   (function () {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.src = ("{% static 'dashboard/js/ga.js' %}");
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
-</script>
+</script> -->
 <script>
 
   $(document).ready(function () {
@@ -309,6 +311,7 @@
         //url: "http://192.168.60.120:8000/Ses/sesion/",
         //url: "https://labmultisensorial.ups.edu.ec/Ses/sesion/",
         data: JSON.stringify({
+          serial:"{{b}}",
           area: "Motricidad Gruesa",
           Estudiante: '{{ a }}'
         }),

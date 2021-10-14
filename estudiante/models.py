@@ -19,7 +19,13 @@ class Estudiante(models.Model):
         ( 'Educacion Basica' , 'Educacion Basica'),
     ]
     grado_Educacion  = models.CharField(max_length=50, choices=opciones_Educacion, default='Educacion Inicial', verbose_name="Grado de Educacionn")
-
+    MASCULINO = 'Masculino'
+    FEMENINO  = 'Femenino'
+    SEXO_Option = [
+        (MASCULINO, 'Masculino'),
+        (FEMENINO, 'Femenino'),
+    ]
+    sexo = models.CharField(max_length=10, choices=SEXO_Option, default=MASCULINO, verbose_name="Sexo")
     class Meta:
         verbose_name = "Estudiante"
         verbose_name_plural = "Estudiantes"

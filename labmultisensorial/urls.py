@@ -19,7 +19,7 @@ from django.urls import path,include
 urlpatterns = [
 
     #urls de consumo
-     path('Est/',include('estudiante.urls')),
+    path('Est/',include('estudiante.urls')),
     path('Eval/',include('Evaluacion.urls')),
     path('Rec/',include('Recomendacion.urls')),
     path('Int/',include('Intervencion.urls')),

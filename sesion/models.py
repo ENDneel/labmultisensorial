@@ -5,12 +5,12 @@ from estudiante.models import Estudiante
 
 
 class Sesion(models.Model):
-    id = models.AutoField(primary_key=True)
+    #id = models.AutoField(primary_key=True)
+    serial = models.CharField(
+        primary_key=True, verbose_name="serial", max_length=10)
     Estudiante = models.ForeignKey(
         Estudiante, verbose_name="Estudiante", on_delete=models.CASCADE)
-    fecha = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Sesion")
-
-
+    fecha = models.DateField(auto_now_add=True, verbose_name="Fecha de Sesion")
     MoticidadG = 'Motricidad Gruesa'
     Preescritura = 'Preescritura'
     Escritura = 'Escritura'
@@ -26,10 +26,9 @@ class Sesion(models.Model):
     class Meta:
         verbose_name = "sesion"
         verbose_name_plural = "sesiones"
-        ordering = ['-id']
 
     def __str__(self):
-        return "Estudiante: "+self.Estudiante.nombre + " ID-Ses: "+str(self.id)
+        return "Estudiante: "+self.Estudiante.nombre + " ID-Ses: "+str(self.serial)
 
 
 class Tablero(models.Model):
@@ -37,13 +36,13 @@ class Tablero(models.Model):
     Actividad = models.CharField(max_length=100, verbose_name="Tipo Acividad",)
     Tiempo = models.CharField(max_length=20, verbose_name="Tiempo de Acividad")
     Errores = models.PositiveIntegerField(verbose_name="Numero de Errores")
-    datos=models.CharField(max_length=20, verbose_name="Datos recibidos")
-    Sesion = models.ForeignKey(Sesion, verbose_name="Sesion de Intervencion", on_delete=models.CASCADE)
+    datos = models.CharField(max_length=20, verbose_name="Datos recibidos")
+    Sesion = models.ForeignKey(
+        Sesion, verbose_name="Sesion de Intervencion", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Actividad Tablero"
         verbose_name_plural = "Actividades Tablero"
-        ordering = ['-id']
 
     def __str__(self):
         return str(self.id)

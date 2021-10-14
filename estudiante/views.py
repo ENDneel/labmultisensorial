@@ -33,8 +33,14 @@ def EstudentDetail(request,pk):
 class EstudenUpdateView(UpdateView):
     # specify the model you want to use
     model = Formulario
-    form_class = FormularioForm 
+    form_class = FormularioForm
+
     success_url='/dashboard/'
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     print(self.kwargs.get('pk'))
+    #     context["form"]
+        
 
 
 class EstudentListView(ListView):

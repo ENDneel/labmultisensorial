@@ -1,0 +1,768 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- <div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-4">Resultados</h2>
+            <ol class="breadcrumb mb-4">
+                <li>Seleccione Estudiante: </li>
+                <li>
+                    <select id="idnombre">
+                        {% for item in qs %}
+                        <option>{{item.nombre}} {{item.apellido}}</option>
+                        {% endfor %}
+                    </select>
+                </li>
+                <li><button id="aceptar">Aceptar</button></li>
+            </ol>
+
+            {% if valid == "True" %}
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Sesiones</div>
+                        <div class="card-body"><canvas id="RadarChartEst" width="600" height="400"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Motricidad Gruesa</div>
+                        <div class="card-body"><canvas id="canvasJu" width="100%" height="40"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Sesiones</div>
+            <div class="card-body"><canvas id="RadarChartEst" width="768" height="768"
+                    style="display: block; box-sizing: border-box; height: 768px; width: 768px;"></canvas>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xl-8">
+        <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Motricidad Gruesa</div>
+            <div class="card-body"><canvas id="speedChart" width="100%" height="50%"></canvas></div>
+        </div>
+    </div>
+</div>
+</div>
+</main>
+</div>
+
+{% endif %}
+
+<script>
+    window.chartColors = {
+        red: 'rgb(255, 99, 132,0.5)',
+        orange: 'rgb(255, 159, 64,0.5)',
+        yellow: 'rgb(255, 205, 86,0.5)',
+        green: 'rgb(75, 192, 192,0.5)',
+        blue: 'rgb(54, 162, 235,0.5)',
+        purple: 'rgb(153, 102, 255,0.5)',
+        grey: 'rgb(231,233,237,0.5)'
+    };
+
+
+
+
+    function getSelectedText(elementId) {
+        var elt = document.getElementById(elementId);
+
+        if (elt.selectedIndex == -1)
+            return null;
+
+        return elt.options[elt.selectedIndex].text;
+    }
+    document.getElementById('aceptar').addEventListener('click', function () {
+        var text = getSelectedText('idnombre');
+        console.log(text.trim())
+        location.href = "http://127.0.0.1:8000/dashboard/chartsEst/" + text.trim();
+    });
+
+
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctxREst = document.getElementById("RadarChartEst");
+
+    var RadarChartEst = new Chart(ctxREst, {
+        type: "radar",
+        data: {
+            labels: [
+                'Escritura',
+                'Pre escritura',
+                'Motricidad Gruesa',
+                'Juegos Serios',
+
+            ],
+            datasets: [{
+                label: 'Sesiones',
+                data: [{% for i in labdata %}'{{i}}', {% endfor %}],
+        fill: true,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 99, 132)'
+    }]
+        },
+    options: chartOptions,
+
+    });
+    
+    var chartOptions = {
+        legend: {
+            display: true,
+            position: 'top',
+            labels: {
+                boxWidth: 80,
+                fontColor: 'black'
+            }
+        }
+    };
+
+    var time = new Date();
+    var speedData = {
+        labels: [time.toLocaleDateString(), time.toLocaleDateString(), time.toLocaleDateString()],
+        datasets: [{
+            label: "Sombrero",
+            data: [8, 4, 7],
+
+            borderColor: window.chartColors.orange,
+            fill: false,
+            cubicInterpolationMode: 'monotone',
+            tension: 0.4,
+            pointBorderColor: 'orange',
+            pointBackgroundColor: window.chartColors.orange,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            pointHitRadius: 30,
+            pointBorderWidth: 2,
+            pointStyle: 'rectRounded'
+
+        }, {
+            label: "Broche",
+            data: [6, 8, 9],
+            borderColor: window.chartColors.yellow,
+            fill: false,
+            cubicInterpolationMode: 'monotone',
+            tension: 0.4,
+            pointBorderColor: 'yellow',
+            pointBackgroundColor: window.chartColors.yellow,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            pointHitRadius: 30,
+            pointBorderWidth: 2,
+            pointStyle: 'rectRounded'
+        }, {
+            label: "Cierre",
+            data: [4, 5, 1],
+            borderColor: window.chartColors.blue,
+            fill: false,
+            cubicInterpolationMode: 'monotone',
+            tension: 0.4,
+            pointBorderColor: 'blue',
+            pointBackgroundColor: window.chartColors.blue,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            pointHitRadius: 30,
+            pointBorderWidth: 2,
+            pointStyle: 'rectRounded'
+        }, {
+            label: "Velcro",
+            data: [2, 3, 1],
+            borderColor: window.chartColors.red,
+            fill: false,
+            cubicInterpolationMode: 'monotone',
+            tension: 0.4,
+            pointBorderColor: 'red',
+            pointBackgroundColor: window.chartColors.red,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            pointHitRadius: 30,
+            pointBorderWidth: 2,
+            pointStyle: 'rectRounded'
+        }, {
+            label: "Cordon",
+            data: [3, 3, 4],
+            borderColor: window.chartColors.green,
+            fill: false,
+            cubicInterpolationMode: 'monotone',
+            tension: 0.4,
+
+
+            pointBorderColor: 'green',
+            pointBackgroundColor: window.chartColors.green,
+            pointRadius: 5,
+            pointHoverRadius: 10,
+            pointHitRadius: 30,
+            pointBorderWidth: 2,
+            pointStyle: 'rectRounded'
+        }]
+    };
+
+
+    var configmotricidad={
+        type: 'line',
+        data: speedData,
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+
+                },
+            },
+            interaction: {
+                intersect: false,
+            },
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true
+                    }
+                },
+                y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'cantidad'
+                    },
+
+                }
+            }
+        },
+    };
+    var configJu = {
+        type: 'bar',
+        data: {
+            labels: [{% for item in acti %}'{{item}}',{% endfor %}],
+            labels:["Golpea Topos","Laberinto","Rompe Cabezas", "Colorear","Pinta Letras"],
+            datasets: [{
+            label: "Actividades Realizada",
+            backgroundColor: window.chartColors.red,
+            borderColor: window.chartColors.red,
+            data: [{% for item in ValJue %}'{{item}}',{% endfor %}],
+            fill: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            tooltips: {
+            mode: 'index',
+            intersect: false,
+            },
+            hover: {
+            mode: 'nearest',
+            intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Actividad'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        min: 0,
+                        max: 50,
+                        
+                        maxTicksLimit: 100
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Sesiones'
+                    }
+                }]
+            }
+        }
+    };
+
+
+
+    window.onload = function() {
+        var ctx = document.getElementById("speedChart").getContext("2d");
+        window.myLine = getNewChart(ctx, configmotricidad);
+
+        var ctxJu = document.getElementById("canvasJu").getContext("2d");
+        window.myLine = getNewChart(ctxJu, configJu);
+
+
+    }; 
+    function getNewChart(canvas, config) {
+        return new Chart(canvas, config);
+    }
+
+    function getNewChartA(canvasJu, configJu) {
+        return new Chart(canvasJu, configJu);
+    }
+
+
+
+
+
+</script> -->
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-4">IA Transtornos motores - Resultados</h2>
+            <ol class="breadcrumb mb-4">
+                <li >Seleccione Estudiante:   </li>
+                <li >
+                    <select id="est">
+                        {% for item in qs %}
+                        <option>{{item.nombre}} {{item.apellido}}</option>
+                        {% endfor %}
+                    </select>   
+                </li>
+                <li ><button id="aceptar">Aceptar</button></li>
+            </ol>
+
+            <h2 class="mt-4">{{est}}</h2>
+           <!-- <font color="blue" size="11px">{{est}}</font><br/> -->
+                                
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Estudiante</div>
+                        <div class="card-body">   
+                                <b>Nombre: </b> {{Estu.nombre}} <br/>        
+                                <b>Edad en Meses: </b> {{Estu.edad_cron_mes}} <br/> 
+                                <b>Edad en Evaluacion: </b>{{Estu.edad_eval_mes}}<br/>
+                                <b>Puntaje Evaluacion: </b>{{Estu.puntuacion}}<br/>
+                                <b>Lateralidad: </b>{{Estu.lateralidad}}<br/>
+                                <b>Nivel: </b>{{Estu.nivel}}<br/>
+                                <b>Unidad Educativa: </b>{{Estu.unidad_edu}}<br/>
+                                <b>Ciudad: </b>{{Estu.ciudad}}<br/>
+                                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Sesiones</div>
+                        <div class="card-body"><canvas id="RadarChartEst" width="100%" height="40"></canvas></div>
+                    </div>
+                </div>
+                {% if valid == "True" %}
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Recomendacion de actividades Peluche/Tablero </div>
+                        <div class="card-body">   
+                 
+                                
+                             <div class="card-body"><canvas id="canvasR" width="100%" height="40"></canvas></div> 
+                                
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Actividades realizadas Peluche/Tablero MoFi</div>
+                        <div class="card-body"><canvas id="canvas" width="100%" height="40"></canvas></div>
+                    </div>
+                </div> -->
+
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Recomendacion de actividades Juegos Serios </div>
+                        <div class="card-body">   
+                        
+                                
+                             <div class="card-body"><canvas id="canvasRJu" width="100%" height="40"></canvas></div> 
+                                
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i> Actividades realizadas Juegos Serios</div>
+                        <div class="card-body"><canvas id="canvasJu" width="100%" height="40"></canvas></div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i> Recomendacion de actividades Tablero MoPe</div>
+                        <div class="card-body">   
+                                <b>Frecuencia Semanal: </b> {{Fre}}<br/>        
+                                <b>Semanas: </b> {{Sem}}<br/> 
+                                <div class="card-body"><canvas id="canvasReTab" width="100%" height="40"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</div>
+
+<script>
+    window.chartColors = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(231,233,237)'
+    };
+    var config = {
+        type: 'bar',
+        data: {
+            labels: ["1","2"],
+            datasets: [{
+            label: "Actividades Realizada",
+            backgroundColor: window.chartColors.red,
+            borderColor: window.chartColors.red,
+            data: [4,6],
+            fill: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            tooltips: {
+            mode: 'index',
+            intersect: false,
+            },
+            hover: {
+            mode: 'nearest',
+            intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Actividad'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        min: 0,
+                        max: 20,
+                        
+                        maxTicksLimit: 100
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Sesiones'
+                    }
+                }]
+            }
+        }
+    };
+    var configJu = {
+        type: 'bar',
+        data: {
+             labels:["Golpea Topos","Laberinto","Rompe Cabezas", "Colorear","Pinta Letras"],
+            datasets: [{
+            label: "Actividades Realizada",
+            backgroundColor: window.chartColors.red,
+            borderColor: window.chartColors.red,
+            data: [6,4,8,9,2,],
+            fill: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            tooltips: {
+            mode: 'index',
+            intersect: false,
+            },
+            hover: {
+            mode: 'nearest',
+            intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Actividad'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        min: 0,
+                        max: 50,
+                        
+                        maxTicksLimit: 100
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Sesiones'
+                    }
+                }]
+            }
+        }
+    };
+
+    var configRJu = {
+        type: 'bar',
+        data: {
+           
+            labels:["Golpea Topos","Laberinto","Rompe Cabezas", "Colorear","Pinta Letras"],
+            datasets: [{
+            label: "Actividades recomendadas",
+            backgroundColor: window.chartColors.blue,
+            borderColor: window.chartColors.blue,
+            data: [5,7,2,9,5],
+            fill: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            tooltips: {
+            mode: 'index',
+            intersect: false,
+            },
+            hover: {
+            mode: 'nearest',
+            intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Actividad'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        min: 0,
+                        max: 5,
+                        
+                        maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Repeticiones'
+                    }
+                }]
+            }
+        }
+    };
+
+    //Peluche Conf Grafi
+    var configR = {
+        type: 'bar',
+        data: {
+            labels:["Sombrero","Cordones","Velcro","Cierres","Broches"],
+            datasets: [{
+            label: "Actividades recomendadas",
+            backgroundColor: window.chartColors.blue,
+            borderColor: window.chartColors.blue,
+            data: [4,6,8,2,9],
+            fill: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            tooltips: {
+            mode: 'index',
+            intersect: false,
+            },
+            hover: {
+            mode: 'nearest',
+            intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Actividad'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        min: 0,
+                        max: 5,
+                        
+                        maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Repeticiones'
+                    }
+                }]
+            }
+        }
+    };
+
+
+    var configRTab = {
+        type: 'bar',
+        data: {
+            labels:["Trazos","Pinzas","Precision"],
+            datasets: [{
+            label: "Actividades recomendadas",
+            backgroundColor: window.chartColors.blue,
+            borderColor: window.chartColors.blue,
+            data: [{% for item in RecoTab %}'{{item}}',{% endfor %}],
+            fill: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            tooltips: {
+            mode: 'index',
+            intersect: false,
+            },
+            hover: {
+            mode: 'nearest',
+            intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Actividad'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        min: 0,
+                        max: 5,
+                        
+                        maxTicksLimit: 10
+                    },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Repeticiones'
+                    }
+                }]
+            }
+        }
+    };
+
+
+
+    function getSelectedText(elementId) {
+        var elt = document.getElementById(elementId);
+
+        if (elt.selectedIndex == -1)
+            return null;
+
+        return elt.options[elt.selectedIndex].text;
+    }
+    document.getElementById('aceptar').addEventListener('click', function() {
+        var text = getSelectedText('est');
+        location.href="http://127.0.0.1:8000/dashboard/chartsEst/"+text;
+
+    });       
+    window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myLine = getNewChart(ctx, config);
+
+        var ctxJu = document.getElementById("canvasJu").getContext("2d");
+        window.myLine = getNewChart(ctxJu, configJu);
+
+        var ctxR = document.getElementById("canvasR").getContext("2d");
+        window.myLine = getNewChartR(ctxR, configR);
+
+        var ctxRJ = document.getElementById("canvasRJu").getContext("2d");
+        window.myLine = getNewChartRJu(ctxRJ, configRJu);
+
+        var ctxRtab = document.getElementById("canvasReTab").getContext("2d");
+        window.myLine = getNewChartReTab(ctxRtab, configRTab);
+
+    }; 
+    function getNewChart(canvas, config) {
+        return new Chart(canvas, config);
+    }
+
+    function getNewChartA(canvasJu, configJu) {
+        return new Chart(canvasJu, configJu);
+    }
+
+    function getNewChartR(canvasR, configR) {
+        return new Chart(canvasR, configR);
+    }
+
+    function getNewChartRJu(canvasRJu, configRJu) {
+        return new Chart(canvasRJu, configRJu);
+    }
+
+    function getNewChartReTab(canvasReTab, configRTab) {
+        return new Chart(canvasReTab, configRTab);
+    }
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+
+
+<!-- Grafica polar -->
+<script>
+    var ctxREst = document.getElementById("RadarChartEst");
+    var RadarChartEst = new Chart(ctxREst,{
+        type:"radar",
+        data:{
+            labels: [
+                'Escritura',
+                'Pre escritura',
+                'Motricidad Gruesa',
+                'Juegos Serios',
+
+            ], 
+            datasets:[{
+                label:"Sesiones realizadas",
+                data: [{% for i in labdata %}'{{i}}', {% endfor %}],
+                fill:true,
+                backgroundColor:'rgba(121, 255, 0, 0.2)',
+                borderColor:'rgb(100, 208, 2,0.5)',
+                pointBackgroundColor:'rgb(100, 208, 2, 0.5)',
+                pointBorderColor:'#fff',
+                pointHoverBackgroundColor:'#fff',
+                pointHoverBorderColor:'rgb(100, 208, 2,0.5)'
+            }]
+        },
+        options:{
+            elements:{
+                line:{
+                    tension:0,
+                    borderWidth:3
+                }
+            }
+        }
+    });
+
+
+</script>
+
+{% endblock%}
