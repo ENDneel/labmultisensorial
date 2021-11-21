@@ -16,11 +16,14 @@ class EstChartView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         ip=socket.gethostbyname(socket.gethostname())
+        print(ip)
         if ip =="172.16.42.56":
             sinc="True"
         else:
             sinc="False"
         context['ip'] = sinc
+
+        print(sinc)
         return context
 
     
