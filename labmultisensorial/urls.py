@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+
 urlpatterns = [
 
     #urls de consumo
@@ -35,4 +36,4 @@ urlpatterns = [
     path('dashboard/',include('dashboard.urls')),
     path('',include('estudiante.urls')),
 
-]
+] 
