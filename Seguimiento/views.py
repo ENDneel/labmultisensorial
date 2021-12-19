@@ -32,9 +32,9 @@ def index(request):
         contador = 0
         hoja = est.nombre+est.apellido
         worksheet = workbook.add_worksheet(name=hoja)
-        edad = relativedelta(datetime.now(), est.fecha_nacimiento)
+        edad = 0
         print(est.nombre)
-        print(f"{edad.years} años, {edad.months} meses y {edad.days} días")
+        # print(f"{edad.years} años, {edad.months} meses y {edad.days} días")
         for i in datos:
 
             if est.nombre == i.EvaluacionD.Estudiante.nombre:
@@ -259,7 +259,7 @@ def index(request):
 
         worksheet .write(col+20, row,   "Recomendacion Destreza 1")
 
-        if edad.years == 4 or edad.years == 5 or edad.years == 6: 
+        if edad==0:
             for j in RecomendacionD1.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+21, row, 'Frecuencia')
@@ -328,7 +328,8 @@ def index(request):
                     worksheet .write(col+28, row+8, j.AC42)
       
         worksheet .write(col+29, row,   "Recomendacion Destreza 4")
-        if edad.years == 5 or edad.years == 6: 
+        if edad==0: 
+            
             for j in RecomendacionD4.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+30, row, 'Frecuencia')
@@ -403,7 +404,7 @@ def index(request):
                     worksheet .write(col+37, row+8, j.AC41)
                     worksheet .write(col+37, row+9, j.AC42)
         worksheet .write(col+38, row,   "Recomendacion Destreza 7")
-        if edad.years == 5 or edad.years == 6: 
+        if edad==0:
             for j in RecomendacionD7.objects.order_by("id"):
 
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
@@ -504,7 +505,7 @@ def index(request):
                     worksheet .write(col+46, row+15, j.AC42)
         row = 18
         worksheet .write(col+20, row,   "Seguimiento Destreza 1")
-        if edad.years == 4 or edad.years == 5 or edad.years == 6: 
+        if edad==0:
             for j in RecomendacionD1S.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+21, row, 'Frecuencia')
@@ -571,7 +572,7 @@ def index(request):
                     worksheet .write(col+28, row+7, j.AC41)
                     worksheet .write(col+28, row+8, j.AC42)
         worksheet .write(col+29, row,   "Segimiento Destreza 4")
-        if edad.years == 5 or edad.years == 6: 
+        if edad==0:
             for j in RecomendacionD4S.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+30, row, 'Frecuencia')
@@ -647,7 +648,7 @@ def index(request):
                     worksheet .write(col+37, row+8, j.AC41)
                     worksheet .write(col+37, row+9, j.AC42)
         worksheet .write(col+38, row,   "Seguimiento Destreza 7")
-        if  edad.years == 6: 
+        if edad==0:
             for j in RecomendacionD7S.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+39, row, 'Frecuencia')

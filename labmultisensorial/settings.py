@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_sb_admin',
     'sesion',
+    'modulos',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,958 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-4">Lapiz</h2>
+
+            <!-- <h2 class="mt-4">asdasdasd{{est}}</h2> -->
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Estudiante</div>
+                    <div class="card-body">
+                        <b>Nombre: </b> {{est.nombre}} {{est.apellido}} <br />
+                        <b>Edad Cronologica: </b> {{est.edad_Cronologica}} años <br />
+                        <b>Edad en Evaluacion: </b>{{est.edad_Mental}} años<br />
+                        <b>Educacion: </b>{{est.grado_Educacion}}<br />
+                        <b>Sexo: </b>{{est.sexo}}<br />
+                        <a href="single.html" class="btn btn-outline-white py-2 px-4">Descargar apk Diagnostico</a>
+                        <a href="single.html" class="btn btn-outline-white py-2 px-4">Descargar apk Evaluacion</a>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                <!-- <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Estudiante</div>
+                        <div class="card-body">
+                            <b>Nombre: </b> {{Estu.nombre}} <br />
+                            <b>Edad en Meses: </b> {{Estu.edad_cron_mes}} <br />
+                            <b>Edad en Evaluacion: </b>{{Estu.edad_eval_mes}}<br />
+                            <b>Puntaje Evaluacion: </b>{{Estu.puntuacion}}<br />
+                            <b>Lateralidad: </b>{{Estu.lateralidad}}<br />
+                            <b>Nivel: </b>{{Estu.nivel}}<br />
+                            <b>Unidad Educativa: </b>{{Estu.unidad_edu}}<br />
+                            <b>Ciudad: </b>{{Estu.ciudad}}<br />
+
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Diagnostico Inicial</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Estado</th>
+                                            <th scope="col">Presion</th>
+                                            <th scope="col">Agarre</th>
+                                            <th scope="col">Direccionalidad</th>
+                                            <th scope="col">Animo</th>
+                                            <th scope="col">Mov. Mano-dedos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Linea Horizontal</td>
+                                            <td>{{Eval1.D1}}</td>
+                                            <td>{{Eval1.D10}}</td>
+                                            <td>{{Eval1.D11}} </td>
+                                            <td>{{Eval1.D12}}</td>
+                                            <td>{{Eval1.D13}}</td>
+                                            <td>{{Eval1.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Linea Vertical</td>
+                                            <td>{{Eval2.D2}}</td>
+                                            <td>{{Eval2.D10}}</td>
+                                            <td>{{Eval2.D11}} </td>
+                                            <td>{{Eval2.D12}}</td>
+                                            <td>{{Eval2.D13}}</td>
+                                            <td>{{Eval2.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Circunferencia</td>
+                                            <td>{{Eval3.D3}}</td>
+                                            <td>{{Eval3.D10}}</td>
+                                            <td>{{Eval3.D11}} </td>
+                                            <td>{{Eval3.D12}}</td>
+                                            <td>{{Eval3.D13}}</td>
+                                            <td>{{Eval3.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Cuadrado</td>
+                                            <td>{{Eval4.D4}}</td>
+                                            <td>{{Eval4.D10}}</td>
+                                            <td>{{Eval4.D11}} </td>
+                                            <td>{{Eval4.D12}}</td>
+                                            <td>{{Eval4.D13}}</td>
+                                            <td>{{Eval4.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Cruz</td>
+                                            <td>{{Eval5.D5}}</td>
+                                            <td>{{Eval5.D10}}</td>
+                                            <td>{{Eval5.D11}} </td>
+                                            <td>{{Eval5.D12}}</td>
+                                            <td>{{Eval5.D13}}</td>
+                                            <td>{{Eval5.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Triangulo</td>
+                                            <td>{{Eval6.D6}}</td>
+                                            <td>{{Eval6.D10}}</td>
+                                            <td>{{Eval6.D11}} </td>
+                                            <td>{{Eval6.D12}}</td>
+                                            <td>{{Eval6.D13}}</td>
+                                            <td>{{Eval6.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Ondas</td>
+                                            <td>{{Eval7.D7}}</td>
+                                            <td>{{Eval7.D10}}</td>
+                                            <td>{{Eval7.D11}} </td>
+                                            <td>{{Eval7.D12}}</td>
+                                            <td>{{Eval7.D13}}</td>
+                                            <td>{{Eval7.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Letras</td>
+                                            <td>{{Eval8.D8}}</td>
+                                            <td>{{Eval8.D10}}</td>
+                                            <td>{{Eval8.D11}} </td>
+                                            <td>{{Eval8.D12}}</td>
+                                            <td>{{Eval8.D13}}</td>
+                                            <td>{{Eval8.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Numeros</td>
+                                            <td>{{Eval9.D9}}</td>
+                                            <td>{{Eval9.D10}}</td>
+                                            <td>{{Eval9.D11}} </td>
+                                            <td>{{Eval9.D12}}</td>
+                                            <td>{{Eval9.D13}}</td>
+                                            <td>{{Eval9.D14}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Diagnostico Final</div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Estado</th>
+                                            <th scope="col">Presion</th>
+                                            <th scope="col">Agarre</th>
+                                            <th scope="col">Direccionalidad</th>
+                                            <th scope="col">Animo</th>
+                                            <th scope="col">Mov. Mano-dedos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Linea Horizontal</td>
+                                            <td>{{Eval1.D1}}</td>
+                                            <td>{{Eval1.D10}}</td>
+                                            <td>{{Eval1.D11}} </td>
+                                            <td>{{Eval1.D12}}</td>
+                                            <td>{{Eval1.D13}}</td>
+                                            <td>{{Eval1.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Linea Vertical</td>
+                                            <td>{{Eval2.D2}}</td>
+                                            <td>{{Eval2.D10}}</td>
+                                            <td>{{Eval2.D11}} </td>
+                                            <td>{{Eval2.D12}}</td>
+                                            <td>{{Eval2.D13}}</td>
+                                            <td>{{Eval2.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Circunferencia</td>
+                                            <td>{{Eval3.D3}}</td>
+                                            <td>{{Eval3.D10}}</td>
+                                            <td>{{Eval3.D11}} </td>
+                                            <td>{{Eval3.D12}}</td>
+                                            <td>{{Eval3.D13}}</td>
+                                            <td>{{Eval3.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Cuadrado</td>
+                                            <td>{{Eval4.D4}}</td>
+                                            <td>{{Eval4.D10}}</td>
+                                            <td>{{Eval4.D11}} </td>
+                                            <td>{{Eval4.D12}}</td>
+                                            <td>{{Eval4.D13}}</td>
+                                            <td>{{Eval4.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Cruz</td>
+                                            <td>{{Eval5.D5}}</td>
+                                            <td>{{Eval5.D10}}</td>
+                                            <td>{{Eval5.D11}} </td>
+                                            <td>{{Eval5.D12}}</td>
+                                            <td>{{Eval5.D13}}</td>
+                                            <td>{{Eval5.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Triangulo</td>
+                                            <td>{{Eval6.D6}}</td>
+                                            <td>{{Eval6.D10}}</td>
+                                            <td>{{Eval6.D11}} </td>
+                                            <td>{{Eval6.D12}}</td>
+                                            <td>{{Eval6.D13}}</td>
+                                            <td>{{Eval6.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Ondas</td>
+                                            <td>{{Eval7.D7}}</td>
+                                            <td>{{Eval7.D10}}</td>
+                                            <td>{{Eval7.D11}} </td>
+                                            <td>{{Eval7.D12}}</td>
+                                            <td>{{Eval7.D13}}</td>
+                                            <td>{{Eval7.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Letras</td>
+                                            <td>{{Eval8.D8}}</td>
+                                            <td>{{Eval8.D10}}</td>
+                                            <td>{{Eval8.D11}} </td>
+                                            <td>{{Eval8.D12}}</td>
+                                            <td>{{Eval8.D13}}</td>
+                                            <td>{{Eval8.D14}}</td>
+                                        </tr>
+                                        <tr scope="row">
+
+                                            <td>Numeros</td>
+                                            <td>{{Eval9.D9}}</td>
+                                            <td>{{Eval9.D10}}</td>
+                                            <td>{{Eval9.D11}} </td>
+                                            <td>{{Eval9.D12}}</td>
+                                            <td>{{Eval9.D13}}</td>
+                                            <td>{{Eval9.D14}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Recomendacion de Actividades
+                        </div>
+                        <div class="card-body">
+
+
+                            <div class="table-responsive">
+
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC1</th>
+                                            <th scope="col">AC2</th>
+                                            <th scope="col">AC3</th>
+                                            <th scope="col">AC4</th>
+                                            <th scope="col">AC5</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Linea Horizontal</td>
+                                            <td>{{recos.reco1.FrecuenciaS}}</td>
+                                            <td>{{recos.reco1.Semanas}}</td>
+                                            <td>{{recos.reco1.AC1}} </td>
+                                            <td>{{recos.reco1.AC2}} </td>
+                                            <td>{{recos.reco1.AC3}} </td>
+                                            <td>{{recos.reco1.AC4}} </td>
+                                            <td>{{recos.reco1.AC5}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC6</th>
+                                            <th scope="col">AC7</th>
+                                            <th scope="col">AC8</th>
+                                            <th scope="col">AC9</th>
+                                            <th scope="col">AC10</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Linea Verticales</td>
+                                            <td>{{recos.reco2.FrecuenciaS}}</td>
+                                            <td>{{recos.reco2.Semanas}}</td>
+                                            <td>{{recos.reco2.AC6}} </td>
+                                            <td>{{recos.reco2.AC7}} </td>
+                                            <td>{{recos.reco2.AC8}} </td>
+                                            <td>{{recos.reco2.AC9}} </td>
+                                            <td>{{recos.reco2.AC10}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC11</th>
+                                            <th scope="col">AC12</th>
+                                            <th scope="col">AC13</th>
+                                            <th scope="col">AC14</th>
+                                            <th scope="col">AC15</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Circunferencia</td>
+                                            <td>{{recos.reco3.FrecuenciaS}}</td>
+                                            <td>{{recos.reco3.Semanas}}</td>
+                                            <td>{{recos.reco3.AC11}} </td>
+                                            <td>{{recos.reco3.AC12}} </td>
+                                            <td>{{recos.reco3.AC13}} </td>
+                                            <td>{{recos.reco3.AC14}} </td>
+                                            <td>{{recos.reco3.AC15}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC16</th>
+                                            <th scope="col">AC17</th>
+                                            <th scope="col">AC18</th>
+                                            <th scope="col">AC19</th>
+                                            <th scope="col">AC20</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Cuadrado</td>
+                                            <td>{{recos.reco4.FrecuenciaS}}</td>
+                                            <td>{{recos.reco4.Semanas}}</td>
+                                            <td>{{recos.reco4.AC16}} </td>
+                                            <td>{{recos.reco4.AC17}} </td>
+                                            <td>{{recos.reco4.AC18}} </td>
+                                            <td>{{recos.reco4.AC19}} </td>
+                                            <td>{{recos.reco4.AC20}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC21</th>
+                                            <th scope="col">AC22</th>
+                                            <th scope="col">AC23</th>
+                                            <th scope="col">AC24</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Cruz</td>
+                                            <td>{{recos.reco5.FrecuenciaS}}</td>
+                                            <td>{{recos.reco5.Semanas}}</td>
+                                            <td>{{recos.reco5.AC21}} </td>
+                                            <td>{{recos.reco5.AC22}} </td>
+                                            <td>{{recos.reco5.AC23}} </td>
+                                            <td>{{recos.reco5.AC24}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC25</th>
+                                            <th scope="col">AC26</th>
+                                            <th scope="col">AC27</th>
+                                            <th scope="col">AC28</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Triangulo</td>
+                                            <td>{{recos.reco6.FrecuenciaS}}</td>
+                                            <td>{{recos.reco6.Semanas}}</td>
+                                            <td>{{recos.reco6.AC25}} </td>
+                                            <td>{{recos.reco6.AC26}} </td>
+                                            <td>{{recos.reco6.AC27}} </td>
+                                            <td>{{recos.reco6.AC28}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC29</th>
+                                            <th scope="col">AC30</th>
+                                            <th scope="col">AC31</th>
+                                            <th scope="col">AC32</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Ondas</td>
+                                            <td>{{recos.reco7.FrecuenciaS}}</td>
+                                            <td>{{recos.reco7.Semanas}}</td>
+                                            <td>{{recos.reco7.AC29}} </td>
+                                            <td>{{recos.reco7.AC30}} </td>
+                                            <td>{{recos.reco7.AC31}} </td>
+                                            <td>{{recos.reco7.AC32}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC1</th>
+                                            <th scope="col">AC2</th>
+                                            <th scope="col">AC3</th>
+                                            <th scope="col">AC4</th>
+                                            <th scope="col">AC5</th>
+                                            <th scope="col">AC6</th>
+                                            <th scope="col">AC7</th>
+                                            <th scope="col">AC8</th>
+                                            <th scope="col">AC9</th>
+                                            <th scope="col">AC10</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Letras</td>
+                                            <td>{{recos.reco8.FrecuenciaS}}</td>
+                                            <td>{{recos.reco8.Semanas}}</td>
+                                            <td>{{recos.reco8.AC1}} </td>
+                                            <td>{{recos.reco8.AC2}} </td>
+                                            <td>{{recos.reco8.AC3}} </td>
+                                            <td>{{recos.reco8.AC4}} </td>
+                                            <td>{{recos.reco8.AC5}} </td>
+                                            <td>{{recos.reco8.AC6}} </td>
+                                            <td>{{recos.reco8.AC7}} </td>
+                                            <td>{{recos.reco8.AC8}} </td>
+                                            <td>{{recos.reco8.AC9}} </td>
+                                            <td>{{recos.reco8.AC10}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC6</th>
+                                            <th scope="col">AC7</th>
+                                            <th scope="col">AC8</th>
+                                            <th scope="col">AC9</th>
+                                            <th scope="col">AC10</th>
+                                            <th scope="col">AC34</th>
+                                            <th scope="col">AC35</th>
+                                            <th scope="col">AC36</th>
+                                            <th scope="col">AC37</th>
+                                            <th scope="col">AC38</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Numeros</td>
+                                            <td>{{recos.reco9.FrecuenciaS}}</td>
+                                            <td>{{recos.reco9.Semanas}}</td>
+                                            <td>{{recos.reco9.AC6}} </td>
+                                            <td>{{recos.reco9.AC7}} </td>
+                                            <td>{{recos.reco9.AC8}} </td>
+                                            <td>{{recos.reco9.AC9}} </td>
+                                            <td>{{recos.reco9.AC10}} </td>
+                                            <td>{{recos.reco9.AC34}} </td>
+                                            <td>{{recos.reco9.AC35}} </td>
+                                            <td>{{recos.reco9.AC36}} </td>
+                                            <td>{{recos.reco9.AC37}} </td>
+                                            <td>{{recos.reco9.AC38}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Seguimiento de Actividades
+                        </div>
+                        <div class="card-body">
+
+
+                            <div class="table-responsive">
+
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC1</th>
+                                            <th scope="col">AC2</th>
+                                            <th scope="col">AC3</th>
+                                            <th scope="col">AC4</th>
+                                            <th scope="col">AC5</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Linea Horizontal</td>
+                                            <td>{{seg.reco1.FrecuenciaS}}</td>
+                                            <td>{{seg.reco1.Semanas}}</td>
+                                            <td>{{seg.reco1.AC1}} </td>
+                                            <td>{{seg.reco1.AC2}} </td>
+                                            <td>{{seg.reco1.AC3}} </td>
+                                            <td>{{seg.reco1.AC4}} </td>
+                                            <td>{{seg.reco1.AC5}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC6</th>
+                                            <th scope="col">AC7</th>
+                                            <th scope="col">AC8</th>
+                                            <th scope="col">AC9</th>
+                                            <th scope="col">AC10</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Linea Verticales</td>
+                                            <td>{{seg.reco2.FrecuenciaS}}</td>
+                                            <td>{{seg.reco2.Semanas}}</td>
+                                            <td>{{seg.reco2.AC6}} </td>
+                                            <td>{{seg.reco2.AC7}} </td>
+                                            <td>{{seg.reco2.AC8}} </td>
+                                            <td>{{seg.reco2.AC9}} </td>
+                                            <td>{{seg.reco2.AC10}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC11</th>
+                                            <th scope="col">AC12</th>
+                                            <th scope="col">AC13</th>
+                                            <th scope="col">AC14</th>
+                                            <th scope="col">AC15</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Circunferencia</td>
+                                            <td>{{seg.reco3.FrecuenciaS}}</td>
+                                            <td>{{seg.reco3.Semanas}}</td>
+                                            <td>{{seg.reco3.AC11}} </td>
+                                            <td>{{seg.reco3.AC12}} </td>
+                                            <td>{{seg.reco3.AC13}} </td>
+                                            <td>{{seg.reco3.AC14}} </td>
+                                            <td>{{seg.reco3.AC15}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC16</th>
+                                            <th scope="col">AC17</th>
+                                            <th scope="col">AC18</th>
+                                            <th scope="col">AC19</th>
+                                            <th scope="col">AC20</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Cuadrado</td>
+                                            <td>{{seg.reco4.FrecuenciaS}}</td>
+                                            <td>{{seg.reco4.Semanas}}</td>
+                                            <td>{{seg.reco4.AC16}} </td>
+                                            <td>{{seg.reco4.AC17}} </td>
+                                            <td>{{seg.reco4.AC18}} </td>
+                                            <td>{{seg.reco4.AC19}} </td>
+                                            <td>{{seg.reco4.AC20}} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC21</th>
+                                            <th scope="col">AC22</th>
+                                            <th scope="col">AC23</th>
+                                            <th scope="col">AC24</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Cruz</td>
+                                            <td>{{seg.reco5.FrecuenciaS}}</td>
+                                            <td>{{seg.reco5.Semanas}}</td>
+                                            <td>{{seg.reco5.AC21}} </td>
+                                            <td>{{seg.reco5.AC22}} </td>
+                                            <td>{{seg.reco5.AC23}} </td>
+                                            <td>{{seg.reco5.AC24}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC25</th>
+                                            <th scope="col">AC26</th>
+                                            <th scope="col">AC27</th>
+                                            <th scope="col">AC28</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Triangulo</td>
+                                            <td>{{seg.reco6.FrecuenciaS}}</td>
+                                            <td>{{seg.reco6.Semanas}}</td>
+                                            <td>{{seg.reco6.AC25}} </td>
+                                            <td>{{seg.reco6.AC26}} </td>
+                                            <td>{{seg.reco6.AC27}} </td>
+                                            <td>{{seg.reco6.AC28}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC29</th>
+                                            <th scope="col">AC30</th>
+                                            <th scope="col">AC31</th>
+                                            <th scope="col">AC32</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Ondas</td>
+                                            <td>{{seg.reco7.FrecuenciaS}}</td>
+                                            <td>{{seg.reco7.Semanas}}</td>
+                                            <td>{{seg.reco7.AC29}} </td>
+                                            <td>{{seg.reco7.AC30}} </td>
+                                            <td>{{seg.reco7.AC31}} </td>
+                                            <td>{{seg.reco7.AC32}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC1</th>
+                                            <th scope="col">AC2</th>
+                                            <th scope="col">AC3</th>
+                                            <th scope="col">AC4</th>
+                                            <th scope="col">AC5</th>
+                                            <th scope="col">AC6</th>
+                                            <th scope="col">AC7</th>
+                                            <th scope="col">AC8</th>
+                                            <th scope="col">AC9</th>
+                                            <th scope="col">AC10</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Letras</td>
+                                            <td>{{seg.reco8.FrecuenciaS}}</td>
+                                            <td>{{seg.reco8.Semanas}}</td>
+                                            <td>{{seg.reco8.AC1}} </td>
+                                            <td>{{seg.reco8.AC2}} </td>
+                                            <td>{{seg.reco8.AC3}} </td>
+                                            <td>{{seg.reco8.AC4}} </td>
+                                            <td>{{seg.reco8.AC5}} </td>
+                                            <td>{{seg.reco8.AC6}} </td>
+                                            <td>{{seg.reco8.AC7}} </td>
+                                            <td>{{seg.reco8.AC8}} </td>
+                                            <td>{{seg.reco8.AC9}} </td>
+                                            <td>{{seg.reco8.AC10}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dibujo</th>
+                                            <th scope="col">Frecuencia</th>
+                                            <th scope="col">Semanas</th>
+                                            <th scope="col">AC6</th>
+                                            <th scope="col">AC7</th>
+                                            <th scope="col">AC8</th>
+                                            <th scope="col">AC9</th>
+                                            <th scope="col">AC10</th>
+                                            <th scope="col">AC34</th>
+                                            <th scope="col">AC35</th>
+                                            <th scope="col">AC36</th>
+                                            <th scope="col">AC37</th>
+                                            <th scope="col">AC38</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr scope="row">
+
+                                            <td>Numeros</td>
+                                            <td>{{seg.reco9.FrecuenciaS}}</td>
+                                            <td>{{seg.reco9.Semanas}}</td>
+                                            <td>{{seg.reco9.AC6}} </td>
+                                            <td>{{seg.reco9.AC7}} </td>
+                                            <td>{{seg.reco9.AC8}} </td>
+                                            <td>{{seg.reco9.AC9}} </td>
+                                            <td>{{seg.reco9.AC10}} </td>
+                                            <td>{{seg.reco9.AC34}} </td>
+                                            <td>{{seg.reco9.AC35}} </td>
+                                            <td>{{seg.reco9.AC36}} </td>
+                                            <td>{{seg.reco9.AC37}} </td>
+                                            <td>{{seg.reco9.AC38}} </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+    </main>
+</div>
+
+{% endblock%}
+
+
+
+
+
+<!--  <div class="table-responsive">
+
+            <table class="table custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Dibujo</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Presion</th>
+                        <th scope="col">Agarre</th>
+                        <th scope="col">Direccionalidad</th>
+                        <th scope="col">Animo</th>
+                        <th scope="col">Mov. Mano-dedos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row">
+
+                        <td>Linea Horizontal</td>
+                        <td>{{Eval1.D1}}</td>
+                        <td>{{Eval1.D10}}</td>
+                        <td>{{Eval1.D11}} </td>
+                        <td>{{Eval1.D12}}</td>
+                        <td>{{Eval1.D13}}</td>
+                        <td>{{Eval1.D14}}</td>
+                    </tr>
+                    <tr scope="row">
+
+                        <td>Linea Vertical</td>
+                        <td>{{Eval2.D2}}</td>
+                        <td>{{Eval2.D10}}</td>
+                        <td>{{Eval2.D11}} </td>
+                        <td>{{Eval2.D12}}</td>
+                        <td>{{Eval2.D13}}</td>
+                        <td>{{Eval2.D14}}</td>
+                    </tr>
+                    <tr scope="row">
+
+                        <td>Circunferencia</td>
+                        <td>{{Eval3.D3}}</td>
+                        <td>{{Eval3.D10}}</td>
+                        <td>{{Eval3.D11}} </td>
+                        <td>{{Eval3.D12}}</td>
+                        <td>{{Eval3.D13}}</td>
+                        <td>{{Eval3.D14}}</td>
+                    </tr>
+                    <tr scope="row">
+
+                        <td>Cuadrado</td>
+                        <td>{{Eval4.D4}}</td>
+                        <td>{{Eval4.D10}}</td>
+                        <td>{{Eval4.D11}} </td>
+                        <td>{{Eval4.D12}}</td>
+                        <td>{{Eval4.D13}}</td>
+                        <td>{{Eval4.D14}}</td>
+                    </tr>
+                    <tr scope="row">
+
+                        <td>Cruz</td>
+                        <td>{{Eval5.D5}}</td>
+                        <td>{{Eval5.D10}}</td>
+                        <td>{{Eval5.D11}} </td>
+                        <td>{{Eval5.D12}}</td>
+                        <td>{{Eval5.D13}}</td>
+                        <td>{{Eval5.D14}}</td>
+                    </tr>
+                    <tr scope="row">
+
+                        <td>Triangulo</td>
+                        <td>{{Eval6.D6}}</td>
+                        <td>{{Eval6.D10}}</td>
+                        <td>{{Eval6.D11}} </td>
+                        <td>{{Eval6.D12}}</td>
+                        <td>{{Eval6.D13}}</td>
+                        <td>{{Eval6.D14}}</td>
+                    </tr>
+                    <tr scope="row">
+
+                        <td>Ondas</td>
+                        <td>{{Eval7.D7}}</td>
+                        <td>{{Eval7.D10}}</td>
+                        <td>{{Eval7.D11}} </td>
+                        <td>{{Eval7.D12}}</td>
+                        <td>{{Eval7.D13}}</td>
+                        <td>{{Eval7.D14}}</td>
+                    </tr>
+                    <tr scope="row">
+
+                        <td>Letras</td>
+                        <td>{{Eval8.D8}}</td>
+                        <td>{{Eval8.D10}}</td>
+                        <td>{{Eval8.D11}} </td>
+                        <td>{{Eval8.D12}}</td>
+                        <td>{{Eval8.D13}}</td>
+                        <td>{{Eval8.D14}}</td>
+                    </tr>
+                    <tr scope="row">
+
+                        <td>Numeros</td>
+                        <td>{{Eval9.D9}}</td>
+                        <td>{{Eval9.D10}}</td>
+                        <td>{{Eval9.D11}} </td>
+                        <td>{{Eval9.D12}}</td>
+                        <td>{{Eval9.D13}}</td>
+                        <td>{{Eval9.D14}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div> -->

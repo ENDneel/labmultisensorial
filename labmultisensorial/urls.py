@@ -36,4 +36,7 @@ urlpatterns = [
     path('dashboard/',include('dashboard.urls')),
     path('',include('estudiante.urls')),
 
+    # -----------modulos
+    path('',include('modulos.urls')),
+
 ] 

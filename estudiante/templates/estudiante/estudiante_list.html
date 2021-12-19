@@ -11,7 +11,48 @@
 {% endblock stylesheets %}
 
 {% block content %}
-<div id="layoutSidenav_content">
+<section id="team" class="team">
+    <div class="card mb-4">
+        <a href="{% url 'addEstudent' %}" class="btn btn-primary me-md-2"> <i
+            class="fas fa-plus-square"></i> Agregar</a>
+        <div class="card-header formu"><i class="fas fa-table mr-1"></i>Estudiantes Registrados
+
+            
+
+
+
+
+           
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive formu">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nombres y Apellidos</th>
+                            <th>Edad Cronologica Meses</th>
+                            <th>Edad Mental</th>
+                            <th>Unidad Educativa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in object_list  %}
+                        <tr>
+                            <td><a href="{% url 'detailEstudent' pk=item.id %}">{{ item.nombre }} {{ item.apellido }}</a></td>
+                            <td>{{ item.edad_Cronologica }}</td>
+                            <td>{{ item.edad_Mental }}</td>
+                            <td>{{ item.grado_Educacion}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- <div id="layoutSidenav_content">
     <div class="container-fluid">
         <div class="card mb-4">
             <a href="{% url 'addEstudent' %}" class="btn btn-primary me-md-2"> <i
@@ -23,7 +64,7 @@
 
 
 
-                <!-- <a href="{% url 'addEstudent' %}" class="border border-dark p-3 mb-2 bg-secondary text-white" >Agregar Niño</a> -->
+               
             </div>
 
             <div class="card-body">
@@ -52,7 +93,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 {% endblock content%}
