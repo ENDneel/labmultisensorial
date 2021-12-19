@@ -52,6 +52,22 @@
 
   <!-- Template Main CSS File -->
   <link href="/static/page/assets/css/style.css" rel="stylesheet">
+  <link
+  href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap"
+  rel="stylesheet">
+<link rel="stylesheet" href="{% static 'modulos/fonts/icomoon/style.css' %}">
+
+<link rel="stylesheet" href="{% static 'modulos/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/jquery-ui.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/owl.theme.default.min.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/lightgallery.min.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/bootstrap-datepicker.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/fonts/flaticon/font/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/swiper.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/aos.css' %}">
+<link rel="stylesheet" href="{% static 'modulos/css/style.css' %}">
 </head>
 
 <<body>
@@ -72,7 +88,7 @@
 			  <li><a class="nav-link scrollto" href="#portfolio">Lenguaje</a></li>
 			  <li><a class="nav-link scrollto" href="#team">TDHA</a></li>
 			  <li><a class="nav-link scrollto" href="#team">TEA</a></li>
-			  <li><a class="nav-link scrollto" href="#team">STEM</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'stem' %}"">STEM</a></li>
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
 		  </nav><!-- .navbar -->
@@ -120,6 +136,33 @@
   <script src="{% static 'dashboard/assets/demo/datatables-demo.js' %}"></script>
 
 
+
+
+
+  <script src="{% static 'modulos/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'modulos/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'modulos/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'modulos/js/popper.min.js' %}"></script>
+  <script src="{% static 'modulos/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'modulos/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'modulos/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'modulos/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'modulos/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'modulos/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'modulos/js/swiper.min.js' %}"></script>
+  <script src="{% static 'modulos/js/aos.js' %}"></script>
+
+  <script src="{% static 'modulos/js/picturefill.min.js' %}"></script>
+  <script src="{% static 'modulos/js/lightgallery-all.min.js' %}"></script>
+  <script src="{% static 'modulos/js/jquery.mousewheel.min.js' %}"></script>
+
+  <script src="{% static 'modulos/js/main.js' %}"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#lightgallery').lightGallery();
+    });
+  </script>
 
 
 </body>

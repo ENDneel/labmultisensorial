@@ -9,7 +9,15 @@ from estudiante.models import Estudiante
 # Create your views here.
 class ModulosView(TemplateView):
     print("si entro aqui para los modulos")
-    template_name = 'modulos/modulos.html'
+    template_name = 'modulos/motricidad.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['estudiantes'] = Estudiante.objects.all()
+        return context
+
+class StemView(TemplateView):
+
+    template_name = 'modulos/stem.html'
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['estudiantes'] = Estudiante.objects.all()
@@ -23,15 +31,6 @@ class LapizDetailView(TemplateView):
         est=Estudiante.objects.get(id=self.kwargs['pk'])
         print("wssssssssssssssssssssssssssssssss ",pk)
 
-        # evaluacionD1=EvaluacionD1.objects.get(EvaluacionD=pk)
-        # evaluacionD2=EvaluacionD2.objects.get(EvaluacionD=pk)
-        # evaluacionD3=EvaluacionD3.objects.get(EvaluacionD=pk)
-        # evaluacionD4=EvaluacionD4.objects.get(EvaluacionD=pk)
-        # evaluacionD5=EvaluacionD5.objects.get(EvaluacionD=pk)
-        # evaluacionD6=EvaluacionD6.objects.get(EvaluacionD=pk)
-        # evaluacionD7=EvaluacionD7.objects.get(EvaluacionD=pk)
-        # evaluacionD8=EvaluacionD8.objects.get(EvaluacionD=pk)
-        # evaluacionD9=EvaluacionD9.objects.get(EvaluacionD=pk)
         evaluacionD1=validarEvaluacion(EvaluacionD1,pk) 
         evaluacionD2=validarEvaluacion(EvaluacionD2,pk)
         evaluacionD3=validarEvaluacion(EvaluacionD3,pk)
