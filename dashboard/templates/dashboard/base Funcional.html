@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<head >
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Dashboard Labmultisensorial</title>
+
   {% load static %}
-  <title>Labmultisensorial-Dashboard</title>
+
   <link href="{% static 'dashboard/css/styles.css' %}" rel="stylesheet" />
   <link rel="stylesheet" type="text/css"
     href="{% static 'dashboard/DataTables-1.11.3/css/dataTables.bootstrap4.min.css' %}" />
@@ -67,7 +73,9 @@
 
   <!-- Template Main CSS File -->
   <link href="/static/page/assets/css/style.css" rel="stylesheet">
-</head>
+  
+</head><!-- End Header -->
+
 
 <body>
 	<header id="header" class="d-flex align-items-center">
@@ -94,28 +102,14 @@
 	
 		</div>
 	  </header><!-- End Header -->
+  
+  
     {% block content%}
 
     {% endblock %}
-	
+  </div>
 
   
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="/static/page/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/static/page/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/static/page/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="/static/page/assets/vendor/php-email-form/validate.js"></script>
-  <script src="/static/page/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="/static/page/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="/static/page/assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="/static/page/assets/js/main.js"></script>
-
-
   <script src="{% static 'modulos/js/jquery-3.3.1.min.js' %}"></script>
   <script src="{% static 'modulos/js/jquery-migrate-3.0.1.min.js' %}"></script>
   <script src="{% static 'modulos/js/jquery-ui.js' %}"></script>
@@ -134,7 +128,7 @@
   <script src="{% static 'modulos/js/jquery.mousewheel.min.js' %}"></script>
 
   <script src="{% static 'modulos/js/main.js' %}"></script>
-  
+
   <script>
     $(document).ready(function () {
       $('#lightgallery').lightGallery();
@@ -151,6 +145,7 @@
     src="{% static 'dashboard/DataTables-1.11.3/js/dataTables.bootstrap4.min.js' %}"></script>
     
   <script src="{% static 'dashboard/assets/demo/datatables-demo.js' %}"></script>
+
 
   <style>
     /* Profile container */
@@ -438,6 +433,78 @@
     }
   </style>
 
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ("{% static 'dashboard/js/ga.js' %}");
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  <script>
+    function moveToSelected(element) {
+      if (element == "next") {
+        var selected = $(".selected").next();
+      } else if (element == "prev") {
+        var selected = $(".selected").prev();
+      } else {
+        var selected = element;
+      }
+
+      var next = $(selected).next();
+      var prev = $(selected).prev();
+      var prevSecond = $(prev).prev();
+      var nextSecond = $(next).next();
+
+      $(selected).removeClass().addClass("selected");
+
+      $(prev).removeClass().addClass("prev");
+      $(next).removeClass().addClass("next");
+
+      $(nextSecond).removeClass().addClass("nextRightSecond");
+      $(prevSecond).removeClass().addClass("prevLeftSecond");
+
+      $(nextSecond).nextAll().removeClass().addClass("hideRight");
+      $(prevSecond).prevAll().removeClass().addClass("hideLeft");
+    }
+
+    // Eventos teclado
+    $(document).keydown(function (e) {
+      switch (e.which) {
+        case 37: // left
+          moveToSelected("prev");
+          break;
+
+        case 39: // right
+          moveToSelected("next");
+          break;
+
+        default:
+          return;
+      }
+      e.preventDefault();
+    });
+
+    $("#carousel div").click(function () {
+      moveToSelected($(this));
+    });
+
+    $("#prev").click(function () {
+      moveToSelected("prev");
+    });
+
+    $("#next").click(function () {
+      moveToSelected("next");
+    });
+
+  </script>
 
 </body>
 
