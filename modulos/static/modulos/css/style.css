@@ -76,7 +76,7 @@ a {
   border-radius: 0;
   background: transparent;
   border-color: #777;
-  color: #fff !important; }
+  color: rgb(0, 0, 0) !important; }
   .form-control:active, .form-control:focus {
     border-color: #20c997;
     background: transparent; }

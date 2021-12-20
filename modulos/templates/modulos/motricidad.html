@@ -53,7 +53,8 @@
         <div class="image-wrap-2">
           <div class="image-info">
             <h2 class="mb-3">Motricidad Gruesa</h2>
-            <a href="single.html" class="btn btn-outline-white py-2 px-4">Iniciar</a>
+            <a href="" type="button" class="btn btn-outline-white py-2 px-4" data-toggle="modal"
+              data-target="#exampleModal3">Iniciar</a>
           </div>
           <img src="{% static 'modulos/images/mg.jpg' %}" alt="Image" class="img-fluid">
         </div>
@@ -63,7 +64,8 @@
         <div class="image-wrap-2">
           <div class="image-info">
             <h2 class="mb-3">Preescritura</h2>
-            <a href="single.html" class="btn btn-outline-white py-2 px-4">Iniciar</a>
+            <a href="" type="button" class="btn btn-outline-white py-2 px-4" data-toggle="modal"
+              data-target="#exampleModal4">Iniciar</a>
           </div>
           <img src="{% static 'modulos/images/press.jpg' %}" alt="Image" class="img-fluid">
         </div>
@@ -159,6 +161,78 @@
       </div>
     </div>
   </div>
-</div>
 
+
+
+  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel3">Seleccione Niño</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Niño</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in estudiantes %}
+              <tr>
+                <td><a href="{% url 'motricidadG-detail'  item.id  %}">{{ item.nombre }} {{ item.apellido}}</a></td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel4">Presscritura: Seleccione Niño< pa/h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Niño</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in estudiantes %}
+              <tr>
+                <td><a href="{% url 'motricidadP-detail' item.id  %}">{{ item.nombre }} {{ item.apellido}}</a></td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock%}

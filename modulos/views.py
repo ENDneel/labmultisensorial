@@ -15,6 +15,9 @@ class ModulosView(TemplateView):
         context['estudiantes'] = Estudiante.objects.all()
         return context
 
+
+
+
 class StemView(TemplateView):
 
     template_name = 'modulos/stem.html'
@@ -23,6 +26,20 @@ class StemView(TemplateView):
         context['estudiantes'] = Estudiante.objects.all()
         return context
 
+class MotricidadGView(TemplateView):
+    template_name = 'sesion/tablero.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["id"] =self.kwargs['pk']
+        return context
+
+
+class MotricidadPView(TemplateView):
+    template_name = 'sesion/tableroC.html'
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["id"] =self.kwargs['pk']
+        return context
 class LapizDetailView(TemplateView):
     template_name = 'modulos/lapiz.html'
     def get_context_data(self, *args, **kwargs):
