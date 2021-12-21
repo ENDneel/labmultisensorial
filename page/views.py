@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.views.generic.base import TemplateView
 
 # Create your views here.
 
@@ -29,3 +30,16 @@ def juegos(request):
 def contactos(request):
         return render(request,"page/contacto.html")
 
+
+class PizarraView(TemplateView):
+
+    template_name = 'page/detalle-pizarra.html'
+
+class ModulosView(TemplateView):
+
+    template_name = 'page/detalle-modulos.html'
+
+
+class MultisensorialView(TemplateView):
+
+    template_name = 'page/detalle-multisensorial.html'

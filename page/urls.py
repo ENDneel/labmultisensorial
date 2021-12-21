@@ -11,4 +11,8 @@ urlpatterns = [
     path('juegos/',views.juegos, name="juegos"),
     path('sistema/',views.sistema, name="sistema"),
     path('contactos/',views.contactos, name="contactos"),
+
+    path('modulos/',views.PizarraView.as_view(), name="pizarra-detail"),
+    path('pizarra/',views.ModulosView.as_view(), name="modulos-detail"),
+    path('multisensorial-videos/',views.MultisensorialView.as_view(), name="multisensorialV-detail"),
 ]

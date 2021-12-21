@@ -8,7 +8,7 @@
   <title>Laboratorio multisensorial</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  {% load static %}
   <!-- Favicons -->
   <!-- <link href="/static/page/assets/img/favicon.png" rel="icon"> -->
   <link href="/static/page/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -41,7 +41,7 @@
 
           <!-- Slide 1 -->
           <div class="carousel-item active">
-            <div class="carousel-background"><img src="/static/page/assets/img/slide/slide-1.jpg" alt=""></div>
+            <div class="carousel-background"><img src="/static/page/images/pizarraEsquema.png" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Bienvenidos al  <span>Laboratorio Multisensorial</span></h2>
@@ -94,14 +94,14 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>Labmultisensorial</span></a></h1>
+        <h1 class="text-light"><a href="{% url 'inicio' %}"><span>Labmultisensorial</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'inicio' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">Acerca de Nosotros</a></li>
           <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->
           <li><a class="nav-link scrollto" href="#portfolio">Modulos</a></li>
@@ -173,7 +173,7 @@
               <i class="bi bi-emoji-smile"></i>
               <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Videos Labmultisensorial</strong></p>
-              <a href="#">Mas videos &raquo;</a>
+              <a href="{% url 'multisensorialV-detail' %}">Mas videos &raquo;</a>
             </div>
           </div>
 
@@ -276,21 +276,21 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="card">
-              <img src="/static/page/assets/img/more-service-1.jpg" class="card-img-top" alt="...">
+              <img src="{% static 'page/images/pizarraEsquemaP.jpg' %}" class="card-img-top" alt="..." >
               <div class="card-body">
                 <h5 class="card-title"><a href="">Estructura Pizarra Multisensorial</a></h5>
                 <p class="card-text">Todo hacerca a como se esta desarrollando nuestra pizarra</p>
-                <a href="#" class="btn">Saber mas...</a>
+                <a href="{% url 'pizarra-detail' %}" class="btn">Saber mas...</a>
               </div>
             </div>
           </div><d
           iv class="col-lg-4 col-md-6 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="card">
-              <img src="/static/page/assets/img/more-service-2.jpg" class="card-img-top" alt="...">
+              <img src="{% static 'page/images/lapiz11.jpg' %}" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title"><a href="">Estructura de modulos</a></h5>
                 <p class="card-text">Todo haerca sobre los modulos ya construidos y por construir</p>
-                <a href="#" class="btn">Saber mas...</a>
+                <a href="{% url 'modulos-detail' %}" class="btn">Saber mas...</a>
               </div>
             </div>
           </div>
@@ -565,6 +565,23 @@
               </div>
             </div>
           </div>
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="/static/page/assets/img/team/Robles.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>VLADIMIR ESPARTACO ROBLES BYKBAEV</h4>
+                  <span>DOCTOR EN TECNOLOGIAS DE LA INFORMACION Y LAS COMUNICACIONES</span>
+                </div>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
             <div class="member">
@@ -586,11 +603,28 @@
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
             <div class="member">
-              <img src="/static/page/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+              <img src="/static/page/assets/img/team/David.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
+                  <h4>DAVID GERARDO MOSCOSO MONTENEGRO</h4>
+                  <span>INGENIERO ELECTRONICO</span>
+                </div>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="/static/page/assets/img/team/Andres.jpeg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>JULIO ANDRES VISCAINO QUITO</h4>
+                  <span>INGENIERO DE SISTEMAS</span>
                 </div>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
