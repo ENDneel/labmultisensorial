@@ -27,7 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*','labmultisensorial.ups.edu.ec','localhost']
 
-
+CORS_ORIGIN_WHITELIST = [
+    'http://google.com',
+    'http://hostname.example.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:9000',
+    'http://localhost:4200'
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,6 +56,7 @@ INSTALLED_APPS = [
     'django_sb_admin',
     'sesion',
     'modulos',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -60,6 +67,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+      'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'labmultisensorial.urls'

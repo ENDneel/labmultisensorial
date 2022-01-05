@@ -1,7 +1,11 @@
 from django.urls import path, include
+from rest_framework import routers
 
-from modulos.views import CuboTemplateView, LapizDetailView, ModulosView, MotricidadGView, MotricidadPView, StemView 
+from modulos.views import CuboTemplateView, LapizDetailView, ModulosView, MotricidadGView, MotricidadPView, StemView
+from modulos.viewsets import SeriosViewSet 
 
+router = routers.SimpleRouter()
+router.register(r'serios', SeriosViewSet)
 urlpatterns = [
     path('modulos/',ModulosView.as_view(),name='modulos'),
     path('stem/',StemView.as_view(),name='stem'),
@@ -11,3 +15,4 @@ urlpatterns = [
      path('modulos/motricidadP/<pk>/', MotricidadPView.as_view(), name='motricidadP-detail'),
     
 ]
+urlpatterns += router.urls
