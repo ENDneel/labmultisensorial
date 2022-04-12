@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from estudiante.models import Estudiante, Formulario
+from estudiante.models import Estudiante, Formulario, Terapeuta
 from sesion.models import Sesion,Tablero
 from django.http import HttpResponse, request
 from .forms import EstudianteForm, FormularioForm
@@ -25,9 +25,6 @@ class EstChartView(TemplateView):
 
         print(sinc)
         return context
-
-    
-
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     context['est'] = Estudiante.objects.all()
@@ -35,19 +32,23 @@ class EstChartView(TemplateView):
 
 
 def ListEstudent(request):
+
     dir = ''
-    print("........", request.POST)
+    print(request)
     data = {
-        'form': EstudianteForm,
-        'form2': FormularioForm,
+            'form': EstudianteForm,
+            'form2': FormularioForm,
 
     }
     if request.method == "POST":
+
         form = EstudianteForm(request.POST)
         form2 = FormularioForm(request.POST)
         if form.is_valid() and form2.is_valid():
-
+            perfil=Terapeuta.objects.get(usuario=request.user.id)
             solicitud = form2.save(commit=False)
+            us=form.save(commit=False)
+            us.Terapeuta=perfil
             solicitud.Estudiante = form.save()
             solicitud.save()
             dir = 'dashboard'

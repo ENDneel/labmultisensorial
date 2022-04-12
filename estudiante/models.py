@@ -3,18 +3,26 @@ from django.db import models
 # Create your models here.
 from django.db import models
 from django.db.models.deletion import CASCADE
+from django.contrib.auth.models import User
 
 
 # Create your models here.
+class Cargo(models.Model):
+    cargo=models.CharField(max_length=50,verbose_name="cargo")
+    def __str__(self):   
+        return self.cargo
 
 class Terapeuta(models.Model):
     cedula =models.CharField(max_length=100, verbose_name="Cedula",primary_key=True)
     nombre  = models.CharField(max_length=100, verbose_name="Nombre")
-
+    usuario =models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    cargo=models.ForeignKey(Cargo,verbose_name="cargo",on_delete=models.CASCADE,null=True,blank=True)
+    def __str__(self):   
+        return self.nombre
 
 class Estudiante(models.Model):
     id      = models.AutoField(primary_key=True)
-    Terapeuta =models.ForeignKey(Terapeuta, verbose_name="Terapeuta", on_delete=models.CASCADE, null=True,blank=True) 
+    Terapeuta =models.ForeignKey(Terapeuta, verbose_name="Terapeuta", on_delete=models.CASCADE, null=True,blank=True,db_constraint=False) 
     nombre  = models.CharField(max_length=100, verbose_name="Nombre")
     apellido  = models.CharField(max_length=100, verbose_name="Apellido")
     edad_Cronologica = models.PositiveIntegerField(blank=True, null=True, default=0,verbose_name="Edad Cronologica", )
@@ -97,4 +105,4 @@ class Formulario(models.Model):
     lenguaje_compresivo=models.CharField(max_length=2,choices=op_len_comprensivo,default='A1')
     lenguaje_expresivo=models.CharField(max_length=2,choices=op_len_expresivo,default='B1')
     def __str__(self):   
-        return self.id
+        return str(self.id)

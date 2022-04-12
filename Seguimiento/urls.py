@@ -23,6 +23,7 @@ urlpatterns = [
     path(r'EvaluacionD7S_Post/<int:id>',EvaluacionD7S_Post),
     path(r'EvaluacionD8S_Post/<int:id>',EvaluacionD8S_Post),
     path(r'EvaluacionD9S_Post/<int:id>',EvaluacionD9S_Post),
-    path('desca/', index)
+    path('desca/', index),
+    path('descarga/SerioExcel', SeriosExcel)
 ]
 urlpatterns += router.urls

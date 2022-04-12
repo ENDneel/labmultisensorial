@@ -13,166 +13,386 @@
 <div id="layoutSidenav_content">
     <div class="container-fluid">
         <h2 class="mt-4 c-grey-900 slide-date " style="margin:30px auto 30px auto; text-align:center;">Formulario</h2>
-        <div class="card mt-3">
-            
-            <form method="POST">
+
+            <!-- <form method="POST" autocomplete="off">
                 {% csrf_token %}
-                
-                <div class="form-row">
-                    <div class="form-group col-md-6 formu" >
-                        <label for="inputNombre">Nombres:</label>
-                        {{form.nombre}}
+                <div class="main-body">
+                     <div class="row">
+                        <div class="">
+                            <div class="card">
+                                <div class="card-body">
+                        <div class="form-group col-md-6 formu">
+                            <label for="inputNombre">Nombres:</label>
+                            {{form.nombre}}
 
+                        </div>
+                        <div class="form-group col-md-6 formu">
+                            <label for="inputApellido">Apellidos:</label>
+                            {{form.apellido}}
+                        </div>
                     </div>
-                    <div class="form-group col-md-6 formu">
-                        <label for="inputApellido">Apellidos:</label>
-                        {{form.apellido}}
+                    <fieldset disabled="disabled">
+                        <div class="form-group formu">
+                            <label for="disabledTextInput">Terapista a cargo</label>
+                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input"
+                                value="{{ user.get_full_name }}">
+                        </div>
+                    </fieldset>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 formu formu">
+                            <label for="inputEsco">Escolaridad</label>
+                            {{form.grado_Educacion}}
+                        </div>
+
+
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputEdadC">Edad Cronologica:</label>
+                            {{form.edad_Cronologica}}
+                        </div>
+
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputEdadC">Edad Mental:</label>
+                            {{form.edad_Mental}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputEdadC">Sexo:</label>
+                            {{form.sexo}}
+                        </div>
                     </div>
                 </div>
-                <fieldset disabled="disabled">
-                <div class="form-group formu">
-                    <label for="disabledTextInput">Terapista a cargo</label>
-                    <input type="text" id="disabledTextInput" class="form-control"  placeholder="Disabled input" value="{{ter.nonmbre }}">
-                </div>
-            </fieldset>
-                <div class="form-row">
-                    <div class="form-group col-md-4 formu formu">
-                        <label for="inputEsco">Escolaridad</label>
-                        {{form.grado_Educacion}}
+                    <h6 class="c-grey-900  slide-date">Grado de Discapacidad</h6>
+                    <div class="form-row">
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputIntelectual">Discapacidad Intelectual</label>
+                            {{form2.disc_intelectual_grado}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputVisula">Discapacidad Visual</label>
+                            {{form2.disc_visual_grado}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputMotriz">Discapacidad Motriz</label>
+                            {{form2.disc_motriz_grado}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputAuditiva">Discapacidad Auditiva </label>
+                            {{form2.disc_auditiva_grado}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputPCI">PCI </label>
+                            {{form2.disc_pci_grado}}
+                        </div>
+
                     </div>
+                    <h6 class="c-grey-900 slide-date">Profundidad de Discapacidad</h6>
+                    <div class="form-row">
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputAuditivaprof">Discapacidad Auditiva</label>
+                            {{form2.disc_auditiva_profundidad}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputPCIProf">PCI</label>
+                            {{form2.disc_pci_profundidad}}
+                        </div>
+                    </div>
+                    <h6 class="c-grey-900 slide-date">SINDROMES Y TRASTORNOS</h6>
+                    <div class="form-row">
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputDown">Sindrome de Down</label>
+                            {{form2.sindrome_down}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputDown">Sindrome de Lennox</label>
+                            {{form2.sindrome_lennon}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputDown">TE</label>
+                            {{form2.sindrome_te}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputDown">TDAH</label>
+                            {{form2.sindorme_tdah}}
+                        </div>
+                        <div class="form-group col-md-3 formu">
+                            <label for="inputDown">Transtorno de agresividad</label>
+                            {{form2.transtorno_agresivo}}
+                        </div>
 
 
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputEdadC">Edad Cronologica:</label>
-                        {{form.edad_Cronologica}}
                     </div>
 
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputEdadC">Edad Mental:</label>
-                        {{form.edad_Mental}}
-                    </div>
-                </div>
-                <h6 class="c-grey-900  slide-date">Grado de Discapacidad</h6>
-                <div class="form-row">
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputIntelectual">Discapacidad Intelectual</label>
-                        {{form2.disc_intelectual_grado}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputVisula">Discapacidad Visual</label>
-                        {{form2.disc_visual_grado}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputMotriz">Discapacidad Motriz</label>
-                        {{form2.disc_motriz_grado}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputAuditiva">Discapacidad Auditiva </label>
-                        {{form2.disc_auditiva_grado}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputPCI">PCI </label>
-                        {{form2.disc_pci_grado}}
-                    </div>
-
-                </div>
-                <h6 class="c-grey-900 slide-date">Profundidad de Discapacidad</h6>
-                <div class="form-row">
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputAuditivaprof">Discapacidad Auditiva</label>
-                        {{form2.disc_auditiva_profundidad}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputPCIProf">PCI</label>
-                        {{form2.disc_pci_profundidad}}
-                    </div>
-                </div>
-                <h6 class="c-grey-900 slide-date">SINDROMES Y TRASTORNOS</h6>
-                <div class="form-row">
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputDown">Sindrome de Down</label>
-                        {{form2.sindrome_down}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputDown">Sindrome de Lennox</label>
-                        {{form2.sindrome_lennon}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputDown">TE</label>
-                        {{form2.sindrome_te}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputDown">TDAH</label>
-                        {{form2.sindorme_tdah}}
-                    </div>
-                    <div class="form-group col-md-3 formu">
-                        <label for="inputDown">Transtorno de agresividad</label>
-                        {{form2.transtorno_agresivo}}
-                    </div>
-
-
-                </div>
-
-                <h6 class="c-grey-900 slide-date">CARACTERÍSTICAS DE ELEMENTOS GRAFOMOTRICES </h6>
+                    <h6 class="c-grey-900 slide-date">CARACTERÍSTICAS DE ELEMENTOS GRAFOMOTRICES </h6>
                     <div class="form-row">
                         <div class="form-group col-md-5 formu">
                             <label for="input">CONTROL DE SU CUERPO</label>
-                        {{form2.control_cuerpo}}
+                            {{form2.control_cuerpo}}
                         </div>
                         <div class="form-group col-md-5 formu">
                             <label for="input">COORDINACIÓN ÓCULO MANUAL</label>
-                        {{form2.cord_oculo_manual}}
+                            {{form2.cord_oculo_manual}}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-5 formu">
                             <label for="input">ATENCIÓN</label>
-                        {{form2.atencion}}
+                            {{form2.atencion}}
                         </div>
                         <div class="form-group col-md-5 formu">
                             <label for="input">LATERALIDAD</label>
-                        {{form2.lateralidad}}
+                            {{form2.lateralidad}}
                         </div>
-                    </div>  
+                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-5 formu">
                             <label for="input">DISOCIACIÓN DE MANOS</label>
-                        {{form2.disociacion_manos}}
+                            {{form2.disociacion_manos}}
                         </div>
                         <div class="form-group col-md-5 formu">
                             <label for="input">PREDISPOSICIÓN PARA UNA TAREA EN MESA</label>
-                        {{form2.predispo_mesa}}
+                            {{form2.predispo_mesa}}
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-5 formu">
                             <label for="input">MANIPULACIÓN DE LÁPICES</label>
-                        {{form2.manipulacion_lapiz}}
+                            {{form2.manipulacion_lapiz}}
                         </div>
                         <div class="form-group col-md-5 formu">
                             <label for="input">SENSIBILIDAD EN EL TACTO</label>
-                        {{form2.sensibilidad_tacto}}
+                            {{form2.sensibilidad_tacto}}
                         </div>
                     </div>
-                 
 
 
-                    <!--
-                        CARACTERÍSTICAS DEL SU LENGUAJE
-                    -->
-                    <h6 class="c-grey-900 slide-date">CARACTERÍSTICAS DEL SU LENGUAJE   </h6>
+
+                  
+                    <h6 class="c-grey-900 slide-date">CARACTERÍSTICAS DEL SU LENGUAJE </h6>
                     <div class="form-row">
                         <div class="form-group col-md-5 formu">
                             <label for="input">LENGUAJE COMPRENSIVO</label>
-                        {{form2.lenguaje_compresivo}}
+                            {{form2.lenguaje_compresivo}}
                         </div>
                         <div class="form-group col-md-5 formu">
                             <label for="input">LENGUAJE EXPRESIVO</label>
-                        {{form2.lenguaje_expresivo}}
+                            {{form2.lenguaje_expresivo}}
                         </div>
                     </div>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form> -->
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                <div class="main-body">
+
+                    <div class="row">
+                        <div class="">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <!-- <h5 class="d-flex align-items-center mb-3">Grado de Discapacidad</h5> -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6 formu">
+                                            <label for="inputNombre">Nombres:</label>
+                                            {{form.nombre}}
+
+                                        </div>
+                                        <div class="form-group col-md-6 formu">
+                                            <label for="inputApellido">Apellidos:</label>
+                                            {{form.apellido}}
+                                        </div>
+                                    </div>
+
+                                  
+                                    <fieldset disabled="disabled">
+                                        <div class="form-group formu">
+                                            <label for="disabledTextInput">Terapista a cargo</label>
+                                            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input"
+                                                value="{{ user.get_full_name }}">
+                                        </div>
+                                    </fieldset>
+                                  
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 formu formu">
+                                            <label for="inputEsco">Escolaridad</label>
+                                            {{form.grado_Educacion}}
+                                        </div>
+                                      
+
+                                        <div class="form-group col-md-3 formu">
+                                            <label for="inputEdadC">Edad Cronologica:</label>
+                                            {{form.edad_Cronologica}}
+                                        </div>
+
+                                        <div class="form-group col-md-3 formu">
+                                            <label for="inputEdadC">Edad Mental:</label>
+                                            {{form.edad_Mental}}
+                                        </div>
+                                        <div class="form-group col-md-3 formu">
+                                            <label for="inputEdadC">Sexo:</label>
+                                            {{form.sexo}}
+                                        </div>
+
+
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h5 class="d-flex align-items-center mb-3">Grado de Discapacidad</h5>
+                                    <div class="form-row">
+
+
+                                        <div class="form-group col-md-3">
+                                            <label for="inputIntelectual">Discapacidad Intelectual</label>
+                                            {{form2.disc_intelectual_grado}}
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputVisula">Discapacidad Visual</label>
+                                            {{form2.disc_visual_grado}}
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputMotriz">Discapacidad Motriz</label>
+                                            {{form2.disc_motriz_grado}}
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputAuditiva">Discapacidad Auditiva </label>
+                                            {{form2.disc_auditiva_grado}}
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputPCI">PCI </label>
+                                            {{form2.disc_pci_grado}}
+                                        </div>
+
+
+                                    </div>
+                                    <div>
+                                        <h5 class="d-flex align-items-center mb-3">Profundidad de Discapacidad</h5>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputAuditivaprof">Discapacidad Auditiva</label>
+                                            {{form2.disc_auditiva_profundidad}}
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="inputPCIProf">PCI</label>
+                                            {{form2.disc_pci_profundidad}}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6 class="c-grey-900">SINDROMES Y TRASTORNOS</h6>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-3">
+                                                    <label for="inputDown">Sindrome de Down</label>
+                                                    {{form2.sindrome_down}}
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="inputDown">Sindrome de Lennox</label>
+                                                    {{form2.sindrome_lennon}}
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="inputDown">TE</label>
+                                                    {{form2.sindrome_te}}
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="inputDown">TDAH</label>
+                                                    {{form2.sindorme_tdah}}
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label for="inputDown">Transtorno de agresividad</label>
+                                                    {{form2.transtorno_agresivo}}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6 class="c-grey-900">CARACTERÍSTICAS DE ELEMENTOS GRAFOMOTRICES</h6>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-5">
+                                                    <label for="input">CONTROL DE SU CUERPO</label>
+                                                    {{form2.control_cuerpo}}
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="input">COORDINACIÓN ÓCULO MANUAL</label>
+                                                    {{form2.cord_oculo_manual}}
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-5">
+                                                    <label for="input">ATENCIÓN</label>
+                                                    {{form2.atencion}}
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="input">LATERALIDAD</label>
+                                                    {{form2.lateralidad}}
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-5">
+                                                    <label for="input">DISOCIACIÓN DE MANOS</label>
+                                                    {{form2.disociacion_manos}}
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="input">PREDISPOSICIÓN PARA UNA TAREA EN MESA</label>
+                                                    {{form2.predispo_mesa}}
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-5">
+                                                    <label for="input">MANIPULACIÓN DE LÁPICES</label>
+                                                    {{form2.manipulacion_lapiz}}
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="input">SENSIBILIDAD EN EL TACTO</label>
+                                                    {{form2.sensibilidad_tacto}}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="c-grey-900">CARACTERÍSTICAS DEL SU LENGUAJE</h6>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-5">
+                                                <label for="input">LENGUAJE COMPRENSIVO</label>
+                                                {{form2.lenguaje_compresivo}}
+                                            </div>
+                                            <div class="form-group col-md-5">
+                                                <label for="input">LENGUAJE EXPRESIVO</label>
+                                                {{form2.lenguaje_expresivo}}
+                                            </div>
+
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </form>
+
         </div>
     </div>
 </div>

@@ -1,9 +1,12 @@
+from django.http import HttpResponse
 import sesion
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from .models import Sesion, Tablero
 import socket
+import serial
+import json
 # Create your views here.
 
 
@@ -67,3 +70,15 @@ def createSesionTablero(request,pk):
 
 def createSesionTableroC(request,pk):
     return render(request,'sesion/tableroC.html',{"a":pk})
+
+
+def SerialData(request,pk):
+    ser = serial.Serial(port='COM3')
+    print(ser.name)
+    ser.write(b''+str.encode(pk))  
+    ser.close()
+    return HttpResponse("OK")
+
+
+def estudios(request):
+        return render(request,'sesion/hojaVida.html')

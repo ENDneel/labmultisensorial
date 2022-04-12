@@ -53,6 +53,17 @@ class EstudianteForm(forms.ModelForm):
                 "placeholder": "Edad Mental"
             }
         ))
+    sexo = forms.CharField(
+        widget=forms.Select(
+            attrs={
+                "class": "form-control",
+                "id": "inputEsco", },
+            choices=[
+                ('Masculino', 'Masculino'),
+                ('Femenino', 'Femenino'),
+               
+            ]
+        ))
 
     class Meta:
         model = Estudiante

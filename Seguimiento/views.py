@@ -3,10 +3,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
+
+from estudiante.models import Terapeuta
 from .serializers import *
 from .models import *
 from Recomendacion.models import *
 from Evaluacion.models import *
+from modulos.models import Serios
 from django.http import HttpResponse
 import pandas as pd
 import io
@@ -19,7 +22,7 @@ from dateutil.relativedelta import relativedelta
 
 def index(request):
     resp = HttpResponse(content_type='application/xls')
-    resp['Content-Disposition'] = 'attachment; filename=datos.xls'
+    resp['Content-Disposition'] = 'attachment; filename=DatosEvaluacion.xls'
     estud = Estudiante.objects.all()
     output = io.BytesIO()
     workbook = xlsxwriter.Workbook(output)
@@ -77,7 +80,6 @@ def index(request):
             if est.nombre == j.EvaluacionD.Estudiante.nombre:
                 contador += 1
 
-             
                 if contador == 1:
                     worksheet .write(col+3, row,   "Evaluacion Destreza 2")
                     worksheet.write(col+4, row, j.D2)
@@ -100,7 +102,7 @@ def index(request):
         for j in datos3:
             if est.nombre == j.EvaluacionD.Estudiante.nombre:
                 contador += 1
-                
+
                 if contador == 1:
                     worksheet .write(col+5, row,   "Evaluacion Destreza 3")
                     worksheet .write(col+6, row, j.D3)
@@ -124,7 +126,7 @@ def index(request):
         for j in datos4:
             if est.nombre == j.EvaluacionD.Estudiante.nombre:
                 contador += 1
-                
+
                 if contador == 1:
                     worksheet .write(col+7, row,   "Evaluacion Destreza 4")
                     worksheet .write(col+8, row, j.D4)
@@ -148,7 +150,7 @@ def index(request):
         for j in datos5:
             if est.nombre == j.EvaluacionD.Estudiante.nombre:
                 contador += 1
-                
+
                 if contador == 1:
                     worksheet .write(col+9, row,   "Evaluacion Destreza 5")
                     worksheet .write(col+10, row, j.D5)
@@ -171,7 +173,7 @@ def index(request):
         for j in datos6:
             if est.nombre == j.EvaluacionD.Estudiante.nombre:
                 contador += 1
-                
+
                 if contador == 1:
                     worksheet .write(col+11, row,   "Evaluacion Destreza 6")
                     worksheet .write(col+12, row, j.D6)
@@ -194,7 +196,7 @@ def index(request):
         for j in datos7:
             if est.nombre == j.EvaluacionD.Estudiante.nombre:
                 contador += 1
-                
+
                 if contador == 1:
                     worksheet .write(col+13, row,   "Evaluacion Destreza 7")
                     worksheet .write(col+14, row, j.D7)
@@ -217,7 +219,7 @@ def index(request):
         for j in datos8:
             if est.nombre == j.EvaluacionD.Estudiante.nombre:
                 contador += 1
-                
+
                 if contador == 1:
                     worksheet .write(col+15, row,   "Evaluacion Destreza 8")
                     worksheet .write(col+16, row, j.D8)
@@ -239,7 +241,7 @@ def index(request):
         for j in datos9:
             if est.nombre == j.EvaluacionD.Estudiante.nombre:
                 contador += 1
-                
+
                 if contador == 1:
                     worksheet .write(col+17, row,   "Evaluacion Destreza 9")
                     worksheet .write(col+18, row, j.D9)
@@ -259,7 +261,7 @@ def index(request):
 
         worksheet .write(col+20, row,   "Recomendacion Destreza 1")
 
-        if edad==0:
+        if edad == 0:
             for j in RecomendacionD1.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+21, row, 'Frecuencia')
@@ -326,10 +328,10 @@ def index(request):
                     worksheet .write(col+28, row+6, j.AC15)
                     worksheet .write(col+28, row+7, j.AC41)
                     worksheet .write(col+28, row+8, j.AC42)
-      
+
         worksheet .write(col+29, row,   "Recomendacion Destreza 4")
-        if edad==0: 
-            
+        if edad == 0:
+
             for j in RecomendacionD4.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+30, row, 'Frecuencia')
@@ -404,7 +406,7 @@ def index(request):
                     worksheet .write(col+37, row+8, j.AC41)
                     worksheet .write(col+37, row+9, j.AC42)
         worksheet .write(col+38, row,   "Recomendacion Destreza 7")
-        if edad==0:
+        if edad == 0:
             for j in RecomendacionD7.objects.order_by("id"):
 
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
@@ -505,7 +507,7 @@ def index(request):
                     worksheet .write(col+46, row+15, j.AC42)
         row = 18
         worksheet .write(col+20, row,   "Seguimiento Destreza 1")
-        if edad==0:
+        if edad == 0:
             for j in RecomendacionD1S.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+21, row, 'Frecuencia')
@@ -572,7 +574,7 @@ def index(request):
                     worksheet .write(col+28, row+7, j.AC41)
                     worksheet .write(col+28, row+8, j.AC42)
         worksheet .write(col+29, row,   "Segimiento Destreza 4")
-        if edad==0:
+        if edad == 0:
             for j in RecomendacionD4S.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+30, row, 'Frecuencia')
@@ -648,7 +650,7 @@ def index(request):
                     worksheet .write(col+37, row+8, j.AC41)
                     worksheet .write(col+37, row+9, j.AC42)
         worksheet .write(col+38, row,   "Seguimiento Destreza 7")
-        if edad==0:
+        if edad == 0:
             for j in RecomendacionD7S.objects.order_by("id"):
                 if j.RecomendacionEst.Estudiante.nombre == est.nombre:
                     worksheet .write(col+39, row, 'Frecuencia')
@@ -764,6 +766,37 @@ def index(request):
                 ]
         for li in info:
             worksheet .write(col, row, li)
+            col += 1
+        col = 0
+    workbook.close()
+    xlsx_data = output.getvalue()
+    resp.write(xlsx_data)
+    return resp
+
+
+def SeriosExcel(request):
+    resp = HttpResponse(content_type='application/xls')
+    resp['Content-Disposition'] = 'attachment; filename=SeriosExcel.xls'
+    estud = Estudiante.objects.all()
+    output = io.BytesIO()
+    workbook = xlsxwriter.Workbook(output)
+    row = 0
+    col = 0
+    estud = Estudiante.objects.filter(Terapeuta__cedula="001")
+    for est in estud:
+        hoja = est.nombre+est.apellido
+        worksheet = workbook.add_worksheet(name=hoja)
+        datos = Serios.objects.filter(Estudiante__id=est.id)
+        worksheet .write(col, row,   "Sesiones Realizadas")
+        col = 1
+        worksheet .write(col, row, 'Fecha')
+        worksheet .write(col, row+1, 'Actividad')
+        worksheet .write(col, row+2, 'Duracion(Segundos)')
+        col = 2
+        for i in datos:
+            worksheet .write(col, row, i.fecha)
+            worksheet .write(col, row+1, i.actividad)
+            worksheet .write(col, row+2, i.duracion)
             col += 1
         col = 0
     workbook.close()

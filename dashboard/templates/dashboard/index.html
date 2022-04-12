@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Labmultisensorial-Dashboard</title>
+  <title>Labmultisensorial</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -14,7 +14,9 @@
   <link href="/static/page/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="/static/page/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -29,32 +31,33 @@
 </head>
 
 <body>
-	<header id="header" class="d-flex align-items-center">
-		<div class="container d-flex align-items-center justify-content-between">
-	
-		  <div class="logo">
-			<h1 class="text-light"><a href="{% url 'dashboard' %}"><span>Labmultisensorial</span></a></h1>
-			<!-- Uncomment below if you prefer to use an image logo -->
-			<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-		  </div>
-	
-		  <nav id="navbar" class="navbar">
-			<ul>
-			  <li><a class="nav-link scrollto active" href="{% url 'Estudent_List' %}""{% url 'Estudent_List' %}">Gestion</a></li>
-			  <li><a class="nav-link scrollto" href="{% url 'modulos' %}">Motricidads</a></li>
-			  <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->
-			  <li><a class="nav-link scrollto" href="#portfolio">Lenguaje</a></li>
-			  <li><a class="nav-link scrollto" href="#team">TDHA</a></li>
-			  <li><a class="nav-link scrollto" href="#team">TEA</a></li>
-			  <li><a class="nav-link scrollto" href="{% url 'stem' %}"">STEM</a></li>
-        <li><a class="nav-link scrollto" href="{% url 'logout' %}"">Cerrar Sesion</a></li>
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="{% url 'dashboard' %}"><span>Labmultisensorial</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active"
+              href="{% url 'Estudent_List' %}""{% url 'Estudent_List' %}">Gestion</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'modulos' %}">Motricidad</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->
+          <li><a class="nav-link scrollto" href="#portfolio">Lenguaje</a></li>
+          <li><a class="nav-link scrollto" href="#team">TDHA</a></li>
+          <li><a class="nav-link scrollto" href="#team">TEA</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'stem' %}"">STEM</a></li>
+        <li><a class=" nav-link scrollto" href="{% url 'logout' %}"">Cerrar Sesion</a></li>
 			</ul>
-			<i class="bi bi-list mobile-nav-toggle"></i>
-		  </nav><!-- .navbar -->
-	
-		</div>
-	  </header><!-- End Header -->
-	
+			<i class=" bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
 
   <!-- ======= Hero Section ======= -->
   <section id="hero">
@@ -71,8 +74,10 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown"><span>Gestion</span></h2>
-                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;" >Gestiona de una manera mas rapida y sencilla los perfiles de los usuarios y niños.</p>
-                <a href="{% url 'Estudent_List' %}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
+                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;">Gestiona de una manera mas
+                  rapida y sencilla los perfiles de los usuarios y niños.</p>
+                <a href="{% url 'Estudent_List' %}"
+                  class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
               </div>
             </div>
           </div>
@@ -82,9 +87,11 @@
             <div class="carousel-background"><img src="/static/page/assets/img/slide/motricidad.png" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Motricidads</h2>
-                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;">Interaciona con los modulos (Cubo, Lapiz, motricadad fina, motrividad gruesa). </p>
-                <a href="{% url 'modulos' %}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
+                <h2 class="animate__animated animate__fadeInDown">Motricidad</h2>
+                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;">Interaciona con los modulos
+                  (Cubo, Lapiz, motricadad fina, motrividad gruesa). </p>
+                <a href="{% url 'modulos' %}"
+                  class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
               </div>
             </div>
           </div>
@@ -95,37 +102,41 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Lenguaje</h2>
-                <p class="animate__animated animate__fadeInUp"style="font-size: 30px;">Interacciona con los modulos (Proximos en desarrollo).</p>
+                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;">Interacciona con los modulos
+                  (Proximos en desarrollo).</p>
                 <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
               </div>
             </div>
           </div>
-		  <div class="carousel-item">
+          <div class="carousel-item">
             <div class="carousel-background"><img src="/static/page/assets/img/slide/tdah.jpg" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">TDHA</h2>
-                <p class="animate__animated animate__fadeInUp"style="font-size: 30px;">Interacciona con los modulos (Proximos en desarrollo).</p>
-				<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
+                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;">Interacciona con los modulos
+                  (Proximos en desarrollo).</p>
+                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
               </div>
             </div>
           </div>
-		  <div class="carousel-item">
+          <div class="carousel-item">
             <div class="carousel-background"><img src="/static/page/assets/img/slide/TEA.jpg" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">TEA</h2>
-                <p class="animate__animated animate__fadeInUp"style="font-size: 30px;">Interacciona con los modulos (Proximos en desarrollo).</p>
-				<a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
+                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;">Interacciona con los modulos
+                  (Proximos en desarrollo).</p>
+                <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
               </div>
             </div>
           </div>
-		  <div class="carousel-item">
+          <div class="carousel-item">
             <div class="carousel-background"><img src="/static/page/assets/img/slide/stem.jpg" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">STEM</h2>
-                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;">STEAM, aprende usando modulos para resolver problemas (Logicos, Matematicos, Juegos Serios y de Energia Renovable).</p>
+                <p class="animate__animated animate__fadeInUp" style="font-size: 30px;">STEAM, aprende usando modulos
+                  para resolver problemas (Logicos, Matematicos, Juegos Serios y de Energia Renovable).</p>
                 <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Ingresar</a>
               </div>
             </div>
@@ -145,9 +156,10 @@
   </section><!-- End Hero -->
 
   <!-- ======= Header ======= -->
-  
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="/static/page/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

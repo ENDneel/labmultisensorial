@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   {% load static %}
-  <title>Labmultisensorial-Dashboard</title>
+  <title>{% block title %}Labmultisensorial{% endblock title %}</title>
   <link href="{% static 'dashboard/css/styles.css' %}" rel="stylesheet" />
   <link rel="stylesheet" type="text/css"
     href="{% static 'dashboard/DataTables-1.11.3/css/dataTables.bootstrap4.min.css' %}" />
@@ -29,7 +29,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Laboratorios movil multisensorial</title>
+  <!-- <title>Laboratorios movil multisensorial</title> -->
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -82,11 +82,11 @@
 		  <nav id="navbar" class="navbar">
 			<ul>
 			  <li><a class="nav-link scrollto active" href="{% url 'Estudent_List' %}""{% url 'Estudent_List' %}">Gestion</a></li>
-			  <li><a class="nav-link scrollto" href="{% url 'modulos' %}">Motricidads</a></li>
+			  <li><a class="nav-link scrollto" href="{% url 'modulos' %}">Motricidad</a></li>
 			  <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->
 			  <li><a class="nav-link scrollto" href="#portfolio">Lenguaje</a></li>
-			  <li><a class="nav-link scrollto" href="#team">TDHA</a></li>
-			  <li><a class="nav-link scrollto" href="#team">TEA</a></li>
+			  <li><a class="nav-link scrollto" href="#portfolio">TDHA</a></li>
+			  <li><a class="nav-link scrollto" href="#portfolio">TEA</a></li>
 			  <li><a class="nav-link scrollto" href="{% url 'stem' %}"">STEM</a></li>
         <li><a class="nav-link scrollto" href="{% url 'logout' %}"">Cerrar Sesion</a></li>
 			</ul>

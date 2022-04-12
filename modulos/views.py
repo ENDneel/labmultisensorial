@@ -4,7 +4,7 @@ from django.views.generic.detail import DetailView
 from Evaluacion.models import EvaluacionD, EvaluacionD1, EvaluacionD2, EvaluacionD3, EvaluacionD4, EvaluacionD5, EvaluacionD6, EvaluacionD7, EvaluacionD8, EvaluacionD9
 from Recomendacion.models import RecomendacionD1, RecomendacionD2, RecomendacionD3, RecomendacionD4, RecomendacionD5, RecomendacionD6, RecomendacionD7, RecomendacionD8, RecomendacionD9, RecomendacionEst
 from Seguimiento.models import RecomendacionD1S, RecomendacionD2S, RecomendacionD3S, RecomendacionD4S, RecomendacionD5S, RecomendacionD6S, RecomendacionD7S, RecomendacionD8S, RecomendacionD9S
-from estudiante.models import Estudiante
+from estudiante.models import Estudiante,Terapeuta
 
 # Create your views here.
 class ModulosView(TemplateView):
@@ -12,8 +12,18 @@ class ModulosView(TemplateView):
     template_name = 'modulos/motricidad.html'
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['estudiantes'] = Estudiante.objects.all()
+        UserCargo=Terapeuta.objects.get(usuario=self.request.user)
+        print(UserCargo.cargo)
+        if str(UserCargo.cargo)=="Revisor":
+            datos=Estudiante.objects.all()
+          
+        elif(str(UserCargo.cargo)=="Terapista"):
+            datos=Estudiante.objects.filter(Terapeuta=UserCargo)
+            print(datos)
+        
+        context['estudiantes'] = datos
         return context
+
 
 
 
@@ -53,7 +63,7 @@ class LapizDetailView(TemplateView):
         evaluacionD3=validarEvaluacion(EvaluacionD3,pk)
         evaluacionD4=validarEvaluacion(EvaluacionD4,pk)
         evaluacionD5=validarEvaluacion(EvaluacionD5,pk)
-        evaluacionD6=validarEvaluacion(EvaluacionD5,pk)
+        evaluacionD6=validarEvaluacion(EvaluacionD6,pk)
         evaluacionD7=validarEvaluacion(EvaluacionD7,pk)
         evaluacionD8=validarEvaluacion(EvaluacionD8,pk)
         evaluacionD9=validarEvaluacion(EvaluacionD9,pk)

@@ -1,9 +1,10 @@
+from pyexpat import model
 import estudiante
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
-from .models import Estudiante, Formulario
-from dashboard.forms import FormularioForm
+from .models import Estudiante, Formulario, Terapeuta
+from dashboard.forms import EstudianteForm, FormularioForm
 from django.views.generic.list import ListView
 from django.views.generic import TemplateView
 
@@ -23,31 +24,49 @@ def EstudentDetail(request,pk):
     'Su comprensión es mala, responde por reflejos','Tiene buen lenguaje expresivo','Su lenguaje es claro, rígido, repetitivo y le cuesta participar en conversaciones','Se expresa mediante el lenguaje oral con una cierta distorsión en la entonación de la voz',
     'Se expresa mediante sonidos guturales, gritos y llanto','Se expresa mediante lenguaje oral, pero tiene dificultad en pronunciar claramente','Se expresa mediante lenguaje oral con palabras monosílabas y bisílabas',
     'Se expresa mediante Sistemas Alternativos y Aumentativos de Comunicación (pictogramas)','Se expresa mediante lenguaje de señas y Sistemas Alternativos y Aumentativos de Comunicación']
-    for i in estudiante:
-        if i.Estudiante.id==pk:
-            print(i.Estudiante.nombre)
-            contexto = {'est': i,'indice':indice}
+    
+    formulario=Formulario.objects.filter(Estudiante=pk)
+    print(formulario[0].disc_intelectual_grado)
+    contexto = {'est': formulario[0],'indice':indice,"pk":pk}
     return render(request, 'estudiante/formulario_detail.html',contexto)
 
 
-class EstudenUpdateView(UpdateView):
-    # specify the model you want to use
-    model = Formulario
+class FormularioUpdateView(UpdateView):
+    model =Formulario
     form_class = FormularioForm
+    success_url='/estudent/'
 
-    success_url='/dashboard/'
+
+class EstudianteUpdateView(UpdateView):
+    model =Estudiante
+    form_class = EstudianteForm
+    success_url='/estudent/'
+
+
+# class EstudenUpdateView(UpdateView):
+#     # specify the model you want to use
+#     print("entra aqui para la actualizacion")
+#     model = Formulario
+#     form_class = FormularioForm
+#     template_name = '/estudiante/formulario_detail.html'
+#     success_url='/dashboard/'
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     print(self.kwargs.get('pk'))
     #     context["form"]
-        
-
-
+    
 class EstudentListView(ListView):
     model = Estudiante
-    paginate_by = 100  # if pagination is desired
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['est'] = Estudiante.objects.all()
+        UserCargo=Terapeuta.objects.get(usuario=self.request.user)
+        print(UserCargo.cargo)
+        if str(UserCargo.cargo)=="Revisor":
+            datos=Estudiante.objects.all()
+          
+        elif(str(UserCargo.cargo)=="Terapista"):
+            datos=Estudiante.objects.filter(Terapeuta=UserCargo)
+            print(datos)
+        
+        context['est'] = datos
         return context
