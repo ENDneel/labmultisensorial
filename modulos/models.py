@@ -1,3 +1,4 @@
+from xml.parsers.expat import model
 from django.db import models
 from django.utils import tree
 
@@ -16,3 +17,17 @@ class Serios(models.Model):
         ordering = ['id']
     def __str__(self):   
         return self.id
+
+class Modulos(models.Model):
+    estado_op = [
+        ('Activo', 'Activo'),
+        ('Desactivo', 'Desactivo'),
+    ]
+    nombre=models.CharField(max_length=30,verbose_name="NombreModulo")
+    mac=models.CharField(max_length=11,verbose_name="MAC",primary_key=True)
+    estado=models.CharField(max_length=10,choices=estado_op,default="Desactivo",verbose_name='Estado')
+    bateria=models.CharField(max_length=4,verbose_name='Bateria')
+
+    class Meta:
+        def __str__(self) :
+            return str(self.mac)

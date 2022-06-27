@@ -1,13 +1,18 @@
+from cmath import log
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from Recomendacion.models import RecomendacionD1, RecomendacionEst
 from estudiante.models import Estudiante, Formulario, Terapeuta
 from sesion.models import Sesion,Tablero
-from django.http import HttpResponse, request
+from django.http import HttpRequest, HttpResponse, JsonResponse, request
 from .forms import EstudianteForm, FormularioForm
 from django.views.generic.detail import DetailView
 from django.db.models import Count
 import socket
 # Create your views here.
+
+
+
 
 
 class EstChartView(TemplateView):
@@ -72,14 +77,24 @@ class EstudentDetail(DetailView):
     def get_object(self, queryset=None):
         return Formulario.objects.get(Estudiante__id=self.kwargs.get('pk'))
 
+# def LapizData(request, idusuario):
+#     studentSesion=RecomendacionEst.objects.get(Estudent__id=id)
+#     print(studentSesion)
+#     RecomendacionD1.objects.get
+    
+#     return JsonResponse({
+
+#     })
+        
+
+
+
 
 class GraficEstudent(TemplateView):
     template_name = 'dashboard/GraphEstu.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        
-       
         context['qs'] = Estudiante.objects.all()
        
         pknombre=self.kwargs.get('nombre')

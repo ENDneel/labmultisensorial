@@ -3,92 +3,160 @@
 
 {% block content %}
 
-<h1 style="margin:150px auto 30px auto; text-align:center; color:rgb(0, 0, 0);">Seleccione las activiades a ejecutar
-</h1>
+<main class="my-5">
+  <div class="container">
+    <!--Section: Content-->
+    <section class="text-center">
+      <h4 class="mb-5"><strong>Selecciona la actividad a utilizar</strong></h4>
 
-<section class="py-5">
-  <div class="container px-5 my-5">
-    <div class="row gx-5 justify-content-center">
-      <div class="col-lg-8 col-xl-6">
-        <div class="text-center">
-          <h2 class="fw-bolder">From our blog</h2>
-          <p class="lead fw-normal text-muted mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
-            fugit ratione dicta mollitia. Officiis ad.</p>
-        </div>
-      </div>
-    </div>
-    <div class="row gx-5">
-      <div class="col-lg-4 mb-5">
-        <div class="card h-100 shadow border-0">
-          <img class="image-wrap-2 slide-image" src="/static/images/sombrero.png" alt="..." />
-          <div class="card-body p-4">
-
-            <a class="text-decoration-none link-dark stretched-link" href="#!">
-              <h5 class="card-title mb-3">Sombrero</h5>
-            </a>
-            <button id="serialSombrero" class="btn btn-success"> Iniciar </button>
-            <button id="serialFinalizar" class="btn btn-danger"> Finalizar </button>
-
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="/static/images/sombrero.png" width="480" height="480" class="img-fluid" />
+              <a>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Sombrero</h5>
+              <p class="card-text">
+                Gira el sombrero para colocarlo en la posicion correcta
+              </p>
+             
+              <button id = "serialSombrero" class="btn btn-success"> Iniciar </button>
+              <button id = "serialFinalizar" class="btn btn-danger"> Finalizar </button>
+            </div>
           </div>
-
         </div>
-      </div>
-      <div class="col-lg-4 mb-5">
-        <div class="card h-100 shadow border-0">
-          <img class="image-wrap-2 slide-image" src="/static/images/cierre2.png" alt="..." />
-          <div class="card-body p-4">
-            <a class="text-decoration-none link-dark stretched-link" href="#!">
-              <h5 class="card-title mb-3">Cierre</h5>
-            </a>
-            <button id="serialCierre" class="btn btn-success"> Iniciar </button>
-            <button id="serialFinalizar" class="btn btn-danger"> Finalizar </button>
+
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="/static/images/cierre2.png" width="435" height="435" class="img-fluid" />
+              <a>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Cierre</h5>
+              <p class="card-text">
+                Abre el cierre y colocalo en su pocision original.
+              </p>
+              
+              <button id = "serialCierre" class="btn btn-success"> Iniciar </button>
+              <button id = "serialFinalizar" class="btn btn-danger"> Finalizar </button>
+            </div>
           </div>
-
         </div>
       </div>
-      <div class="col-lg-4 mb-5">
-        <div class="card h-100 shadow border-0">
-          <img class="image-wrap-2 slide-image" src="/static/images/velcro.png" alt="..." />
-          <div class="card-body p-4">
 
-            <a class="text-decoration-none link-dark stretched-link" href="#!">
-              <h5 class="card-title mb-3">Velcro</h5>
-            </a>
-            <button id="serialVelcro" class="btn btn-success"> Iniciar </button>
-            <button id="serialFinalizar" class="btn btn-danger"> Finalizar </button>
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="/static/images/velcro.png"  width="250" height="250" class="img-fluid" />
+              <a>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Velcro</h5>
+              <p class="card-text">
+              Coloca correctamente el Velcro
+              </p>
+              <button id = "serialVelcro" class="btn btn-success"> Iniciar </button>
+              <button id = "serialFinalizar" class="btn btn-danger"> Finalizar </button>
+            </div>
           </div>
-
         </div>
-      </div>
-      <div class="col-lg-4 mb-5">
-        <div class="card h-100 shadow border-0">
-          <img class="image-wrap-2 slide-image" src="/static/images/broche.png" alt="..." />
-          <div class="card-body p-4">
 
-            <a class="text-decoration-none link-dark stretched-link" href="#!">
-              <h5 class="card-title mb-3">Broche</h5>
-            </a>
-            <button id="serialBroche" class="btn btn-success"> Iniciar </button>
-            <button id="serialFinalizar" class="btn btn-danger"> Finalizar </button>
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="/static/images/broche.png" width="160" height="160" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Broche</h5>
+              <p class="card-text">
+                Coloque el broche en su lugar asigando.
+              </p>
+              <button id = "serialBroche" class="btn btn-success"> Iniciar </button>
+              <button id = "serialFinalizar" class="btn btn-danger"> Finalizar </button>
+            </div>
           </div>
-
         </div>
-      </div>
-      <div class="col-lg-4 mb-5">
-        <div class="card h-100 shadow border-0">
-          <img class="image-wrap-2 slide-image" src="/static/images/cordon.png" alt="..." />
-          <div class="card-body p-4">
-
-            <a class="text-decoration-none link-dark stretched-link" href="#!">
-              <h5 class="card-title mb-3">Cordon</h5>
-            </a>
-            <button id="serialCordon" class="btn btn-success"> Iniciar </button>
-            <button id="serialFinalizar" class="btn btn-danger"> Finalizar </button>
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="/static/images/cordon.png" width="400" height="400" class="img-fluid" />
+              <a href="#!">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Cordon</h5>
+              <p class="card-text">
+               Pasa el cordon por los agujeros.
+              </p>
+              <button id = "serialCordon" class="btn btn-success"> Iniciar </button>
+              <button id = "serialFinalizar" class="btn btn-danger"> Finalizar </button>
+            </div>
           </div>
-
         </div>
       </div>
-    </div>
+    </section>
+    <!--Section: Content-->
   </div>
-</section>
+</main>
+
+
+<script>
+  $("#serialSombrero").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="a"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialCierre").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="c"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialVelcro").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="d"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialBroche").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="b"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialCordon").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="e"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialFinalizar").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="y"%}',
+      type: "GET",
+      
+    })
+  })
+
+</script>
 {% endblock%}

@@ -1,0 +1,67 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %} Datatable {% endblock title %}
+
+<!-- Specific CSS goes HERE  -->
+{% block stylesheets %}
+
+<!-- JavaScript Bundle with Popper -->
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+    <div class="container-fluid">
+
+        <div class="container">
+            <h2 class="mt-4 c-grey-900 slide-date " style="margin:30px auto 30px auto; text-align:center;">Agregar Modulo</h2>
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                <div class="main-body">
+
+                    <div class="row">
+                        <div class="">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <!-- <h5 class="d-flex align-items-center mb-3">Grado de Discapacidad</h5> -->
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 formu">
+                                            <label for="inputNombre">Categoria:</label>
+                                            {{form.nombre}}
+
+                                        </div>
+                                        <div class="form-group col-md-4 formu">
+                                            <label for="inputApellido">Direccion MAC:</label>
+                                            {{form.mac}}
+                                        </div>
+                                    </div>
+
+                                        <div class="form-group formu">
+                                            <label for="disabledTextInput">Bateria</label>
+                                            {{form.bateria}}
+                                           
+                                        </div>
+                                  
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4 formu formu">
+                                            <label for="inputEsco">Estado</label>
+                                            {{form.estado}}
+                                        </div>
+                                     
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -5,7 +5,9 @@ from Evaluacion.models import EvaluacionD, EvaluacionD1, EvaluacionD2, Evaluacio
 from Recomendacion.models import RecomendacionD1, RecomendacionD2, RecomendacionD3, RecomendacionD4, RecomendacionD5, RecomendacionD6, RecomendacionD7, RecomendacionD8, RecomendacionD9, RecomendacionEst
 from Seguimiento.models import RecomendacionD1S, RecomendacionD2S, RecomendacionD3S, RecomendacionD4S, RecomendacionD5S, RecomendacionD6S, RecomendacionD7S, RecomendacionD8S, RecomendacionD9S
 from estudiante.models import Estudiante,Terapeuta
-
+from django.views.generic.list import ListView
+from .models import Modulos
+from django.views.generic.edit import CreateView
 # Create your views here.
 class ModulosView(TemplateView):
     print("si entro aqui para los modulos")
@@ -131,3 +133,16 @@ def valiadrSeguimiento(seg,idreco):
 
 class CuboTemplateView(TemplateView):
     template_name = 'modulos/cubo.html'
+
+
+class ModulosListview(ListView):
+    model = Modulos
+    
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['est'] = datos
+    #     return context
+class ModulosForm(CreateView):
+    model = Modulos
+    fields = '__all__'
+    success_url = 'listaModulos'

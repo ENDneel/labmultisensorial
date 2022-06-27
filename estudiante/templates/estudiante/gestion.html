@@ -1,0 +1,79 @@
+{% extends "dashboard/base.html" %}
+
+{% load static %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block title %}Gestion{% endblock %}
+
+{% block content %}
+
+<div class="site-wrap">
+
+    <section id="portfolio" class="portfolio section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Gestion de Sistemas</h2>
+                <!-- <p>Informacion de modulos en general.</p> -->
+            </div>
+
+
+
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <img src="/static/images/nin.png" class="img-fluid" alt="" width="300" height="300">
+                        <div class="portfolio-info">
+                            <h4>Gestion</h4>
+                            <p>Estudiantes</p>
+                        </div>
+                        <div class="portfolio-links">
+                      
+                            <a href="{% url 'Estudent_List' %}" title="More Details"><i class="bi bi-gear-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <center>
+                        <img src="/static/images/terapeuta.png" class="img-fluid" alt="" width="250" height="250">
+
+                        </center>
+                        <div class="portfolio-info">
+                            <h4>Gestion</h4>
+                            <p>Terapeutas</p>
+                        </div>
+                        <div class="portfolio-links">
+                           
+                            <a href="portfolio-details.html" title="More Details"><i class="bi bi-gear-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap">
+                        <center>
+                            <img src="https://www3.gobiernodecanarias.org/medusa/ecoescuela/md/files/2017/09/robot-clip-art-book-covers-fejcv3-clipart-1-252x300.png" class="img-fluid" alt="" width="210" height="210">
+
+                        </center>
+                        <div class="portfolio-info">
+                            <h4>Gestion</h4>
+                            <p>Modulos</p>
+                        </div>
+                        <div class="portfolio-links">
+                           
+                            <a href="{% url 'modulos-list' %}" title="More Details"><i class="bi bi-gear-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </section><!-- End Our Portfolio Section -->
+</div>
+{% endblock%}

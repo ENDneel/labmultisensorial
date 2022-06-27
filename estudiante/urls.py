@@ -1,7 +1,7 @@
 from django.urls import path, include 
 from . import views
 from dashboard.views import EstChartView,ListEstudent
-from .views import EstudentDetail,FormularioUpdateView,EstudentListView,EstudianteUpdateView
+from .views import EstudentDetail,FormularioUpdateView,EstudentListView,EstudianteUpdateView,GestionView
 from rest_framework import routers
 
 from .viewsets import EstudianteViewSet
@@ -15,5 +15,7 @@ urlpatterns = [
     path('estudent/<int:pk>/update',EstudianteUpdateView.as_view(),name='EstudianteUpdate'),
     path('estudent/formulario/<int:pk>/update',FormularioUpdateView.as_view(),name='formularioUpdate'),
     path('estudent/', EstudentListView.as_view(), name='Estudent_List'),
+    path('gestion/', GestionView.as_view(), name='Gestion'),
+
 ]
 urlpatterns += router.urls

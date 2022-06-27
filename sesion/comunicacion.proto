@@ -1,0 +1,23 @@
+syntax = "proto3";
+package tutorial;
+message Labmultisensorial{
+    message sendData{
+        message Cubo{
+            int32 tiempo =1;
+            int32 aciertos=2;
+        }
+        message TableroG{
+            int32 tiempo =1;
+            int32 aciertos=2;
+        }
+        message TableroF{
+            int32 tiempo =1;
+            int32 aciertos=2;
+        }
+
+        optional Cubo cubo=1;
+        optional TableroG tableroG=1;
+        optional TableroF tableroF=3;
+
+    }
+}

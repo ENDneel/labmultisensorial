@@ -3,331 +3,125 @@
 
 {% block content %}
 
+<main class="my-5">
+  <div class="container">
+    <!--Section: Content-->
+    <section class="text-center">
+      <h4 class="mb-5"><strong>Selecciona la actividad a utilizar</strong></h4>
 
-</div>
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="/static/images/pinzas.png" width="480" height="480" class="img-fluid" />
+              <a>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Pinzas</h5>
+              <p class="card-text">
+                Coloca las pinzas en su lugar.
+              </p>
+             
+              <button id = "serialSombrero" class="btn btn-success"> Iniciar </button>
+              <button id = "serialFinalizar" class="btn btn-danger"> Finalizar </button>
+            </div>
+          </div>
+        </div>
 
-</div>
-</div>
-<h1 style="margin:150px auto 30px auto; text-align:center; color:rgb(0, 0, 0);">Tablero 2 seleccione las activiades a ejecutar</h1>
-<div style="text-align:center">        <!-- <<--- here the changes -->
-  <form>
-    {% csrf_token %}
-    <button id="adicionar" class="btn btn-success" type="button">Iniciar actividades</button>
-  </form>
-  
-</div>
-
-
-<div class="slider">
-  <div class="slider-wrapper flex">
-    <div class="slide flex">
-      <div class="slide-image slider-link prev"><img src="/static/images/pinzas.png">
-        <!-- <div class="overlay"></div> -->
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="/static/images/laberinto.png" width="400" height="400" class="img-fluid" />
+              <a>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Laberinto</h5>
+              <p class="card-text">
+                Trata de que el jugador lleve la pelota a la posición correspondiente.
+              </p>
+              
+              <button id = "serialCierre" class="btn btn-success"> Iniciar </button>
+              <button id = "serialFinalizar" class="btn btn-danger"> Finalizar </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="slide-content">
-        <div class="slide-date">Pinzas</div>
-        <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="switch1" value="Sombrero">
-          <label class="custom-control-label" for="switch1"></label>
-        </div>
-        <div class="slide-title">Ingrese el tiempo:
-          <input id="tiempo1" onkeypress="if(isNaN(this.value+String.fromCharCode(event.charCode)))return false;" class="form-control" type="text" disabled><br>
-        </div>
-        <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in
-          vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex.
+
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="/static/images/labE.jpg"  width="400" height="400" class="img-fluid" />
+              <a>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Laberinto Electrico</h5>
+              <p class="card-text">
+             lleva la comida hacia el animal.
+              </p>
+              <button id = "serialVelcro" class="btn btn-success"> Iniciar </button>
+              <button id = "serialFinalizar" class="btn btn-danger"> Finalizar </button>
+            </div>
+          </div>
         </div>
 
-        <!-- puedo usar el slide date,title,text,more -->
+       
       </div>
-    </div>
-    <div class="slide flex">
-      <div class="slide-image slider-link next"><img src="/static/images/red2.png" width="400" height="400">
-        <!-- <div class="overlay"></div> -->
-      </div>
-      <div class="slide-content">
-        <div class="slide-date">Laberinto electrico</div>
-
-        <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="switch2" value="Cierre">
-          <label class="custom-control-label" for="switch2"></label>
-        </div>
-        <div class="slide-title">Ingrese el tiempo:
-          <input id="tiempo2" onkeypress="if(isNaN(this.value+String.fromCharCode(event.charCode)))return false;" class="form-control" type="text" disabled><br>
-        </div>
-        <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in
-          vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex.
-        </div>
-
-      </div>
-    </div>
-    <div class="slide flex">
-      <div class="slide-image slider-link next"><img src="/static/images/lab.png" alt="Girl in a jacket" width="400"
-          height="400">
-        <!-- <div class="overlay"></div> -->
-      </div>
-      <div class="slide-content">
-        <div class="slide-date">Laberinto</div>
-        <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="switch3" value="Velcro">
-          <label class="custom-control-label" for="switch3"></label>
-        </div>
-        <div class="slide-title">Ingrese el tiempo:
-          <input id="tiempo3" onkeypress="if(isNaN(this.value+String.fromCharCode(event.charCode)))return false;" class="form-control" type="text" disabled><br>
-        </div>
-        <div class="slide-text">Lorem ipsum dolor sit amet, ad est abhorreant efficiantur, vero oporteat apeirian in
-          vel. Et appareat electram appellantur est. Ei nec duis invenire. Cu mel ipsum laoreet, per rebum omittam ex.
-        </div>
-
-      </div>
-    </div>
-
-
+    </section>
+    <!--Section: Content-->
   </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Motricidad Gruesa Gruesa</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="datos">
+</main>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-secondary btn_send" data-bs-dismiss="modal">Aceptar</button>
-          
-        </div>
-      </div>
-     
-    
-    </div>
-  </div>
-  <div class="arrows"> <a href="#" title="Previous" class="arrow slider-link prev"></a> <a href="#" title="Next"
-      class="arrow slider-link next"></a> </div>
-      
-</div>
 
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.15.0/TweenMax.min.js"></script> -->
-<script src="{% static 'dashboard/js/TweenMax.min.js' %}"></script>
 <script>
-  (function ($) {
-    
-
-    $(document).ready(function () {
-
-      var s = $('.slider'),
-        sWrapper = s.find('.slider-wrapper'),
-        sItem = s.find('.slide'),
-        btn = s.find('.slider-link'),
-        sWidth = sItem.width(),
-        sCount = sItem.length,
-        slide_date = s.find('.slide-date'),
-        slide_title = s.find('.slide-title'),
-        slide_text = s.find('.slide-text'),
-        slide_more = s.find('.slide-more'),
-        slide_image = s.find('.slide-image img'),
-        sTotalWidth = sCount * sWidth;
-
-      sWrapper.css('width', sTotalWidth);
-      sWrapper.css('width', sTotalWidth);
-
-      var clickCount = 0;
-
-      btn.on('click', function (e) {
-        e.preventDefault();
-
-        if ($(this).hasClass('next')) {
-
-          (clickCount < (sCount - 1)) ? clickCount++ : clickCount = 0;
-        } else if ($(this).hasClass('prev')) {
-
-          (clickCount > 0) ? clickCount-- : (clickCount = sCount - 1);
-        }
-        TweenMax.to(sWrapper, 0.4, { x: '-' + (sWidth * clickCount) })
-
-
-        //CONTENT ANIMATIONS
-
-        var fromProperties = { autoAlpha: 0, x: '-50', y: '-10' };
-        var toProperties = { autoAlpha: 0.8, x: '0', y: '0' };
-
-        TweenLite.fromTo(slide_image, 1, { autoAlpha: 0, y: '40' }, { autoAlpha: 1, y: '0' });
-        TweenLite.fromTo(slide_date, 0.4, fromProperties, toProperties);
-        TweenLite.fromTo(slide_title, 0.6, fromProperties, toProperties);
-        TweenLite.fromTo(slide_text, 0.8, fromProperties, toProperties);
-        TweenLite.fromTo(slide_more, 1, fromProperties, toProperties);
-
-      });
+  $("#serialSombrero").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="a"%}',
+      type: "GET",
       
-
-    });
-
-  })(jQuery);
-
-  $('.overlay').addClass('overlay-blue');
-</script>
-<!-- <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function () {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script> -->
-<script>
-
-  $(document).ready(function () {
-    //obtenemos el valor de los input
-    var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
-    var i = 1;
-
-    $('#adicionar').click(function () {
-      let checks = []
-      var tiempos = []
-      var datos = []
-      var cont = 0
-      var bandera = true
-
-
-      checks.push(document.getElementById("switch1"));
-      checks.push(document.getElementById("switch2"));
-      checks.push(document.getElementById("switch3"));
-      tiempos.push(document.getElementById("tiempo1"));
-      tiempos.push(document.getElementById("tiempo2"));
-      tiempos.push(document.getElementById("tiempo3"));
-
-      for (var x = 0; x < checks.length; x++) {
-        if (checks[x].checked) {
-          var tiempo = tiempos[x].value;
-          if (tiempo.trim().length == 0) {
-            alert("No se a colocado tiempo en las activades")
-            bandera = false
-            return
-          } else {
-            var actividad = checks[x].value;
-            console.log(checks[x].checked + " --", tiempo, " ", actividad)
-            console.log("tiempo", x)
-            datos.push("Se desarollara la activadad: " + actividad + " por el tiempo de: " + tiempo)
-          }
-        }
-
-      }
-
-      if (datos.length == 0) {
-        alert("No hay actividades Seleccionadas")
-      } else {
-        var mensaje = ""
-        datos.forEach(element => {
-          mensaje += "<p class=" + "text-justify>" + element + "</p>"
-        });
-        document.getElementById("datos").innerHTML = mensaje
-        $('#exampleModal').modal('show');
-        console.log(datos)
-
-      }
-
-      // checks.forEach(element => {
-
-      //   if (element.checked) {
-      //     var tiempo = tiempos[cont].value;
-      //     console.log(tiempo.length);
-      //     if (tiempo.trim().length == 0) {
-      //       alert("error")
-      //     } else {
-      //       var actividad = element.value;
-      //       console.log(element.checked + " --", tiempo, " ", actividad)
-      //       console.log("tiempo", cont)
-      //       datos.push("Se desarollara la activadad: " + actividad + " por el tiempo de: " + tiempo)
-      //     }
-      //   }
-      //   cont += 1
-      // });
-
-    });
-
-    $(document).on('click', '.btn_remove', function () {
-      var button_id = $(this).attr("id");
-      //cuando da click obtenemos el id del boton
-      $('#row' + button_id + '').remove(); //borra la fila
-      //limpia el para que vuelva a contar las filas de la tabla
-      $("#adicionados").text("");
-      var nFilas = $("#mytable tr").length;
-      $("#adicionados").append(nFilas - 1);
-    });
-    $(document).on('click', '.btn_send', function () {
-      $.ajax({
-        type: "POST",
-        url: "http://127.0.0.1:8000/Ses/sesion/",
-        //url: "http://192.168.60.120:8000/Ses/sesion/",
-        //url: "https://labmultisensorial.ups.edu.ec/Ses/sesion/",
-        data: JSON.stringify({
-          area: "Preescritura",
-          Estudiante: '{{ a }}'
-        }),
-        contentType: 'application/json; charset=utf-8',
-        headers: { "X-CSRFToken": $crf_token },
-        success: function (data) {
-          console.log("ok: "+data.responseText)
-        },
-        failure: function (data) {
-          console.log("faiure: "+data.responseText)
-        },
-        error: function (data) {
-          console.log("error: "+data.responseText)
-
-        }
-      });
-      window.setTimeout(function () {
-          location.href = location.href = "http://127.0.0.1:8000/Ses/{{ a }}/";
-          //location.href = location.href = "https://labmultisensorial.ups.edu.ec/Ses/{{ a }}/";
-        }, 500);
-      // window.setTimeout(window.location.href = "http://127.0.0.1:8000/Ses/{{ a }}/", 5000)
-    });
-    $(document).ready(function () {
-      $('#switch1').on('change', function () {
-        var time1 = document.getElementById('tiempo1');
-        if (this.checked) {
-          time1.disabled = false;
-
-        }
-        else {
-          time1.disabled = true;
-        }
-      });
-    });
-    $(document).ready(function () {
-      $('#switch2').on('change', function () {
-        var time1 = document.getElementById('tiempo2');
-        if (this.checked) {
-          time1.disabled = false;
-
-        }
-        else {
-          time1.disabled = true;
-        }
-      });
-    });
-    $(document).ready(function () {
-      $('#switch3').on('change', function () {
-        var time1 = document.getElementById('tiempo3');
-        if (this.checked) {
-          time1.disabled = false;
-
-        }
-        else {
-          time1.disabled = true;
-        }
-      });
-    });
-  });
+    })
+  })
+  $("#serialCierre").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="c"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialVelcro").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="d"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialBroche").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="b"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialCordon").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="e"%}',
+      type: "GET",
+      
+    })
+  })
+  $("#serialFinalizar").click(function () {
+    $.ajax({
+      url: '{% url "serial_data" pk="y"%}',
+      type: "GET",
+      
+    })
+  })
 
 </script>
 {% endblock%}

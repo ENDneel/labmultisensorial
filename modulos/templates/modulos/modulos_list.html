@@ -1,0 +1,50 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %} Gestion {% endblock title %}
+
+<!-- Specific CSS goes HERE  -->
+{% block stylesheets %}
+
+<!-- JavaScript Bundle with Popper -->
+
+
+{% endblock stylesheets %}
+
+{% block content %}
+<section id="team" class="team">
+     <div class="card mb-4">
+        <a href="{% url 'modulos-form' %}" class="btn btn-primary me-md-2"> <i
+            class="fas fa-plus-square"></i> Agregar</a>
+        <div class="card-header formu"><i class="fas fa-table mr-1"></i>Modulos Registrados
+           
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive formu">    
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>MAC</th>
+                            <th>Estado</th>
+                            <th>Bateria</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in object_list   %}
+                        <tr>
+                            <td>{{ item.nombre}}</td>
+                            <td>{{ item.mac}}</td>
+                            <td>{{ item.estado }}</td>
+
+                            <td>{{ item.bateria}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content%}

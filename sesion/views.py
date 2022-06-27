@@ -73,6 +73,7 @@ def createSesionTableroC(request,pk):
 
 
 def SerialData(request,pk):
+    print(pk)
     ser = serial.Serial(port='COM3')
     print(ser.name)
     ser.write(b''+str.encode(pk))  

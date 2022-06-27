@@ -26,7 +26,7 @@ def EstudentDetail(request,pk):
     'Se expresa mediante Sistemas Alternativos y Aumentativos de Comunicación (pictogramas)','Se expresa mediante lenguaje de señas y Sistemas Alternativos y Aumentativos de Comunicación']
     
     formulario=Formulario.objects.filter(Estudiante=pk)
-    print(formulario[0].disc_intelectual_grado)
+    print("esto de aqui: ",formulario[0].disc_intelectual_grado)
     contexto = {'est': formulario[0],'indice':indice,"pk":pk}
     return render(request, 'estudiante/formulario_detail.html',contexto)
 
@@ -34,13 +34,14 @@ def EstudentDetail(request,pk):
 class FormularioUpdateView(UpdateView):
     model =Formulario
     form_class = FormularioForm
+   
     success_url='/estudent/'
-
 
 class EstudianteUpdateView(UpdateView):
     model =Estudiante
     form_class = EstudianteForm
     success_url='/estudent/'
+
 
 
 # class EstudenUpdateView(UpdateView):
@@ -70,3 +71,9 @@ class EstudentListView(ListView):
         
         context['est'] = datos
         return context
+
+class GestionView(TemplateView):
+    template_name='estudiante/gestion.html'
+
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)
